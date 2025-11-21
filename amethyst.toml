@@ -1,0 +1,10 @@
+id = "sh"
+minecraft = "./server"
+
+[datapack]
+name = "Sky's Horizon"
+description = "A heavily story-driven space exploration game made in Minecraft."
+
+[resourcepack]
+name = "Sky's Horizon"
+description = "A heavily story-driven space exploration game made in Minecraft."
