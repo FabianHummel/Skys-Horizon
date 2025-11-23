@@ -3,8 +3,12 @@ minecraft = "./server"
 
 [datapack]
 name = "Sky's Horizon"
-description = "A heavily story-driven space exploration game made in Minecraft."
+description = "A heavily story-driven space exploration game."
+pack_format = 88
+icon = "./assets/icon.png"
 
 [resourcepack]
 name = "Sky's Horizon"
-description = "A heavily story-driven space exploration game made in Minecraft."
+description = "A heavily story-driven space exploration game."
+pack_format = 69
+icon = "./assets/icon.png"

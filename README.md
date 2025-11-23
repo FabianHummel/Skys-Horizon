@@ -1,6 +1,7 @@
-<h1 align="center">
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo-light.svg">
-    <img alt="Sky's Horizon" src="assets/logo-dark.svg" height="120px">
+    <img alt="Sky's Horizon" src="assets/logo-dark.svg" width="500px">
   </picture>
-</h1>
+</p>
+

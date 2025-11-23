@@ -1,7 +1,9 @@
 {
     "id": "skys_horizon",
     "pack": {
-        "pack_format": 48,
-        "description": "A heavily story-driven space exploration game made in Minecraft."
+        "pack_format": 88,
+        "min_format": 88,
+        "max_format": 88,
+        "description": "A heavily story-driven space exploration game."
     }
 }
