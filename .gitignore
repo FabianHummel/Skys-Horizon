@@ -1,4 +1,5 @@
 /server/*
 !/server/world
 !/server/server-icon.png
+!/server/server.properties
 /.idea
