@@ -26,6 +26,3 @@ scoreboard objectives modify amethyst_record_initializers displayname {"text":"A
 # scoreboard players reset * amethyst_record_initializers
 
 # ["",{"text":"Constant: ","color":"gray"},{"text":"100","color":"red","bold":true}]
-
-execute unless entity @n[x=0,dx=0,y=0,dy=0,z=0,dz=0,type=minecraft:text_display,limit=1,name="amethyst:text_display"] run \
- summon minecraft:text_display .5 .5 .5 {CustomName:"amethyst:text_display"}

@@ -1,4 +1,4 @@
-id = "sh"
+id = "skys_horizon"
 minecraft = "./server"
 
 [datapack]
