@@ -1,7 +1,0 @@
-{
-    "id": "amethyst_unit_tests",
-    "pack": {
-        "pack_format": 48,
-        "description": "A collection of unit tests to verify Amethyst's functionality."
-    }
-}
