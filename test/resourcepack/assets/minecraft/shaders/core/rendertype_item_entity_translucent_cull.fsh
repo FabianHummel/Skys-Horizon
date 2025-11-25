@@ -14,6 +14,7 @@ in vec4 vertexColor;
 in vec2 texCoord0;
 in vec2 texCoord1;
 in vec3 vertexPosition;
+in vec4 baseColor;
 
 out vec4 fragColor;
 
@@ -62,11 +63,11 @@ float cloudFbm(vec2 n) {
     return total;
 }
 
-vec3 getMinecraftSkyWithClouds(vec3 rayDir) {
+vec3 getMinecraftSkyWithClouds(vec3 rayDir, float speedMult) {
     vec2 uv = rayDir.xz / (abs(rayDir.y) + 0.2); 
     uv *= 0.3; 
 
-    float time = GameTime * speed;
+    float time = GameTime * speed * speedMult;
     float q = cloudFbm(uv * cloudscale * 0.5);
     
     float r = 0.0;
@@ -92,7 +93,7 @@ vec3 getMinecraftSkyWithClouds(vec3 rayDir) {
     f *= r + f;
     
     float c = 0.0;
-    time = GameTime * speed * 2.0;
+    time = GameTime * speed * speedMult * 2.0;
     cloudUV = uv * cloudscale * 2.0;
     cloudUV -= q - time;
     weight = 0.4;
@@ -103,7 +104,7 @@ vec3 getMinecraftSkyWithClouds(vec3 rayDir) {
     }
     
     float c1 = 0.0;
-    time = GameTime * speed * 3.0;
+    time = GameTime * speed * speedMult * 3.0;
     cloudUV = uv * cloudscale * 3.0;
     cloudUV -= q - time;
     weight = 0.4;
@@ -137,14 +138,14 @@ void main() {
 
     if (isTextureAlpha(254)) {
         vec3 viewDir = normalize(vertexPosition);
-        vec3 clouds = getMinecraftSkyWithClouds(viewDir);
+        vec3 clouds = getMinecraftSkyWithClouds(viewDir, baseColor.r);
         fragColor = vec4(clouds, 1.0);
         return;
     }
-    
+
     if (color.a < 0.1) {
         discard;
     }
-    
+
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }
