@@ -1,0 +1,1 @@
+execute as @e[type=minecraft:item_display,limit=1] at @s run function test:space_warp
