@@ -1,4 +1,4 @@
-#version 150
+#version 330
 
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:globals.glsl>
@@ -32,7 +32,7 @@ bool textureAlphaEquals(float valueToExpected) {
     return abs(colorValue - valueToExpected) < epsilon;
 }
 
-vec3 getSpaceWarp(vec3 dir, float intensity) {
+vec3 getSpaceWarp(vec3 dir, float intensity, vec3 color) {
     // Make radial coordinates
     float dist = length(dir.xy);
     float mask = smoothstep(centerSize - centerEdge, centerSize, dist);
@@ -57,45 +57,16 @@ vec3 getSpaceWarp(vec3 dir, float intensity) {
     float shape = sin(fract(uv.x) * PI);
     drop *= shape * shape;
 
-    return vec3(1.0) * drop * mask;
-}
-
-mat3 getDynamicRotationMatrix(vec3 angles) {
-    float cY = cos(angles.x);
-    float sY = sin(angles.x);
-    float cP = cos(angles.y);
-    float sP = sin(angles.y);
-    float cR = cos(angles.z);
-    float sR = sin(angles.z);
-
-    // 2. Return the mat3, using column-major order (Column 0, Column 1, Column 2)
-    // The coefficients below are the result of the matrix product Rz(roll) * Rx(pitch) * Ry(yaw)
-    return mat3(
-        // === Column 0 (x-axis base vector) ===
-        cR * cY + sR * sP * sY,   // m00
-        -sR * cY + cR * sP * sY,  // m10
-        -cP * sY,                 // m20
-
-        // === Column 1 (y-axis base vector) ===
-        sR * cP,                  // m01
-        cR * cP,                  // m11
-        sP,                       // m21
-
-        // === Column 2 (z-axis base vector) ===
-        cR * sY - sR * sP * cY,   // m02
-        -sR * sY - cR * sP * cY,  // m12
-        cP * cY                   // m22
-    );
+    return color * drop * mask;
 }
 
 void main() {
     vec4 color = texture(Sampler0, texCoord0) * vertexColor * ColorModulator;
 
     if (textureAlphaEquals(254)) {
-        vec3 angles = vec3(baseColor.g * PI * 2.0, baseColor.b * PI - PI / 2.0, 0.0);
-        mat3 rotation = getDynamicRotationMatrix(angles);
-        vec3 viewDir = rotation * normalize(vertexPosition);
-        vec3 final = getSpaceWarp(viewDir, baseColor.r);
+        vec3 viewDir = normalize(vertexPosition);
+        vec3 spaceColor = vec3(1.0);
+        vec3 final = getSpaceWarp(viewDir, baseColor.r, spaceColor);
         fragColor = vec4(final, 1.0);
         return;
     }
@@ -104,5 +75,13 @@ void main() {
         discard;
     }
 
-    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+    fragColor = apply_fog(
+        color,
+        sphericalVertexDistance,
+        cylindricalVertexDistance,
+        FogEnvironmentalStart,
+        FogEnvironmentalEnd,
+        FogRenderDistanceStart,
+        FogRenderDistanceEnd,
+        FogColor);
 }

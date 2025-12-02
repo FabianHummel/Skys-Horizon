@@ -10,5 +10,5 @@ icon = "./assets/icon.png"
 [resourcepack]
 name = "Sky's Horizon"
 description = "A heavily story-driven space exploration game."
-pack_format = 69
+pack_format = 75
 icon = "./assets/icon.png"
