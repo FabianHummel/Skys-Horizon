@@ -1,0 +1,3 @@
+kill @e[tag=skys_horizon.spaceship]
+summon armor_stand ~ ~ ~ {Silent:1b,Invulnerable:1b,Small:1b,Invisible:1b,Tags:["skys_horizon.spaceship"],attributes:[{id:"minecraft:gravity",base:0.01}],Passengers:[{id:"minecraft:item_display",interpolation_duration:20,item_display:"head",Tags:["skys_horizon.spaceship"],transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,1.2f,0f],scale:[1f,1f,1f]},item:{id:"minecraft:leather_horse_armor",count:1,components:{"minecraft:dyed_color":16711680,"minecraft:item_model":"skys_horizon:spaceship/basic"}}}]}
+ride @s mount @e[type=item_display,tag=skys_horizon.spaceship,limit=1,sort=nearest]

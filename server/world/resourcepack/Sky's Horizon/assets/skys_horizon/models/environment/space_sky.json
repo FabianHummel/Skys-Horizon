@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"layer0": "skys_horizon:item/space_sky_marker",
+		"layer0": "skys_horizon:item/environment/space_sky_marker",
         "particle": "minecraft:empty"
 	},
 	"credit": "Made with Blockbench",

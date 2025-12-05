@@ -4,24 +4,36 @@
       "minecraft:phantom_membrane": 1
     },
     "minecraft:custom": {
-      "minecraft:time_since_rest": 225759,
-      "minecraft:walk_one_cm": 17689,
-      "minecraft:leave_game": 23,
+      "minecraft:minecart_one_cm": 0,
+      "minecraft:time_since_rest": 277286,
+      "minecraft:walk_one_cm": 64316,
+      "minecraft:leave_game": 24,
+      "minecraft:horse_one_cm": 1208,
       "minecraft:mob_kills": 1,
       "minecraft:damage_taken": 240,
-      "minecraft:play_time": 508237,
       "minecraft:damage_dealt": 10,
-      "minecraft:jump": 28,
-      "minecraft:time_since_death": 225713,
-      "minecraft:sprint_one_cm": 6866,
-      "minecraft:total_world_time": 702221,
-      "minecraft:fly_one_cm": 73824,
-      "minecraft:crouch_one_cm": 816,
-      "minecraft:sneak_time": 428,
+      "minecraft:play_time": 559764,
+      "minecraft:jump": 66,
+      "minecraft:time_since_death": 277240,
+      "minecraft:sprint_one_cm": 11597,
+      "minecraft:tune_noteblock": 95,
+      "minecraft:total_world_time": 753748,
+      "minecraft:fly_one_cm": 102778,
+      "minecraft:crouch_one_cm": 4717,
+      "minecraft:sneak_time": 1894,
       "minecraft:deaths": 1
     },
     "minecraft:used": {
-      "minecraft:orange_wool": 1
+      "minecraft:stone": 16,
+      "minecraft:stripped_oak_log": 1,
+      "minecraft:note_block": 2,
+      "minecraft:ochre_froglight": 1,
+      "minecraft:waxed_weathered_copper_golem_statue": 1,
+      "minecraft:orange_wool": 1,
+      "minecraft:magma_block": 1,
+      "minecraft:terracotta": 1,
+      "minecraft:white_wool": 1,
+      "minecraft:exposed_copper_bulb": 1
     }
   },
   "DataVersion": 4664
