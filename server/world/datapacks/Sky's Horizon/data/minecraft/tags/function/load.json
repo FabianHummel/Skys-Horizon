@@ -1,6 +1,5 @@
 {
   "values": [
-    "amethyst:_load",
-    "amethyst:libraries/gu/zzz/load"
+    "skys_horizon:spaceship/_load"
   ]
 }

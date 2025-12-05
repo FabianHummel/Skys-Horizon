@@ -131,12 +131,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/redstone/waxed_exposed_copper_bulb_from_honeycomb": {
-    "criteria": {
-      "has_exposed_copper_bulb": "2025-12-05 19:15:43 +0100"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/white_carpet": {
     "criteria": {
       "has_white_wool": "2025-12-05 19:15:56 +0100"
@@ -281,5 +275,5 @@
     },
     "done": true
   },
-  "DataVersion": 4664
+  "DataVersion": 4556
 }
