@@ -2,4 +2,6 @@
 !/server/world
 !/server/server-icon.png
 !/server/server.properties
+!/server/allowed_symlinks.txt
 /.idea
+/tools/rcon-cli

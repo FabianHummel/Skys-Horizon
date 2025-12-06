@@ -6,6 +6,9 @@ name = "Sky's Horizon"
 description = "A heavily story-driven space exploration game."
 pack_format = 88
 icon = "./assets/icon.png"
+reload_after_compile = true
+rcon_port = 25575
+rcon_password = "skys_horizon"
 
 [resourcepack]
 name = "Sky's Horizon"

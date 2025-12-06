@@ -5,8 +5,7 @@
     "type_specific": {
       "type": "minecraft:player",
       "input": {
-        "forward": false,
-        "backward": true
+        "forward": false
       }
     }
   }
