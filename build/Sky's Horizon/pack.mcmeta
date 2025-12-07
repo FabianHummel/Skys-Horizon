@@ -1,0 +1,9 @@
+{
+    "id": "skys_horizon",
+    "pack": {
+        "pack_format": 75,
+        "min_format": 75,
+        "max_format": 75,
+        "description": "A heavily story-driven space exploration game."
+    }
+}
