@@ -16,11 +16,11 @@ void manageTime() {
     fragColor = encodeFloat(GameTime * 1200.0);
 }
 
-void readMarker(ivec2 iCoord, ivec2 pixelPos, float green, int op, float rate) {
+void readMarker(ivec2 iCoord, ivec2 pixelPos, int red, int op) {
     ivec4 particleColor = ivec4(round(texelFetch(ParticlesSampler, pixelPos, 0)*255.));
-    if (particleColor.rga == ivec3(MARKER_RED, green, 255)) {
+    if (particleColor.ra == ivec2(red, MARKER_ALPHA)) {
         if (iCoord.x == 0) {
-            fragColor = vec4(MARKER_RED, op, particleColor.b, 255) / 255.;
+            fragColor = vec4(red, op, particleColor.b, MARKER_ALPHA) / 255.;
             return;
         }
         ivec4 previousColor = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0)*255.));
@@ -30,6 +30,7 @@ void readMarker(ivec2 iCoord, ivec2 pixelPos, float green, int op, float rate) {
         if (iCoord.x == 2 // acceleration
          || iCoord.x == 3 && !(op == 3 || op == 4) // speed
         ) {
+            float rate = float(particleColor.g) / 255.;
             fragColor = encodeFloat(rate);
             return;
         }
@@ -148,7 +149,7 @@ void main() {
         return;
     }
     if (iCoord.x < 4) {
-        #define ADD_MARKER(row, green, alpha, op, rate) if (iCoord.y == row) readMarker(iCoord, MARKER_POS(row), green, op, rate);
+        #define ADD_MARKER(row, red, op) if (iCoord.y == row) readMarker(iCoord, MARKER_POS(row), red, op);
         LIST_MARKERS
 
         // Clamp timestamp to be at most 600 seconds (10 minutes) behind GameTime
@@ -163,7 +164,7 @@ void main() {
     }
     if (iCoord.x > 2){ // iCoord.x is 3 or 4
         ivec4 iTargetColor = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0) * 255.));
-        if (iTargetColor.r != MARKER_RED) {
+        if (iTargetColor.a != MARKER_ALPHA) {
             fragColor = encodeFloat(0.0);
             return;
         }

@@ -1,2 +1,0 @@
-execute if score @s skys_horizon.spaceship.steering matches ..-1 run scoreboard players add @s skys_horizon.spaceship.steering 1
-execute if score @s skys_horizon.spaceship.steering matches 1.. run scoreboard players remove @s skys_horizon.spaceship.steering 1

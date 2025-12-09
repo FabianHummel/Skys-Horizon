@@ -1,1 +1,0 @@
-$rotate @s ~$(rotation_to_add) ~

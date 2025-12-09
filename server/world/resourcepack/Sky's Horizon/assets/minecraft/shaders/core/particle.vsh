@@ -34,12 +34,12 @@ void main() {
     // ShaderSelector
     iColor = ivec4(round(Color * 255.));
     isMarker = int(
-        iColor.r == MARKER_RED
+        iColor.a == MARKER_ALPHA
     );
     ivec2 markerPos = ivec2(0, 0);
     if (isMarker == 1) {
         isMarker = 0;
-        #define ADD_MARKER(row, green, alpha, op, rate) if (ivec2(green, alpha) == iColor.ga) {isMarker = 1; markerPos = MARKER_POS(row);}
+        #define ADD_MARKER(row, red, op) if (red == iColor.r) {isMarker = 1; markerPos = MARKER_POS(row);}
         LIST_MARKERS
     }
     if (isMarker == 1 && (markerPos.x+markerPos.y)%2 == 0) {

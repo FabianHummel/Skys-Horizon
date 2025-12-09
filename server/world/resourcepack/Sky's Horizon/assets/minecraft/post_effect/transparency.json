@@ -2,7 +2,6 @@
     "targets" : {
         "final": {},
         "swap": {},
-        "swap2": {},
         "data": {"width": 5, "height": 3, "persistent": true},
         "data_swap": {"width": 5, "height": 3}
     },
@@ -110,161 +109,6 @@
             "output": "final"
         },
         {
-            "_comment": "Create blurred copy of minecraft:main for the example shader from ShaderSelectorV3",
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/box_blur",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "final",
-                    "bilinear": true
-                }
-            ],
-            "output": "swap",
-            "uniforms": {
-                "BlurConfig": [
-                    {
-                        "name": "BlurDir",
-                        "type": "vec2",
-                        "value": [ 1.0, 0.0 ]
-                    },
-                    {
-                        "name": "Radius",
-                        "type": "float",
-                        "value": 5.0
-                    }
-                ]
-            }
-        },
-        {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/box_blur",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "swap",
-                    "bilinear": true
-                }
-            ],
-            "output": "swap2",
-            "uniforms": {
-                "BlurConfig": [
-                    {
-                        "name": "BlurDir",
-                        "type": "vec2",
-                        "value": [ 0.0, 1.0 ]
-                    },
-                    {
-                        "name": "Radius",
-                        "type": "float",
-                        "value": 5.0
-                    }
-                ]
-            }
-        }, {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/box_blur",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "swap2",
-                    "bilinear": true
-                }
-            ],
-            "output": "swap",
-            "uniforms": {
-                "BlurConfig": [
-                    {
-                        "name": "BlurDir",
-                        "type": "vec2",
-                        "value": [ 1.0, 0.0 ]
-                    },
-                    {
-                        "name": "Radius",
-                        "type": "float",
-                        "value": 5.0
-                    }
-                ]
-            }
-        },
-        {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/box_blur",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "swap",
-                    "bilinear": true
-                }
-            ],
-            "output": "swap2",
-            "uniforms": {
-                "BlurConfig": [
-                    {
-                        "name": "BlurDir",
-                        "type": "vec2",
-                        "value": [ 0.0, 1.0 ]
-                    },
-                    {
-                        "name": "Radius",
-                        "type": "float",
-                        "value": 5.0
-                    }
-                ]
-            }
-        }, {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/box_blur",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "swap2",
-                    "bilinear": true
-                }
-            ],
-            "output": "swap",
-            "uniforms": {
-                "BlurConfig": [
-                    {
-                        "name": "BlurDir",
-                        "type": "vec2",
-                        "value": [ 1.0, 0.0 ]
-                    },
-                    {
-                        "name": "Radius",
-                        "type": "float",
-                        "value": 5.0
-                    }
-                ]
-            }
-        },
-        {
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/box_blur",
-            "inputs": [
-                {
-                    "sampler_name": "In",
-                    "target": "swap",
-                    "bilinear": true
-                }
-            ],
-            "output": "swap2",
-            "uniforms": {
-                "BlurConfig": [
-                    {
-                        "name": "BlurDir",
-                        "type": "vec2",
-                        "value": [ 1.0, 0.0 ]
-                    },
-                    {
-                        "name": "Radius",
-                        "type": "float",
-                        "value": 5.0
-                    }
-                ]
-            }
-        },
-        {
             "_comment": "Run the example shader from ShaderSelectorV3",
             "fragment_shader": "shader_selector:post/shader",
             "vertex_shader": "minecraft:core/screenquad",
@@ -276,10 +120,6 @@
                 {
                     "sampler_name": "Data",
                     "target": "data"
-                },
-                {
-                    "sampler_name": "Blur",
-                    "target": "swap2"
                 }
             ],
             "output": "swap"
