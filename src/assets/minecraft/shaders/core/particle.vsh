@@ -39,7 +39,7 @@ void main() {
     ivec2 markerPos = ivec2(0, 0);
     if (isMarker == 1) {
         isMarker = 0;
-        #define ADD_MARKER(row, red, op) if (red == iColor.r) {isMarker = 1; markerPos = MARKER_POS(row);}
+        #define ADD_MARKER(channel, id, op) if (iColor.a == MARKER_ALPHA) {isMarker = 1; markerPos = MARKER_POS(channel);}
         LIST_MARKERS
     }
     if (isMarker == 1 && (markerPos.x+markerPos.y)%2 == 0) {

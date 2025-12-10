@@ -2,8 +2,8 @@
     "targets" : {
         "final": {},
         "swap": {},
-        "data": {"width": 5, "height": 3, "persistent": true},
-        "data_swap": {"width": 5, "height": 3}
+        "data": {"width": 5, "height": 2, "persistent": true},
+        "data_swap": {"width": 5, "height": 2}
     },
     "passes": [
         {

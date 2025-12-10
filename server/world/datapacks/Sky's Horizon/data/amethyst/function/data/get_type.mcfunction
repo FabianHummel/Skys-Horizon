@@ -1,4 +1,4 @@
-# Created using Amethyst v1.0.1.0 on 2025-12-09.
+# Created using Amethyst v1.0.1.0 on 2025-12-10.
 data remove storage amethyst:internal data.type.out
 execute if function amethyst:internal/data/type/check_object run return 1
 execute if function amethyst:internal/data/type/check_array run return 1

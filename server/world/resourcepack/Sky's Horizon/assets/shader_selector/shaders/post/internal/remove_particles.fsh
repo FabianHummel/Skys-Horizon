@@ -18,7 +18,7 @@ void main() {
     fragColor = texture(ParticlesSampler, texCoord);
     ivec4 iColor = ivec4(round(fragColor * 255.));
     if (false
-        #define ADD_MARKER(row, red, op) || MARKER_POS(row) == iCoord && iColor.ra == ivec2(red, MARKER_ALPHA)
+        #define ADD_MARKER(channel, id, op) || MARKER_POS(channel) == iCoord && iColor.ra == ivec2(id, MARKER_ALPHA)
         LIST_MARKERS
     ) {
         fragColor = texture(ParticlesSampler, texCoord + vec2(1./OutSize.x, 0.0));

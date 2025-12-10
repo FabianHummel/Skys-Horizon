@@ -16,27 +16,26 @@ void manageTime() {
     fragColor = encodeFloat(GameTime * 1200.0);
 }
 
-void readMarker(ivec2 iCoord, ivec2 pixelPos, int red, int op) {
+void readMarker(ivec2 iCoord, ivec2 pixelPos, int id, int op) {
     ivec4 particleColor = ivec4(round(texelFetch(ParticlesSampler, pixelPos, 0)*255.));
-    if (particleColor.ra == ivec2(red, MARKER_ALPHA)) {
-        if (iCoord.x == 0) {
-            fragColor = vec4(red, op, particleColor.b, MARKER_ALPHA) / 255.;
+
+    if (particleColor.r == id) {
+        if (iCoord.x == 0) {       // rate       // target value
+            fragColor = vec4(op, particleColor.g, particleColor.b, MARKER_ALPHA) / 255.;
             return;
         }
-        ivec4 previousColor = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0)*255.));
-        int lastOp = previousColor.g;
+        ivec4 previousData = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0)*255.));
         // write "rate" into speed (row 3) if op is not 3 or 4,
         // write "rate" into acceleration (row 2) if op is 3 or 4
         if (iCoord.x == 2 // acceleration
          || iCoord.x == 3 && !(op == 3 || op == 4) // speed
         ) {
-            float rate = float(particleColor.g) / 255.;
+            float rate = float(previousData.g) / 255.;
             fragColor = encodeFloat(rate);
             return;
         }
         if (iCoord.x == 1) {
-            
-            if (previousColor.b == particleColor.b) {
+            if (previousData.b == particleColor.b) {
                 return;
             }
             fragColor = encodeFloat(GameTime * 1200.0);
@@ -97,6 +96,7 @@ void acceleratedMotion(ivec2 iCoord, int op, float targetValue) {
     fragColor = encodeFloat(x);
     return;
 }
+
 void constantMotion(ivec2 iCoord, int op, float targetValue) {
     // op 1 or 2
     float v = decodeColor(texelFetch(DataSampler, ivec2(3, iCoord.y), 0));
@@ -131,7 +131,7 @@ data sampler layout:
 row 0: time
 row 1..n: selector values
 within a row of selector values:
-column 0: last seen marker (green: operation of marker, blue: value of marker)
+column 0: last seen marker (green: operation, alpha: rate of change, blue: target value, red: marker)
 column 1: time when last change in marker
 column 2: interpolate acceleration
 column 3: interpolate speed
@@ -149,7 +149,7 @@ void main() {
         return;
     }
     if (iCoord.x < 4) {
-        #define ADD_MARKER(row, red, op) if (iCoord.y == row) readMarker(iCoord, MARKER_POS(row), red, op);
+        #define ADD_MARKER(channel, id, op) if (iCoord.y == channel) readMarker(iCoord, MARKER_POS(channel), id, op);
         LIST_MARKERS
 
         // Clamp timestamp to be at most 600 seconds (10 minutes) behind GameTime
@@ -168,7 +168,7 @@ void main() {
             fragColor = encodeFloat(0.0);
             return;
         }
-        int op = iTargetColor.g;
+        int op = iTargetColor.r;
         float targetValue;
         // When cyclic, 1 = 0, so 255/255 would become redundant.
         // Taking 1/256 instead gives accurate representation of all multiples of 1/256

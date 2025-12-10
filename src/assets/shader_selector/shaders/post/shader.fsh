@@ -40,6 +40,17 @@ void main()
 {
     float time = GameTime * 1200.0;
 
-    float screenShakeIntensity = readChannel(SHAKE_CHANNEL);
+    float screenShakeIntensity = readChannel(SCREENSHAKE_CHANNEL);
     fragColor = applyScreenShake(texCoord, screenShakeIntensity, time);
+
+    ivec2 ds = textureSize(DataSampler, 0);
+    // fixed tiny region in texCoord space (top-left)
+    if (texCoord.x < 0.1 && texCoord.y < 0.1)
+    {
+        // map that 0–0.1 area onto the data texture
+        vec2 uv = texCoord / 0.1;
+        ivec2 xy = ivec2(uv * vec2(ds));
+        fragColor = texelFetch(DataSampler, clamp(xy, ivec2(0), ds-1), 0);
+        return;
+    }
 }
