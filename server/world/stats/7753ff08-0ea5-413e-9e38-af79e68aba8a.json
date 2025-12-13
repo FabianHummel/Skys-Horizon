@@ -1,1 +1,47 @@
-{"stats":{"minecraft:custom":{"minecraft:time_since_rest":1244215,"minecraft:walk_one_cm":440223,"minecraft:leave_game":43,"minecraft:damage_taken":260,"minecraft:damage_dealt":10,"minecraft:play_time":1526693,"minecraft:jump":1092,"minecraft:time_since_death":1244169,"minecraft:drop":57,"minecraft:sprint_one_cm":91372,"minecraft:total_world_time":2584924,"minecraft:fly_one_cm":1112283,"minecraft:crouch_one_cm":8733,"minecraft:sneak_time":5954,"minecraft:deaths":1},"minecraft:dropped":{"minecraft:oak_log":1,"minecraft:leather_horse_armor":55,"minecraft:leather_helmet":1},"minecraft:used":{"minecraft:piston":1,"minecraft:lever":4,"minecraft:redstone":9,"minecraft:oak_log":5,"minecraft:stone":11,"minecraft:sticky_piston":1,"minecraft:repeating_command_block":14,"minecraft:oak_sign":3,"minecraft:glass":3,"minecraft:redstone_torch":2,"minecraft:oak_pressure_plate":4,"minecraft:orange_wool":1,"minecraft:command_block":15},"minecraft:picked_up":{"minecraft:leather_horse_armor":54,"minecraft:oak_pressure_plate":2}},"DataVersion":4556}
+{
+  "stats": {
+    "minecraft:picked_up": {
+      "minecraft:leather_horse_armor": 54,
+      "minecraft:oak_pressure_plate": 2
+    },
+    "minecraft:used": {
+      "minecraft:piston": 1,
+      "minecraft:lever": 4,
+      "minecraft:redstone": 9,
+      "minecraft:oak_log": 5,
+      "minecraft:stone": 22,
+      "minecraft:sticky_piston": 1,
+      "minecraft:repeating_command_block": 14,
+      "minecraft:oak_sign": 3,
+      "minecraft:glass": 3,
+      "minecraft:redstone_torch": 3,
+      "minecraft:oak_pressure_plate": 6,
+      "minecraft:orange_wool": 1,
+      "minecraft:command_block": 19,
+      "minecraft:armor_stand": 11
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 1378395,
+      "minecraft:walk_one_cm": 507088,
+      "minecraft:leave_game": 53,
+      "minecraft:damage_taken": 260,
+      "minecraft:damage_dealt": 10,
+      "minecraft:play_time": 1660873,
+      "minecraft:jump": 1116,
+      "minecraft:time_since_death": 1378349,
+      "minecraft:drop": 57,
+      "minecraft:sprint_one_cm": 98973,
+      "minecraft:total_world_time": 2719104,
+      "minecraft:fly_one_cm": 1164950,
+      "minecraft:crouch_one_cm": 8857,
+      "minecraft:sneak_time": 6169,
+      "minecraft:deaths": 1
+    },
+    "minecraft:dropped": {
+      "minecraft:oak_log": 1,
+      "minecraft:leather_horse_armor": 55,
+      "minecraft:leather_helmet": 1
+    }
+  },
+  "DataVersion": 4671
+}

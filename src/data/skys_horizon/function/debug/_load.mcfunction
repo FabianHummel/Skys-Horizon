@@ -1,0 +1,1 @@
+scoreboard objectives add skys_horizon.debug.shader trigger

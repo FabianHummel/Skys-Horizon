@@ -1,0 +1,1 @@
+trigger skys_horizon.debug.shader

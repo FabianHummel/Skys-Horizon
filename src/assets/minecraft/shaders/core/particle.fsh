@@ -2,6 +2,8 @@
 
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
+#moj_import <minecraft:globals.glsl>
+#moj_import <debug_text:draw_text.glsl>
 
 uniform sampler2D Sampler0;
 
@@ -16,7 +18,27 @@ out vec4 fragColor;
 flat in int isMarker;
 flat in ivec4 iColor;
 
+// Debug Text
+flat in int isDebugMarker;
+in vec2 corner;
+
 void main() {
+    // Debug Text
+    if (isDebugMarker == 1) {
+        float scale = 300.;
+
+        vec2 resolution = gl_FragCoord.xy / corner;
+        vec2 uv = gl_FragCoord.xy / resolution.x * scale;
+        uv.y -= resolution.y / resolution.x * scale;
+
+        uv -= vec2(1., -6.);
+        float state = 0.0;
+        drawGlobals(state, uv);
+        if (state == 0.0) discard;
+
+        fragColor = vec4(1);
+        return;
+    }
     // ShaderSelector
     if (isMarker == 1) {
         fragColor = vec4(iColor.rgb, 255) / 255.0;

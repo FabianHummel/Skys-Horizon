@@ -1,6 +1,7 @@
 {
   "values": [
     "skys_horizon:_load",
-    "skys_horizon:spaceship/_load"
+    "skys_horizon:spaceship/_load",
+    "skys_horizon:debug/_load"
   ]
 }

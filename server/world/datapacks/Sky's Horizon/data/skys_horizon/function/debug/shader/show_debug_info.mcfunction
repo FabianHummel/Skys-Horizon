@@ -1,0 +1,1 @@
+execute at @s anchored eyes run particle entity_effect{color:[0.00392156862745098, 0.00784313725490196, 0.011764705882352941, 1.0]} ^ ^ ^1

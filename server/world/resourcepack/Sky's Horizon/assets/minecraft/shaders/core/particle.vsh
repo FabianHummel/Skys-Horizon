@@ -23,6 +23,10 @@ out vec4 vertexColor;
 flat out int isMarker;
 flat out ivec4 iColor;
 
+// Debug Text
+flat out int isDebugMarker;
+out vec2 corner;
+
 vec2[] corners = vec2[](
     vec2(0.0, 1.0),
     vec2(0.0, 0.0),
@@ -31,11 +35,20 @@ vec2[] corners = vec2[](
 );
 
 void main() {
+    // Vanilla (part 1)
+    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
+
+    // Debug Text
+    isDebugMarker = 0;
+    if (ivec3(Color.rgb * 255.) == ivec3(1, 2, 3)) {
+        isDebugMarker = 1;
+        corner = corners[gl_VertexID % 4] * vec2(0.6, .25) + vec2(0, .75);
+        gl_Position = vec4(corner * 2. - 1., 0, 1);
+    }
+
     // ShaderSelector
     iColor = ivec4(round(Color * 255.));
-    isMarker = int(
-        iColor.a == MARKER_ALPHA
-    );
+    isMarker = int(iColor.a == MARKER_ALPHA);
     ivec2 markerPos = ivec2(0, 0);
     if (isMarker == 1) {
         isMarker = 0;
@@ -53,9 +66,7 @@ void main() {
         vertexColor = vec4(0.0);
         return;
     }
-    // Vanilla code
-    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
-
+    // Vanilla (part 2)
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
     texCoord0 = UV0;

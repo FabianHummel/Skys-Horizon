@@ -7,7 +7,7 @@ signature:
  ADD_MARKER(channel, id, op)
 */
 // append different marker definitions
-#define LIST_MARKERS ADD_MARKER(SCREENSHAKE_CHANNEL, 1, 1)
+#define LIST_MARKERS ADD_MARKER(SCREENSHAKE_CHANNEL, 1, 1) ADD_MARKER(SCREENSHAKE_CHANNEL, 2, 0)
 
 #define MARKER_ALPHA 251
 
