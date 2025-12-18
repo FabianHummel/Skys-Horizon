@@ -1,22 +1,32 @@
-#version 330
+#version 150
 
+#moj_import <minecraft:light.glsl>
 #moj_import <minecraft:fog.glsl>
-#moj_import <minecraft:globals.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
 #moj_import <minecraft:projection.glsl>
+#moj_import <minecraft:globals.glsl>
 
 uniform sampler2D Sampler0;
 
 in float sphericalVertexDistance;
 in float cylindricalVertexDistance;
-in vec4 vertexColor;
-in vec2 texCoord0;
-in vec2 texCoord1;
-in vec3 vertexPosition;
 in vec4 baseColor;
+in vec4 vertexColor;
+in vec4 lightColor;
+in vec4 overlayColor;
+in vec2 texCoord;
+in vec2 texCoord2;
+in vec3 Pos;
+in float transition;
+
+flat in int isCustom;
+flat in int isGUI;
+flat in int isHand;
+flat in int noshadow;
 
 out vec4 fragColor;
 
+// Sky's Horizon
 const float speed = 1000.0;
 const float density = 500.0;
 const float compression = 0.3;
@@ -28,7 +38,7 @@ const float PI = 3.14159265359;
 
 bool textureAlphaEquals(float valueToExpected) {
     float epsilon = 1.0;
-    float colorValue = texture(Sampler0, texCoord0).a * 255.0;
+    float colorValue = texture(Sampler0, texCoord).a * 255.0;
     return abs(colorValue - valueToExpected) < epsilon;
 }
 
@@ -61,27 +71,24 @@ vec3 getSpaceWarp(vec3 dir, float intensity, vec3 color) {
 }
 
 void main() {
-    vec4 color = texture(Sampler0, texCoord0) * vertexColor * ColorModulator;
+    vec4 color = mix(texture(Sampler0, texCoord), texture(Sampler0, texCoord2), transition);
 
+    // Sky's Horizon
     if (textureAlphaEquals(254)) {
-        vec3 viewDir = normalize(vertexPosition);
+        vec3 viewDir = normalize(Pos);
         vec3 spaceColor = vec3(1.0);
         vec3 final = getSpaceWarp(viewDir, baseColor.r, spaceColor);
         fragColor = vec4(final, 1.0);
         return;
     }
 
+    // objmc
+    #define ENTITY
+    #moj_import<objmc:light.glsl>
+
     if (color.a < 0.1) {
         discard;
     }
 
-    fragColor = apply_fog(
-        color,
-        sphericalVertexDistance,
-        cylindricalVertexDistance,
-        FogEnvironmentalStart,
-        FogEnvironmentalEnd,
-        FogRenderDistanceStart,
-        FogRenderDistanceEnd,
-        FogColor);
+    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }

@@ -4,4 +4,8 @@
 !/server/server.properties
 !/server/allowed_symlinks.txt
 /.idea
+/.zed
 /tools/rcon-cli
+.DS_Store
+.lock
+*~lock~

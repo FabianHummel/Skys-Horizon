@@ -1,0 +1,1 @@
+$summon item_display ~ ~ ~ {view_range:10f,item_display:"head",Tags:["skys_horizon.celestial.planet"],item:{id:"minecraft:leather_horse_armor",count:1,components:{"minecraft:item_model":"skys_horizon:celestial/planet","minecraft:custom_model_data":{strings:[$(type)]}}}}

@@ -1,9 +1,9 @@
 {
-    "targets" : {
+    "targets": {
         "final": {},
         "swap": {},
-        "data": {"width": 5, "height": 2, "persistent": true},
-        "data_swap": {"width": 5, "height": 2}
+        "data": { "width": 5, "height": 2, "persistent": true },
+        "data_swap": { "width": 5, "height": 2 }
     },
     "passes": [
         {
@@ -110,7 +110,7 @@
         },
         {
             "_comment": "Run the example shader from ShaderSelectorV3",
-            "fragment_shader": "shader_selector:post/shader",
+            "fragment_shader": "skys_horizon:post/shader",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
@@ -138,7 +138,7 @@
                     {
                         "name": "ColorModulate",
                         "type": "vec4",
-                        "value": [ 1.0, 1.0, 1.0, 1.0 ]
+                        "value": [1.0, 1.0, 1.0, 1.0]
                     }
                 ]
             },

@@ -1,0 +1,12 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "skys_horizon:celestial/space_sky",
+        "tints": [
+            {
+                "type": "minecraft:dye",
+                "default": 0
+            }
+        ]
+    }
+}
