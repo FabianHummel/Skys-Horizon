@@ -36,11 +36,7 @@ const float centerSize = 1.0;
 const float centerEdge = 0.6;
 const float PI = 3.14159265359;
 
-bool textureAlphaEquals(float valueToExpected) {
-    float epsilon = 1.0;
-    float colorValue = texture(Sampler0, texCoord).a * 255.0;
-    return abs(colorValue - valueToExpected) < epsilon;
-}
+#moj_import <skys_horizon:utils.glsl>
 
 vec3 getSpaceWarp(vec3 dir, float intensity, vec3 color) {
     // Make radial coordinates
@@ -79,6 +75,10 @@ void main() {
         vec3 spaceColor = vec3(1.0);
         vec3 final = getSpaceWarp(viewDir, baseColor.r, spaceColor);
         fragColor = vec4(final, 1.0);
+        return;
+    }
+    if (textureAlphaEquals(253)) {
+        fragColor = vec4(1.0, 0.0, 0.0, 1.0);
         return;
     }
 

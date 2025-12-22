@@ -1,0 +1,17 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [1, 1],
+	"textures": {
+		"0": "test:item/test"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 8],
+			"to": [16, 16, 8],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		}
+	]
+}

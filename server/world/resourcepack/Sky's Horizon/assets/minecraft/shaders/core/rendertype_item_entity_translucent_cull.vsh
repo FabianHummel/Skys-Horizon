@@ -32,6 +32,8 @@ flat out int isGUI;
 flat out int isHand;
 flat out int noshadow;
 
+#moj_import <skys_horizon:utils.glsl>
+
 #moj_import <objmc:tools.glsl>
 
 void main() {
@@ -43,7 +45,13 @@ void main() {
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
     baseColor = Color;
 
-    //objmc
+    // Sky's Horizon
+    if (textureAlphaEquals(253)) {
+        gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
+        return;
+    }
+
+    // objmc
     #define ENTITY
     #moj_import <objmc:main.glsl>
 

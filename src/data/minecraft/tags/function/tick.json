@@ -1,6 +1,7 @@
 {
-  "values": [
-    "skys_horizon:spaceship/_tick",
-    "skys_horizon:debug/_tick"
-  ]
+    "values": [
+        "skys_horizon:spaceship/_tick",
+        "skys_horizon:debug/_tick",
+        "skys_horizon:celestial/planet/_tick"
+    ]
 }

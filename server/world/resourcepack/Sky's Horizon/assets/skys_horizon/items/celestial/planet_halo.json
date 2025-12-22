@@ -1,0 +1,12 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "skys_horizon:celestial/planet_halo",
+        "tints": [
+            {
+                "type": "minecraft:dye",
+                "default": 0
+            }
+        ]
+    }
+}
