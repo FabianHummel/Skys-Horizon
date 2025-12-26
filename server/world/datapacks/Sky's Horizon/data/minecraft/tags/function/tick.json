@@ -2,6 +2,6 @@
     "values": [
         "skys_horizon:spaceship/_tick",
         "skys_horizon:debug/_tick",
-        "skys_horizon:celestial/planet/_tick"
+        "skys_horizon:space/_tick"
     ]
 }

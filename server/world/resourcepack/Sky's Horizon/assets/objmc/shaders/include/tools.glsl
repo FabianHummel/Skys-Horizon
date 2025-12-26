@@ -1,7 +1,16 @@
 //objmc
 //https://github.com/Godlander/objmc
 
+#ifndef PI
 #define PI 3.1415926535897932
+#endif
+
+ivec4 getMarker(ivec2 topleft) {
+    return ivec4(texelFetch(Sampler0, topleft, 0)*255);
+}
+bool isMarker(ivec4 marker) {
+    return marker.rgb == ivec3(12,34,56);
+}
 
 ivec4 getmeta(ivec2 topleft, int offset) {
     return ivec4(texelFetch(Sampler0, topleft + ivec2(offset,0), 0) * 255);
@@ -73,15 +82,6 @@ mat3 rotate(vec3 angles) {
         sx*sy*cz+cy*sz, cx*cz, -sy*sz+sx*cy*cz,
         cx*sy, -sx, cx*cy
     );
-}
-
-//gui item model detection from Onnowhere
-bool isgui(mat4 ProjMat) {
-    return ProjMat[2][3] == 0.0;
-}
-//first person hand item model detection (Bálint nonsense)
-bool ishand(mat4 ProjMat) {
-    return abs(ProjMat[3][2] + 0.10005) < 0.00001;
 }
 
 //hue to rgb
