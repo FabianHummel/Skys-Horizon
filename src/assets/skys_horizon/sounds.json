@@ -1,0 +1,18 @@
+{
+    "music.space": {
+        "sounds": [
+            {
+                "name": "skys_horizon:music/wasteland",
+                "stream": true
+            }
+        ]
+    },
+
+    "ambient.space.loop": {
+
+    },
+
+    "ambient.space.additions": {
+
+    }
+}

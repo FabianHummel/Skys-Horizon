@@ -28,11 +28,10 @@ out vec3 Pos;
 flat out int isCustom;
 
 #moj_import <skys_horizon:utils.glsl>
-#moj_import <skys_horizon:space.glsl>
-
 #moj_import <objmc:tools.glsl>
 
 void main() {
+    // Vanilla code
     Pos = Position;
     texCoord = UV0;
     overlayColor = vec4(1);
@@ -40,26 +39,14 @@ void main() {
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
     baseColor = Color;
 
-    // Sky's Horizon
-    if (textureAlphaEquals(253)) {
-        gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
-        return;
-    }
-
     // objmc
     #moj_import <objmc:main.glsl>
 
     // Sky's Horizon
     mat4 ModelViewMat2 = ModelViewMat;
-    if (isPlanetMarker(marker)) {
-        ModelViewMat2 = getPlanetModelViewMat(ModelViewMat);
-        vec3 rotation = getPlanetRotation(Color.rgb);
-        Pos += rotate(rotation) * posoffset;
-    }
-    else {
-        Pos += posoffset;
-    }
+    #moj_import <skys_horizon:main.glsl>
 
+    // Vanilla code
     gl_Position = ProjMat * ModelViewMat2 * vec4(Pos, 1.0);
 
     sphericalVertexDistance = fog_spherical_distance(Pos);

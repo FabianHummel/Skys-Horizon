@@ -1,3 +1,6 @@
+scoreboard players reset * skys_horizon.space.yaw
+scoreboard objectives remove skys_horizon.space.yaw
+
 scoreboard players reset * skys_horizon.space.pitch
 scoreboard objectives remove skys_horizon.space.pitch
 

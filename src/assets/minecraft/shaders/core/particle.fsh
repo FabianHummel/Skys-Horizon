@@ -24,26 +24,14 @@ in vec2 corner;
 
 void main() {
     // Debug Text
-    if (isDebugMarker == 1) {
-        float scale = 300.;
+    #moj_import <debug_text:main.fsh>
 
-        vec2 resolution = gl_FragCoord.xy / corner;
-        vec2 uv = gl_FragCoord.xy / resolution.x * scale;
-        uv.y -= resolution.y / resolution.x * scale;
-
-        uv -= vec2(1., -6.);
-        float state = 0.0;
-        drawGlobals(state, uv);
-        if (state == 0.0) discard;
-
-        fragColor = vec4(1);
-        return;
-    }
     // ShaderSelector
     if (isMarker == 1) {
         fragColor = vec4(iColor.rgb, 255) / 255.0;
         return;
     }
+
     // Vanilla code
     vec4 color = texture(Sampler0, texCoord0) * vertexColor * ColorModulator;
     if (color.a < 0.1) {

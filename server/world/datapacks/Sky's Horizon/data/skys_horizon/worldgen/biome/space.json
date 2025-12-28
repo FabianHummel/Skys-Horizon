@@ -1,0 +1,37 @@
+{
+    "attributes": {
+        "minecraft:audio/background_music": {
+            "default": {
+                "sound": {
+                    "sound_id": "skys_horizon:music.space"
+                },
+                "min_delay": 24000,
+                "max_delay": 12000
+            }
+        },
+        "minecraft:audio/ambient_sounds": {
+            "loop": {
+                "sound_id": "skys_horizon:ambient.space.loop"
+            },
+            "additions": [
+                {
+                    "sound": {
+                        "sound_id": "skys_horizon:ambient.space.additions"
+                    },
+                    "tick_chance": 0.0111
+                }
+            ]
+        }
+    },
+    "temperature": 0,
+    "downfall": 0,
+    "has_precipitation": false,
+    "temperature_modifier": "none",
+    "effects": {
+        "water_color": 0
+    },
+    "spawners": {},
+    "spawn_costs": {},
+    "carvers": [],
+    "features": []
+}

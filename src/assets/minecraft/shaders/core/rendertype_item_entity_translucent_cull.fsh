@@ -22,7 +22,6 @@ flat in int isCustom;
 out vec4 fragColor;
 
 #moj_import <skys_horizon:utils.glsl>
-#moj_import <skys_horizon:space.glsl>
 
 void main() {
     vec4 color = texture(Sampler0, texCoord);
@@ -43,6 +42,7 @@ void main() {
     // objmc
     #moj_import <objmc:light.glsl>
 
+    // Vanilla code
     if (color.a < 0.1) {
         discard;
     }

@@ -1,0 +1,12 @@
+{
+    "type": "skys_horizon:space",
+    "generator": {
+        "type": "minecraft:flat",
+        "settings": {
+            "biome": "skys_horizon:space",
+            "lakes": false,
+            "features": false,
+            "layers": []
+        }
+    }
+}

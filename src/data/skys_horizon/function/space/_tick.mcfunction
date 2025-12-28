@@ -1,5 +1,1 @@
-execute as @p at @s run rotate @s ~ 0
-scoreboard players add @p skys_horizon.space.pitch 20
-scoreboard players add @p skys_horizon.space.roll 20
-execute as @p run function skys_horizon:space/rotation_to_color
-execute store result entity @e[tag=skys_horizon.celestial.planet,limit=1] item.components."minecraft:dyed_color" int 1 run scoreboard players get #out skys_horizon.temp
+execute as @a[tag=skys_horizon.player.in_space] at @s run function skys_horizon:space/main
