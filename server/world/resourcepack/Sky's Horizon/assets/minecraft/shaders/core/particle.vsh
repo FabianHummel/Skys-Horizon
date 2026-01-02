@@ -36,7 +36,7 @@ void main() {
     #moj_import <debug_text:main.vsh>
 
     // ShaderSelector
-    #moj_import <shader_selector:main.glsl>
+    #moj_import <shader_selector:main.vsh>
 
     // Vanilla code
     sphericalVertexDistance = fog_spherical_distance(Position);

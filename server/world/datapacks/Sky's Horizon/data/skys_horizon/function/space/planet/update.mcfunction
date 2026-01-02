@@ -1,0 +1,1 @@
+function skys_horizon:space/apply_uniforms

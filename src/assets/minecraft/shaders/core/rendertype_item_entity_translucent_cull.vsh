@@ -40,11 +40,11 @@ void main() {
     baseColor = Color;
 
     // objmc
-    #moj_import <objmc:main.glsl>
+    #moj_import <objmc:main.vsh>
 
     // Sky's Horizon
     mat4 ModelViewMat2 = ModelViewMat;
-    #moj_import <skys_horizon:main.glsl>
+    #moj_import <skys_horizon:main.vsh>
 
     // Vanilla code
     gl_Position = ProjMat * ModelViewMat2 * vec4(Pos, 1.0);

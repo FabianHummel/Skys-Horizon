@@ -1,0 +1,21 @@
+{
+    "model": {
+        "type": "minecraft:select",
+        "property": "minecraft:custom_model_data",
+        "cases": [
+            {
+                "when": "earth",
+                "model": {
+                    "type": "minecraft:model",
+                    "model": "skys_horizon:space/planet/earth",
+                    "tints": [
+                        {
+                            "type": "minecraft:dye",
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -26,21 +26,11 @@ out vec4 fragColor;
 void main() {
     vec4 color = texture(Sampler0, texCoord);
 
-    // Sky's Horizon
-    if (textureAlphaEquals(254)) {
-        vec3 viewDir = normalize(Pos);
-        vec3 spaceColor = vec3(1.0);
-        vec3 final = getSpaceWarp(viewDir, baseColor.r, spaceColor);
-        fragColor = vec4(final, 1.0);
-        return;
-    }
-    if (textureAlphaEquals(253)) {
-        fragColor = vec4(1.0, 0.0, 0.0, 1.0);
-        return;
-    }
-
     // objmc
-    #moj_import <objmc:light.glsl>
+    #moj_import <objmc:main.fsh>
+
+    // Sky's Horizon
+    #moj_import <skys_horizon:main.fsh>
 
     // Vanilla code
     if (color.a < 0.1) {

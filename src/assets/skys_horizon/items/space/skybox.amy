@@ -1,0 +1,48 @@
+RESOURCE {
+    "model": {
+        "type": "minecraft:range_dispatch",
+        "property": "minecraft:custom_model_data",
+        "index": 0,
+        "entries": [
+            FOR (VAR pitch IN [0, 180]) {
+                YIELD {
+                    "threshold": pitch,
+                    "model": {
+                        "type": "minecraft:range_dispatch",
+                        "property": "minecraft:custom_model_data",
+                        "index": 1,
+                        "entries": [
+                            FOR (VAR yaw IN [0, 180]) {
+                                YIELD {
+                                    "threshold": yaw,
+                                    "model": {
+                                        "type": "minecraft:range_dispatch",
+                                        "property": "minecraft:custom_model_data",
+                                        "index": 2,
+                                        "entries": [
+                                            FOR (VAR roll IN [0, 180]) {
+                                                YIELD {
+                                                    "threshold": roll,
+                                                    "model": {
+                                                        "type": "minecraft:model",
+                                                        "model": $"skys_horizon:space/skybox/pitch_{pitch}_yaw_{yaw}_roll_{roll}",
+                                                        "tints": [
+                                                            {
+                                                                "type": "minecraft:dye",
+                                                                "default": 0
+                                                            }
+                                                        ]
+                                                    }
+                                                };
+                                            }
+                                        ]
+                                    }
+                                };
+                            }
+                        ]
+                    }
+                };
+            }
+        ]
+    }
+};
