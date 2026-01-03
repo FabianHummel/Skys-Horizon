@@ -1,15 +1,11 @@
-const int NUM_SPACEWARP_ROTATION_OFFSETS = 8;
+const int NUM_SPACEWARP_ROTATION_OFFSETS = 64;
 
-const vec3[] spaceWarpRotations = vec3[](
-    vec3(0.0, 0.0, 0.0),
-    vec3(0.0, 0.0, 1.0),
-    vec3(0.0, 1.0, 0.0),
-    vec3(0.0, 1.0, 1.0),
-    vec3(1.0, 0.0, 0.0),
-    vec3(1.0, 0.0, 1.0),
-    vec3(1.0, 1.0, 0.0),
-    vec3(1.0, 1.0, 1.0)
-);
+vec3 getSpaceWarpRotationByIndex(int i) {
+    return vec3(
+        (i >> 4) & 3, // x = i / 16
+        (i >> 2) & 3, // y = (i / 4) % 4
+        i & 3);       // z = i % 4
+}
 
 vec3 applySpaceWarp(vec3 dir, float intensity, vec3 color) {
     const float speed = 1000.0;
@@ -26,10 +22,10 @@ vec3 applySpaceWarp(vec3 dir, float intensity, vec3 color) {
     float angle = atan(dir.y, dir.x);
     vec2 uv;
     uv.x = angle / PI * density;
-    uv.y = dir.z / dist;
+    uv.y = dir.z / -dist;
 
     // Apply warp effect (raindrops)
-    float time = GameTime * speed * 0.2;
+    float time = GameTime * speed * intensity;
 
     vec2 duv = vec2(floor(uv.x), uv.y) * compression;
     float offset = sin(duv.x);

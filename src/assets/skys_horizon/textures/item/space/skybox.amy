@@ -1,4 +1,6 @@
-FOR (VAR a = 247; a <= 254; a++) {
+VAR NUM_SPACEWARP_ROTATION_OFFSETS = 64;
+
+FOR (VAR a = 255-NUM_SPACEWARP_ROTATION_OFFSETS; a <= 254; a++) {
    IMAGE $"marker_{a}" 1x1 [
        RGBA 255 255 255 a
    ];

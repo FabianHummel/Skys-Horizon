@@ -3,6 +3,13 @@ int alpha = getTextureAlpha();
 if (alpha > 254 - NUM_SPACEWARP_ROTATION_OFFSETS && alpha <= 254) {
     ModelViewMat2 = mat4(1.0);
     ModelViewMat2[3] = ModelViewMat[3];
+    vec2 rotationOffset = getSpaceWarpRotationByIndex(alpha - 254 - NUM_SPACEWARP_ROTATION_OFFSETS);
+
+    float pitch = (Color.r + rotationOffset.x) * PI / 2.0;
+    float yaw = (Color.g + rotationOffset.y) * PI / 2.0;
+    float roll = (Color.b + rotationOffset.z) * PI / 2.0;
+    vec3 rotation = vec3(pitch, yaw, roll);
+    ModelViewMat2 = ModelViewMat2 * mat4(rotate(rotation));
 }
 
 else if (isPlanetMarker(marker)) {

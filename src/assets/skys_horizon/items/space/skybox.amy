@@ -4,7 +4,7 @@ RESOURCE {
         "property": "minecraft:custom_model_data",
         "index": 0,
         "entries": [
-            FOR (VAR pitch IN [0, 180]) {
+            FOR (VAR pitch IN [0, 90, 180, 270]) {
                 YIELD {
                     "threshold": pitch,
                     "model": {
@@ -12,7 +12,7 @@ RESOURCE {
                         "property": "minecraft:custom_model_data",
                         "index": 1,
                         "entries": [
-                            FOR (VAR yaw IN [0, 180]) {
+                            FOR (VAR yaw IN [0, 90, 180, 270]) {
                                 YIELD {
                                     "threshold": yaw,
                                     "model": {
@@ -20,7 +20,7 @@ RESOURCE {
                                         "property": "minecraft:custom_model_data",
                                         "index": 2,
                                         "entries": [
-                                            FOR (VAR roll IN [0, 180]) {
+                                            FOR (VAR roll IN [0, 90, 180, 270]) {
                                                 YIELD {
                                                     "threshold": roll,
                                                     "model": {

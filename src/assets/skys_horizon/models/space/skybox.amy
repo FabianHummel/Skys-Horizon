@@ -1,7 +1,11 @@
-VAR alpha = 247;
-FOR (VAR pitch IN [0, 180]) {
-    FOR (VAR yaw IN [0, 180]) {
-        FOR (VAR roll IN [0, 180]) {
+VAR NUM_SPACEWARP_ROTATION_OFFSETS = 64;
+
+VAR alpha = 254-NUM_SPACEWARP_ROTATION_OFFSETS;
+FOR (VAR pitch IN [0, 90, 180, 270]) {
+    FOR (VAR yaw IN [0, 90, 180, 270]) {
+        FOR (VAR roll IN [0, 90, 180, 270]) {
+            alpha++;
+
             RESOURCE $"pitch_{pitch}_yaw_{yaw}_roll_{roll}" {
                 "credit": "Made with Blockbench",
                 "texture_size": [1, 1],
@@ -24,8 +28,6 @@ FOR (VAR pitch IN [0, 180]) {
                     }
                 ]
             };
-
-            alpha++;
         }
     }
 }
