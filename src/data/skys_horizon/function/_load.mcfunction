@@ -11,3 +11,6 @@ scoreboard players set #36000 skys_horizon.const 36000
 scoreboard players set #65536 skys_horizon.const 65536
 scoreboard players set #1048576 skys_horizon.const 1048576
 scoreboard players set #16777216 skys_horizon.const 16777216
+
+scoreboard objectives add skys_horizon.timer dummy
+scoreboard players set #10 skys_horizon.timer 0

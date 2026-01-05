@@ -8,13 +8,21 @@
 #           |--pitch--||--yaw---||--roll--|
 
 # Red (8 bits): (value % 2⁸) << 16
-scoreboard players operation #out skys_horizon.temp = @s skys_horizon.space.pitch
-scoreboard players operation #out skys_horizon.temp *= #65536 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp = @s skys_horizon.space.pitch
+scoreboard players operation #tmp1 skys_horizon.temp *= #256 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp /= #36000 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp *= #65536 skys_horizon.const
+scoreboard players operation #out skys_horizon.temp = #tmp1 skys_horizon.temp
 
 # Green (8 bits): (value % 2⁸) << 8
 scoreboard players operation #tmp1 skys_horizon.temp = @s skys_horizon.space.yaw
 scoreboard players operation #tmp1 skys_horizon.temp *= #256 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp /= #36000 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp *= #256 skys_horizon.const
 scoreboard players operation #out skys_horizon.temp += #tmp1 skys_horizon.temp
 
 # Blue (8 bits): (value % 2⁸) << 0
-scoreboard players operation #out skys_horizon.temp += @s skys_horizon.space.roll
+scoreboard players operation #tmp1 skys_horizon.temp = @s skys_horizon.space.roll
+scoreboard players operation #tmp1 skys_horizon.temp *= #256 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp /= #36000 skys_horizon.const
+scoreboard players operation #out skys_horizon.temp += #tmp1 skys_horizon.temp

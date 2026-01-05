@@ -3,3 +3,6 @@ scoreboard objectives remove skys_horizon.temp
 
 scoreboard players reset * skys_horizon.const
 scoreboard objectives remove skys_horizon.const
+
+scoreboard players reset * skys_horizon.timer
+scoreboard objectives remove skys_horizon.timer

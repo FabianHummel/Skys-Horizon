@@ -1,36 +1,11 @@
 {
   "stats": {
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 13253922,
-      "minecraft:walk_one_cm": 747355,
-      "minecraft:leave_game": 73,
-      "minecraft:damage_taken": 340,
-      "minecraft:damage_dealt": 10,
-      "minecraft:play_time": 14993549,
-      "minecraft:jump": 1444,
-      "minecraft:time_since_death": 13253899,
-      "minecraft:play_record": 1,
-      "minecraft:drop": 92,
-      "minecraft:sprint_one_cm": 140756,
-      "minecraft:total_world_time": 16051780,
-      "minecraft:fly_one_cm": 4463449,
-      "minecraft:crouch_one_cm": 26943,
-      "minecraft:sneak_time": 16588,
-      "minecraft:deaths": 3
-    },
     "minecraft:picked_up": {
       "minecraft:leather_horse_armor": 86,
       "minecraft:oak_pressure_plate": 2,
       "minecraft:music_disc_lava_chicken": 1,
       "minecraft:glass": 1,
       "minecraft:gold_block": 1
-    },
-    "minecraft:dropped": {
-      "minecraft:gold_block": 1,
-      "minecraft:oak_log": 1,
-      "minecraft:leather_horse_armor": 88,
-      "minecraft:leather_helmet": 1,
-      "minecraft:glass": 1
     },
     "minecraft:used": {
       "minecraft:piston": 1,
@@ -51,6 +26,31 @@
       "minecraft:command_block": 24,
       "minecraft:gold_block": 1,
       "minecraft:armor_stand": 14
+    },
+    "minecraft:dropped": {
+      "minecraft:gold_block": 1,
+      "minecraft:oak_log": 1,
+      "minecraft:leather_horse_armor": 88,
+      "minecraft:leather_helmet": 1,
+      "minecraft:glass": 1
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 13852201,
+      "minecraft:walk_one_cm": 749182,
+      "minecraft:leave_game": 77,
+      "minecraft:damage_taken": 340,
+      "minecraft:damage_dealt": 10,
+      "minecraft:play_time": 15591828,
+      "minecraft:jump": 1446,
+      "minecraft:time_since_death": 13852178,
+      "minecraft:play_record": 1,
+      "minecraft:drop": 92,
+      "minecraft:sprint_one_cm": 141438,
+      "minecraft:total_world_time": 16650059,
+      "minecraft:fly_one_cm": 4657893,
+      "minecraft:crouch_one_cm": 27092,
+      "minecraft:sneak_time": 16871,
+      "minecraft:deaths": 3
     }
   },
   "DataVersion": 4671

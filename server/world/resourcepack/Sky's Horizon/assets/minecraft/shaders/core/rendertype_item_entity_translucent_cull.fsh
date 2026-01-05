@@ -16,6 +16,8 @@ in vec4 lightColor;
 in vec4 overlayColor;
 in vec2 texCoord;
 in vec3 Pos;
+in float Yaw;
+in float Pitch;
 
 flat in int isCustom;
 

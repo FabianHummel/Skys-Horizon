@@ -24,6 +24,8 @@ out vec4 lightColor;
 out vec4 overlayColor;
 out vec2 texCoord;
 out vec3 Pos;
+out float Yaw;
+out float Pitch;
 
 flat out int isCustom;
 

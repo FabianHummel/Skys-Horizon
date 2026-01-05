@@ -1,0 +1,1 @@
+function skys_horizon:update_timer
