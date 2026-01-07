@@ -2,18 +2,20 @@ int alpha = getTextureAlpha();
 Yaw = -atan(Normal.x, Normal.z);
 Pitch = -atan(Normal.y, length(Normal.xz));
 
+const float colorFix = 255.0 / 256.0;
+
 if (alpha > 254 - NUM_SPACEWARP_ROTATION_OFFSETS && alpha <= 254) {
-    vec3 rotationOffset = -getSpaceWarpRotationByIndex(alpha - 254 - NUM_SPACEWARP_ROTATION_OFFSETS);
+    vec3 rotationOffset = getSpaceWarpRotationByIndex(alpha - 255 + NUM_SPACEWARP_ROTATION_OFFSETS);
+    SpaceSkyboxRotation = (Color.rgb + rotationOffset) * PI / 2.0;
 
-    float pitch = (Color.r + rotationOffset.x) * PI / 2.0;
-    float yaw = (Color.g + rotationOffset.y) * PI / 2.0;
-    float roll = (Color.b + rotationOffset.z) * PI / 2.0;
-    vec3 rotation = vec3(pitch, yaw, roll);
-    ModelViewMat2 = ModelViewMat2 * mat4(rotate(rotation));
-
-    vec2 screenPos = corners[gl_VertexID % 4];
-    Pos = vec3(screenPos * vec2(ScreenSize.x / ScreenSize.y, 1.0), -1.0);
-    gl_Position = vec4(screenPos, 1.0, 1.0);
+    vec2 cornerPos = corners[gl_VertexID % 4];
+    vec2 screenPos = cornerPos;
+    screenPos.x *= ScreenSize.x / ScreenSize.y;
+    screenPos = vec2(
+        screenPos.x * cos(SpaceSkyboxRotation.z) - screenPos.y * sin(SpaceSkyboxRotation.z),
+        screenPos.x * sin(SpaceSkyboxRotation.z) + screenPos.y * cos(SpaceSkyboxRotation.z));
+    Pos = vec3(screenPos, -1.0);
+    gl_Position = vec4(cornerPos, 1.0, 1.0);
     return;
 }
 
@@ -25,7 +27,7 @@ if (isPlanetMarker(marker)) {
     int iPitch = encodedRotation.r << 4 | encodedRotation.g >> 4;
     float pitch = float(iPitch) * (2.0 * PI / 4095.0);
     int iRoll  = (encodedRotation.g & 0x0F) << 8 | encodedRotation.b;
-    float roll  = float(iRoll) * (2.0 * PI / 4095.0);
+    float roll  = -float(iRoll) * (2.0 * PI / 4095.0);
     posoffset = rotate(vec3(pitch, Yaw, roll)) * posoffset;
     Pos += posoffset;
 }

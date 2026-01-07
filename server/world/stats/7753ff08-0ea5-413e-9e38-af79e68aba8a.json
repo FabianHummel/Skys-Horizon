@@ -7,6 +7,24 @@
       "minecraft:glass": 1,
       "minecraft:gold_block": 1
     },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 14034321,
+      "minecraft:walk_one_cm": 751811,
+      "minecraft:leave_game": 79,
+      "minecraft:damage_taken": 340,
+      "minecraft:damage_dealt": 10,
+      "minecraft:play_time": 15773948,
+      "minecraft:jump": 1448,
+      "minecraft:time_since_death": 14034298,
+      "minecraft:play_record": 1,
+      "minecraft:drop": 92,
+      "minecraft:sprint_one_cm": 141438,
+      "minecraft:total_world_time": 16832179,
+      "minecraft:fly_one_cm": 4866468,
+      "minecraft:crouch_one_cm": 27092,
+      "minecraft:sneak_time": 17155,
+      "minecraft:deaths": 3
+    },
     "minecraft:used": {
       "minecraft:piston": 1,
       "minecraft:lever": 5,
@@ -33,24 +51,6 @@
       "minecraft:leather_horse_armor": 88,
       "minecraft:leather_helmet": 1,
       "minecraft:glass": 1
-    },
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 13852201,
-      "minecraft:walk_one_cm": 749182,
-      "minecraft:leave_game": 77,
-      "minecraft:damage_taken": 340,
-      "minecraft:damage_dealt": 10,
-      "minecraft:play_time": 15591828,
-      "minecraft:jump": 1446,
-      "minecraft:time_since_death": 13852178,
-      "minecraft:play_record": 1,
-      "minecraft:drop": 92,
-      "minecraft:sprint_one_cm": 141438,
-      "minecraft:total_world_time": 16650059,
-      "minecraft:fly_one_cm": 4657893,
-      "minecraft:crouch_one_cm": 27092,
-      "minecraft:sneak_time": 16871,
-      "minecraft:deaths": 3
     }
   },
   "DataVersion": 4671

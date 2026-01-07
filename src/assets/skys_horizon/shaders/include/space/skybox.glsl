@@ -14,7 +14,7 @@ vec3 getSpaceWarpRotationByIndex(int i) {
         i & 3);       // z = i % 4
 }
 
-vec3 applySpaceWarp(vec3 dir, vec3 color, float gameTimeOffset, float intensity) {
+vec3 applySpaceWarp(vec3 dir, vec3 color, float gameTimeOffset, float intensity, vec3 rotation) {
     const float speed = 1000.0;
     const float density = 500.0;
     const float compression = 0.3;
@@ -42,7 +42,7 @@ vec3 applySpaceWarp(vec3 dir, vec3 color, float gameTimeOffset, float intensity)
     float drop = fract(duv.y + time * fall + offset) * trail;
     drop = 1.0 / drop;
     drop = smoothstep(0.0, 1.0, drop * drop);
-    drop = sin(drop * PI) * fall * brightness;
+    drop = sin(drop / PI / 2.0) * fall * brightness;
 
     float shape = sin(fract(uv.x) * PI);
     drop *= shape * shape;

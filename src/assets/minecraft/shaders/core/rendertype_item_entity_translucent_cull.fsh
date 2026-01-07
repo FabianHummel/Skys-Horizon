@@ -18,6 +18,7 @@ in vec2 texCoord;
 in vec3 Pos;
 in float Yaw;
 in float Pitch;
+in vec3 SpaceSkyboxRotation;
 
 flat in int isCustom;
 

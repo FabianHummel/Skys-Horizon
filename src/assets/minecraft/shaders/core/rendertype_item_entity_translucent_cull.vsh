@@ -26,6 +26,7 @@ out vec2 texCoord;
 out vec3 Pos;
 out float Yaw;
 out float Pitch;
+out vec3 SpaceSkyboxRotation;
 
 flat out int isCustom;
 
