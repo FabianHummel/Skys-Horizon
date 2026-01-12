@@ -1,6 +1,6 @@
 #ifdef VSH
 
-flat out int isCustom;
+flat out int isObjmcModel;
 
 //3d rotation matrix from Barf Creations
 mat3 rotate(vec3 angles) {
@@ -72,8 +72,8 @@ ivec2 getvert(ivec2 topleft, int w, int h, int index, bool compressionEnabled) {
 
 #endif
 
-#ifden FSH
+#ifdef FSH
 
-flat in int isCustom;
+flat in int isObjmcModel;
 
 #endif

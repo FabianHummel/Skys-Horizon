@@ -1,4 +1,4 @@
-if (alpha > 254 - NUM_SPACEWARP_ROTATION_OFFSETS && alpha <= 254) {
+if (isSkyboxMarker()) {
     const float PI = 3.1415926535897932;
     
     vec3 rotationOffset = getSpaceWarpRotationByIndex(alpha - 255 + NUM_SPACEWARP_ROTATION_OFFSETS);

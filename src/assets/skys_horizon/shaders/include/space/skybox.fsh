@@ -1,4 +1,4 @@
-if (alpha > 254 - NUM_SPACEWARP_ROTATION_OFFSETS && alpha <= 254) {
+if (isSkyboxMarker()) {
     vec3 viewDir = normalize(Pos);
     vec3 spaceColor = vec3(1.0);
     vec3 final = applySpaceWarp(viewDir, spaceColor, Yaw, Pitch, SpaceSkyboxRotation);

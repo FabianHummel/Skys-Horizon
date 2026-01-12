@@ -1,5 +1,9 @@
 const int NUM_SPACEWARP_ROTATION_OFFSETS = 64;
 
+bool isSkyboxMarker() {
+    return textureColor.a > 254 - NUM_SPACEWARP_ROTATION_OFFSETS && textureColor.a <= 254;
+}
+
 #ifdef VSH
 
 out vec3 SpaceSkyboxRotation;
@@ -20,7 +24,7 @@ vec3 getSpaceWarpRotationByIndex(int i) {
 
 #endif
 
-#ifden FSH
+#ifdef FSH
 
 in vec3 SpaceSkyboxRotation;
 

@@ -1,4 +1,4 @@
-if (isPlanetMarker(marker)) {
+if (isPlanetMarker()) {
     const float PI = 3.1415926535897932;
 
     ModelViewMat2 = mat4(1.0);
