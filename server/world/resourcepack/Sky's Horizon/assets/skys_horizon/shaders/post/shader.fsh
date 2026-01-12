@@ -1,6 +1,7 @@
 #version 330
 
 uniform sampler2D MainSampler;
+uniform sampler2D MainDepthSampler;
 uniform sampler2D DataSampler;
 
 layout(std140) uniform SamplerInfo {

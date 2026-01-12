@@ -1,7 +1,5 @@
 #version 150
 
-#define FSH
-
 #moj_import <minecraft:light.glsl>
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
@@ -21,8 +19,12 @@ in float cylindricalVertexDistance;
 
 out vec4 fragColor;
 
-#moj_import <skys_horizon:main.glsl>
+#define FSH
+
 #moj_import <objmc:main.glsl>
+#moj_import <skys_horizon:main.glsl>
+
+#undef FSH
 
 void main() {
     vec4 color = texture(Sampler0, texCoord);
@@ -40,5 +42,3 @@ void main() {
 
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }
-
-#undef FSH

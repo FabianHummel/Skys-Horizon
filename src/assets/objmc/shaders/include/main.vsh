@@ -12,9 +12,9 @@ ivec2 uvoffset = ivec2(t[0].r*256 + t[0].g, t[0].b*256 + t[0].a);
 //find and read topleft pixel
 ivec2 topleft = uv - uvoffset;
 //if topleft marker is correct
-ivec4 marker = getMarker(topleft);
-if (isMarker(marker)) {
-    bool compression = marker.a == 79;
+objmcMarker = ivec4(texelFetch(Sampler0, topleft, 0)*255);
+if (isObjmcMarker()) {
+    bool compression = objmcMarker.a == 79;
     isObjmcModel = 1;
     // header
     //| 2^32   | 2^16x2   | 2^32      | 2^16x2       |

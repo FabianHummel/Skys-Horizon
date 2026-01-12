@@ -2,7 +2,7 @@
 
 out float Yaw;
 out float Pitch;
-out ivec4 textureColor;
+flat out ivec4 textureColor;
 
 #endif
 
@@ -10,7 +10,7 @@ out ivec4 textureColor;
 
 in float Yaw;
 in float Pitch;
-in ivec4 textureColor;
+flat in ivec4 textureColor;
 
 #endif
 

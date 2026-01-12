@@ -1,6 +1,7 @@
 #ifdef VSH
 
 flat out int isObjmcModel;
+flat out ivec4 objmcMarker;
 
 //3d rotation matrix from Barf Creations
 mat3 rotate(vec3 angles) {
@@ -17,12 +18,8 @@ mat3 rotate(vec3 angles) {
     );
 }
 
-ivec4 getMarker(ivec2 topleft) {
-    return ivec4(texelFetch(Sampler0, topleft, 0)*255);
-}
-
-bool isMarker(ivec4 marker) {
-    return marker.rgb == ivec3(12,34,56);
+bool isObjmcMarker() {
+    return objmcMarker.rgb == ivec3(12,34,56);
 }
 
 ivec4 getmeta(ivec2 topleft, int offset) {
@@ -75,5 +72,6 @@ ivec2 getvert(ivec2 topleft, int w, int h, int index, bool compressionEnabled) {
 #ifdef FSH
 
 flat in int isObjmcModel;
+flat in ivec4 objmcMarker;
 
 #endif

@@ -1,5 +1,23 @@
 {
   "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 14082937,
+      "minecraft:walk_one_cm": 756311,
+      "minecraft:leave_game": 81,
+      "minecraft:damage_taken": 340,
+      "minecraft:damage_dealt": 10,
+      "minecraft:play_time": 15822564,
+      "minecraft:jump": 1448,
+      "minecraft:time_since_death": 14082914,
+      "minecraft:play_record": 1,
+      "minecraft:drop": 92,
+      "minecraft:sprint_one_cm": 141438,
+      "minecraft:total_world_time": 16880795,
+      "minecraft:fly_one_cm": 4877933,
+      "minecraft:crouch_one_cm": 27092,
+      "minecraft:sneak_time": 17155,
+      "minecraft:deaths": 3
+    },
     "minecraft:picked_up": {
       "minecraft:leather_horse_armor": 86,
       "minecraft:oak_pressure_plate": 2,
@@ -7,23 +25,12 @@
       "minecraft:glass": 1,
       "minecraft:gold_block": 1
     },
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 14034321,
-      "minecraft:walk_one_cm": 751811,
-      "minecraft:leave_game": 79,
-      "minecraft:damage_taken": 340,
-      "minecraft:damage_dealt": 10,
-      "minecraft:play_time": 15773948,
-      "minecraft:jump": 1448,
-      "minecraft:time_since_death": 14034298,
-      "minecraft:play_record": 1,
-      "minecraft:drop": 92,
-      "minecraft:sprint_one_cm": 141438,
-      "minecraft:total_world_time": 16832179,
-      "minecraft:fly_one_cm": 4866468,
-      "minecraft:crouch_one_cm": 27092,
-      "minecraft:sneak_time": 17155,
-      "minecraft:deaths": 3
+    "minecraft:dropped": {
+      "minecraft:gold_block": 1,
+      "minecraft:oak_log": 1,
+      "minecraft:leather_horse_armor": 88,
+      "minecraft:leather_helmet": 1,
+      "minecraft:glass": 1
     },
     "minecraft:used": {
       "minecraft:piston": 1,
@@ -44,13 +51,6 @@
       "minecraft:command_block": 24,
       "minecraft:gold_block": 1,
       "minecraft:armor_stand": 14
-    },
-    "minecraft:dropped": {
-      "minecraft:gold_block": 1,
-      "minecraft:oak_log": 1,
-      "minecraft:leather_horse_armor": 88,
-      "minecraft:leather_helmet": 1,
-      "minecraft:glass": 1
     }
   },
   "DataVersion": 4671

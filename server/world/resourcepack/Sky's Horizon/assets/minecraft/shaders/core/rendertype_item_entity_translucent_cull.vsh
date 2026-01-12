@@ -16,22 +16,21 @@ in vec3 Normal;
 uniform sampler2D Sampler0;
 uniform sampler2D Sampler2;
 
+out vec3 Pos;
+out vec2 texCoord;
+out vec4 overlayColor;
+out vec4 lightColor;
+out vec4 vertexColor;
+out vec4 baseColor;
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
-out vec4 baseColor;
-out vec4 vertexColor;
-out vec4 lightColor;
-out vec4 overlayColor;
-out vec2 texCoord;
-out vec3 Pos;
-out float Yaw;
-out float Pitch;
-out vec3 SpaceSkyboxRotation;
 
-flat out int isCustom;
+#define VSH
 
-#moj_import <skys_horizon:utils.glsl>
-#moj_import <objmc:tools.glsl>
+#moj_import <objmc:main.glsl>
+#moj_import <skys_horizon:main.glsl>
+
+#undef VSH
 
 void main() {
     // Vanilla code

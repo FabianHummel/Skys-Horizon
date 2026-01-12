@@ -1,7 +1,5 @@
 #version 150
 
-#define VSH
-
 #moj_import <minecraft:light.glsl>
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
@@ -27,8 +25,12 @@ out vec4 baseColor;
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
 
-#moj_import <skys_horizon:main.glsl>
+#define VSH
+
 #moj_import <objmc:main.glsl>
+#moj_import <skys_horizon:main.glsl>
+
+#undef VSH
 
 void main() {
     // Vanilla code
@@ -52,5 +54,3 @@ void main() {
     sphericalVertexDistance = fog_spherical_distance(Pos);
     cylindricalVertexDistance = fog_cylindrical_distance(Pos);
 }
-
-#undef VSH

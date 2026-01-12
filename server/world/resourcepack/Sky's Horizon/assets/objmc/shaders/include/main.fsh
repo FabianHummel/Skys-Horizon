@@ -2,7 +2,7 @@
 //https://github.com/Godlander/objmc
 
 //default lighting
-if (isCustom == 0) {
+if (isObjmcModel == 0) {
     color *= vertexColor * ColorModulator;
 #ifndef EMISSIVE
     color *= lightColor;

@@ -1,7 +1,7 @@
 if (isSkyboxMarker()) {
     const float PI = 3.1415926535897932;
-    
-    vec3 rotationOffset = getSpaceWarpRotationByIndex(alpha - 255 + NUM_SPACEWARP_ROTATION_OFFSETS);
+
+    vec3 rotationOffset = getSpaceWarpRotationByIndex(textureColor.a - 255 + NUM_SPACEWARP_ROTATION_OFFSETS);
     SpaceSkyboxRotation = (Color.rgb + rotationOffset) * PI / 2.0;
 
     vec2 cornerPos = corners[gl_VertexID % 4];
