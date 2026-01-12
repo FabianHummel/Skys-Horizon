@@ -1,5 +1,7 @@
 #version 150
 
+#define VSH
+
 #moj_import <minecraft:light.glsl>
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
@@ -16,27 +18,24 @@ in vec3 Normal;
 uniform sampler2D Sampler0;
 uniform sampler2D Sampler2;
 
+out vec3 Pos;
+out vec2 texCoord;
+out vec4 textureColor;
+out vec4 overlayColor;
+out vec4 lightColor;
+out vec4 vertexColor;
+out vec4 baseColor;
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
-out vec4 baseColor;
-out vec4 vertexColor;
-out vec4 lightColor;
-out vec4 overlayColor;
-out vec2 texCoord;
-out vec3 Pos;
-out float Yaw;
-out float Pitch;
-out vec3 SpaceSkyboxRotation;
 
-flat out int isCustom;
-
-#moj_import <skys_horizon:utils.glsl>
-#moj_import <objmc:tools.glsl>
+#moj_import <skys_horizon:main.glsl>
+#moj_import <objmc:main.glsl>
 
 void main() {
     // Vanilla code
     Pos = Position;
     texCoord = UV0;
+    textureColor = texture(Sampler0, UV0);
     overlayColor = vec4(1);
     lightColor = texelFetch(Sampler2, UV2 / 16, 0);
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
@@ -55,3 +54,5 @@ void main() {
     sphericalVertexDistance = fog_spherical_distance(Pos);
     cylindricalVertexDistance = fog_cylindrical_distance(Pos);
 }
+
+#undef VSH

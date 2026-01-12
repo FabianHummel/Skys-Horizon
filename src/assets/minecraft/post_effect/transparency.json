@@ -109,12 +109,16 @@
             "output": "final"
         },
         {
-            "_comment": "Run the example shader from ShaderSelectorV3",
+            "_comment": "Sky's Horizon post processing",
             "fragment_shader": "skys_horizon:post/shader",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
                     "sampler_name": "Main",
+                    "target": "final"
+                },
+                {
+                    "sampler_name": "MainDepth",
                     "target": "final"
                 },
                 {

@@ -1,5 +1,9 @@
 const int NUM_SPACEWARP_ROTATION_OFFSETS = 64;
 
+#ifdef VSH
+
+out vec3 SpaceSkyboxRotation;
+
 const vec2[] corners = vec2[](
         vec2(-1.0, 1.0),
         vec2(-1.0, -1.0),
@@ -14,7 +18,15 @@ vec3 getSpaceWarpRotationByIndex(int i) {
         i & 3);       // z = i % 4
 }
 
+#endif
+
+#ifden FSH
+
+in vec3 SpaceSkyboxRotation;
+
 vec3 applySpaceWarp(vec3 dir, vec3 color, float gameTimeOffset, float intensity, vec3 rotation) {
+    const float PI = 3.1415926535897932;
+    
     const float speed = 1000.0;
     const float density = 500.0;
     const float compression = 0.3;
@@ -49,3 +61,5 @@ vec3 applySpaceWarp(vec3 dir, vec3 color, float gameTimeOffset, float intensity,
 
     return color * drop * mask;
 }
+
+#endif
