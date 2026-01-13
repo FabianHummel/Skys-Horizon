@@ -1,18 +1,13 @@
 #ifdef VSH
 
-out float Yaw;
-out float Pitch;
-flat out ivec4 textureColor;
+flat out ivec4 markerColor;
 
 #endif
 
 #ifdef FSH
 
-in float Yaw;
-in float Pitch;
-flat in ivec4 textureColor;
+flat in ivec4 markerColor;
 
 #endif
 
-#moj_import <skys_horizon:space/planet.glsl>
-#moj_import <skys_horizon:space/skybox.glsl>
+#moj_import <skys_horizon:space/space.glsl>

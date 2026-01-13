@@ -1,2 +1,5 @@
-function skys_horizon:space/skybox/encode_color
-execute as @e[x=0,type=minecraft:item_display,tag=skys_horizon.space.skybox] run function skys_horizon:space/skybox/update
+# Fixate skybox to player
+function skys_horizon:space/shared/fixate_to_player
+
+# Encode space rotation in dye color and model rotation
+function skys_horizon:space/shared/encode_rotation

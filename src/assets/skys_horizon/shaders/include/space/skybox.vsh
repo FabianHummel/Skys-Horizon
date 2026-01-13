@@ -1,16 +1,18 @@
 if (isSkyboxMarker()) {
-    const float PI = 3.1415926535897932;
+    vec3 rotation = decodeRotation();
 
-    vec3 rotationOffset = getSpaceWarpRotationByIndex(textureColor.a - 255 + NUM_SPACEWARP_ROTATION_OFFSETS);
-    SpaceSkyboxRotation = (Color.rgb + rotationOffset) * PI / 2.0;
-
-    vec2 cornerPos = corners[gl_VertexID % 4];
-    vec2 screenPos = cornerPos;
-    screenPos.x *= ScreenSize.x / ScreenSize.y;
-    screenPos = vec2(
-        screenPos.x * cos(SpaceSkyboxRotation.z) - screenPos.y * sin(SpaceSkyboxRotation.z),
-        screenPos.x * sin(SpaceSkyboxRotation.z) + screenPos.y * cos(SpaceSkyboxRotation.z));
-    Pos = vec3(screenPos, -1.0);
+    vec2 cornerPos = skyboxCorners[gl_VertexID % 4];
     gl_Position = vec4(cornerPos, 1.0, 1.0);
+
+    float aspect = ScreenSize.x / ScreenSize.y;
+    mat2 rot = mat2(cos(rotation.z), -sin(rotation.z),
+                    sin(rotation.z),  cos(rotation.z));
+    vec2 p = cornerPos;
+    p.x *= aspect;
+    p = rot * p;
+    p = p * 0.5 + 0.5;
+    p.x /= aspect;
+
+    Pos = vec3(p, 0.0);
     return;
 }

@@ -1,69 +1,60 @@
-const int NUM_SPACEWARP_ROTATION_OFFSETS = 64;
-
 bool isSkyboxMarker() {
-    return textureColor.a > 254 - NUM_SPACEWARP_ROTATION_OFFSETS && textureColor.a <= 254;
+    return markerColor.a == SKYBOX_ALPHA;
 }
 
 #ifdef VSH
 
-out vec3 SpaceSkyboxRotation;
-
-const vec2[] corners = vec2[](
+const vec2[] skyboxCorners = vec2[](
         vec2(-1.0, 1.0),
         vec2(-1.0, -1.0),
         vec2(1.0, -1.0),
         vec2(1.0, 1.0)
     );
 
-vec3 getSpaceWarpRotationByIndex(int i) {
-    return vec3(
-        (i >> 4) & 3, // x = i / 16
-        (i >> 2) & 3, // y = (i / 4) % 4
-        i & 3);       // z = i % 4
-}
-
 #endif
 
 #ifdef FSH
 
-in vec3 SpaceSkyboxRotation;
+// 3D Gradient noise from: https://www.shadertoy.com/view/Xsl3Dl
+vec3 hash( vec3 p ) // replace this by something better
+{
+	p = vec3( dot(p,vec3(127.1,311.7, 74.7)),
+			  dot(p,vec3(269.5,183.3,246.1)),
+			  dot(p,vec3(113.5,271.9,124.6)));
 
-vec3 applySpaceWarp(vec3 dir, vec3 color, float gameTimeOffset, float intensity, vec3 rotation) {
-    const float PI = 3.1415926535897932;
-    
-    const float speed = 1000.0;
-    const float density = 500.0;
-    const float compression = 0.3;
-    const float trailSize = 20.0;
-    const float brightness = 5.0;
-    const float centerSize = 1.0;
-    const float centerEdge = 0.6;
+	return -1.0 + 2.0*fract(sin(p)*43758.5453123);
+}
+float noise( in vec3 p )
+{
+    vec3 i = floor( p );
+    vec3 f = fract( p );
 
-    // Make radial coordinates
-    float dist = length(dir.xy);
-    float mask = smoothstep(centerSize - centerEdge, centerSize, dist);
-    float angle = atan(dir.y, dir.x);
-    vec2 uv;
-    uv.x = angle / PI * density;
-    uv.y = dir.z / -dist;
+	vec3 u = f*f*(3.0-2.0*f);
 
-    // Apply warp effect (raindrops)
-    float time = GameTime * speed * 0.4;
+    return mix( mix( mix( dot( hash( i + vec3(0.0,0.0,0.0) ), f - vec3(0.0,0.0,0.0) ),
+                          dot( hash( i + vec3(1.0,0.0,0.0) ), f - vec3(1.0,0.0,0.0) ), u.x),
+                     mix( dot( hash( i + vec3(0.0,1.0,0.0) ), f - vec3(0.0,1.0,0.0) ),
+                          dot( hash( i + vec3(1.0,1.0,0.0) ), f - vec3(1.0,1.0,0.0) ), u.x), u.y),
+                mix( mix( dot( hash( i + vec3(0.0,0.0,1.0) ), f - vec3(0.0,0.0,1.0) ),
+                          dot( hash( i + vec3(1.0,0.0,1.0) ), f - vec3(1.0,0.0,1.0) ), u.x),
+                     mix( dot( hash( i + vec3(0.0,1.0,1.0) ), f - vec3(0.0,1.0,1.0) ),
+                          dot( hash( i + vec3(1.0,1.0,1.0) ), f - vec3(1.0,1.0,1.0) ), u.x), u.y), u.z );
+}
 
-    vec2 duv = vec2(floor(uv.x), uv.y) * compression;
-    float offset = sin(duv.x);
-    float fall = cos(duv.x * 30.0);
-    float trail = mix(100.0, trailSize, fall);
+vec4 applySpaceSkybox()
+{
+    // Normalized pixel coordinates (from 0 to 1)
+    vec2 uv = Pos.xy;
 
-    float drop = fract(duv.y + time * fall + offset) * trail;
-    drop = 1.0 / drop;
-    drop = smoothstep(0.0, 1.0, drop * drop);
-    drop = sin(drop / PI / 2.0) * fall * brightness;
+    // Stars computation:
+    vec3 stars_direction = normalize(vec3(uv * 2.0f - 1.0f, 1.0f)); // could be view vector for example
+	float stars_threshold = 8.0f; // modifies the number of stars that are visible
+	float stars_exposure = 200.0f; // modifies the overall strength of the stars
+	float stars = pow(clamp(noise(stars_direction * 200.0f), 0.0f, 1.0f), stars_threshold) * stars_exposure;
+	stars *= mix(0.4, 1.4, noise(stars_direction * 100.0f + vec3(GameTime * 500.0))); // time based flickering
 
-    float shape = sin(fract(uv.x) * PI);
-    drop *= shape * shape;
-
-    return color * drop * mask;
+    // Output to screen
+    return vec4(vec3(stars), 1.0);
 }
 
 #endif

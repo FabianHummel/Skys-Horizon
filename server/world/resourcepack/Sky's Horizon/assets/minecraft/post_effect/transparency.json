@@ -119,7 +119,8 @@
                 },
                 {
                     "sampler_name": "MainDepth",
-                    "target": "final"
+                    "target": "minecraft:main",
+                    "use_depth_buffer": true
                 },
                 {
                     "sampler_name": "Data",

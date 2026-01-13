@@ -4,11 +4,6 @@ uniform sampler2D MainSampler;
 uniform sampler2D MainDepthSampler;
 uniform sampler2D DataSampler;
 
-layout(std140) uniform SamplerInfo {
-    vec2 OutSize;
-    vec2 InSize;
-};
-
 #moj_import <minecraft:globals.glsl>
 
 #moj_import <shader_selector:marker_settings.glsl>

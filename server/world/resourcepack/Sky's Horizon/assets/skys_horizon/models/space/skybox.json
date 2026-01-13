@@ -1,0 +1,23 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"texture_size": [1, 1],
+	"textures": {
+		"0": "skys_horizon:item/space/skybox_marker",
+		"particle": "skys_horizon:item/empty"
+	},
+	"elements": [
+		{
+			"from": [16, 16, 16],
+			"to": [0, 0, 0],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0", "tintindex": 0},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0", "tintindex": 0}
+			}
+		}
+	]
+}

@@ -7,8 +7,5 @@ scoreboard objectives remove skys_horizon.space.yaw
 scoreboard players reset * skys_horizon.space.roll
 scoreboard objectives remove skys_horizon.space.roll
 
-scoreboard players reset * skys_horizon.space.warp_timeoffset
-scoreboard objectives remove skys_horizon.space.warp_timeoffset
-
-scoreboard players reset * skys_horizon.space.warp_intensity
-scoreboard objectives remove skys_horizon.space.warp_intensity
+scoreboard players reset * skys_horizon.space.warp
+scoreboard objectives remove skys_horizon.space.warp
