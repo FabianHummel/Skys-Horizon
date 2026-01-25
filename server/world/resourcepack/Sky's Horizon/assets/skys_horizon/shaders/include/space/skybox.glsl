@@ -24,6 +24,7 @@ vec3 hash( vec3 p ) // replace this by something better
 
 	return -1.0 + 2.0*fract(sin(p)*43758.5453123);
 }
+
 float noise( in vec3 p )
 {
     vec3 i = floor( p );
@@ -43,8 +44,13 @@ float noise( in vec3 p )
 
 vec4 applySpaceSkybox()
 {
-    // Normalized pixel coordinates (from 0 to 1)
-    vec2 uv = Pos.xy;
+    const float PI = 3.1415926535897932;
+
+    vec3 viewDir = normalize(Pos);
+    float u = atan(viewDir.z, viewDir.x) / (2.0 * PI) + 0.5;
+    float v = asin(clamp(viewDir.y, -1.0, 1.0)) / PI + 0.5;
+    vec2 uv = vec2(u, v);
+    return vec4(Pos, 1.0);
 
     // Stars computation:
     vec3 stars_direction = normalize(vec3(uv * 2.0f - 1.0f, 1.0f)); // could be view vector for example

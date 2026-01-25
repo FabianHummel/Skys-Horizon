@@ -1,8 +1,3 @@
-#ifdef VSH
-
-flat out int isObjmcModel;
-flat out ivec4 objmcMarker;
-
 //3d rotation matrix from Barf Creations
 mat3 rotate(vec3 angles) {
     float sx = sin(angles.x);
@@ -17,6 +12,11 @@ mat3 rotate(vec3 angles) {
         cx*sy, -sx, cx*cy
     );
 }
+
+#ifdef VSH
+
+flat out int isObjmcModel;
+flat out ivec4 objmcMarker;
 
 bool isObjmcMarker() {
     return objmcMarker.rgb == ivec3(12,34,56);

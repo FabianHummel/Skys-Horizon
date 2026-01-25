@@ -1,6 +1,6 @@
 if (isWarpMarker()) {
-    ModelViewMat2 = mat4(1.0);
-    ModelViewMat2[3] = ModelViewMat[3];
+    ModelViewMatTmp = mat4(1.0);
+    ModelViewMatTmp[3] = ModelViewMat[3];
 
     // decode information into roll angle and effect opacity
     ivec3 encodedValues = ivec3(round(Color * 255.));

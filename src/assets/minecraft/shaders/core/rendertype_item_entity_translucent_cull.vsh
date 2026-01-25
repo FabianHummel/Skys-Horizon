@@ -45,11 +45,11 @@ void main() {
     #moj_import <objmc:main.vsh>
 
     // Sky's Horizon
-    mat4 ModelViewMat2 = ModelViewMat;
+    mat4 ModelViewMatTmp = ModelViewMat;
     #moj_import <skys_horizon:main.vsh>
 
     // Vanilla code
-    gl_Position = ProjMat * ModelViewMat2 * vec4(Pos, 1.0);
+    gl_Position = ProjMat * ModelViewMatTmp * vec4(Pos, 1.0);
 
     sphericalVertexDistance = fog_spherical_distance(Pos);
     cylindricalVertexDistance = fog_cylindrical_distance(Pos);
