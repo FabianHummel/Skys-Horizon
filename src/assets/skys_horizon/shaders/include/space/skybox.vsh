@@ -7,8 +7,14 @@ if (isSkyboxMarker()) {
 
     vec2 cornerPos = skyboxCorners[gl_VertexID % 4];
     gl_Position = vec4(cornerPos, 1.0, 1.0);
+
     vec3 rotation = decodeRotation();
-    mat3 skyboxMat = rotate(-rotation);
-    Pos = skyboxMat * vec3(cornerPos, 0.0);
+    mat3 skyboxMat = rotate(rotation);
+
+    float aspect = ScreenSize.x / ScreenSize.y;
+    // cornerPos.x *= aspect;
+    Pos = normalize(skyboxMat * vec3(cornerPos, -1.0));
+    // Pos.x /= aspect;
+
     return;
 }

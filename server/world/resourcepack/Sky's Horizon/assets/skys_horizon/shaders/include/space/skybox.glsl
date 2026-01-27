@@ -42,15 +42,22 @@ float noise( in vec3 p )
                           dot( hash( i + vec3(1.0,1.0,1.0) ), f - vec3(1.0,1.0,1.0) ), u.x), u.y), u.z );
 }
 
-vec4 applySpaceSkybox()
+// https://en.wikipedia.org/wiki/File:Equirectangular_projection_SW.jpg
+vec2 sphere2mapUV_Equirectangular(vec3 p)
 {
     const float PI = 3.1415926535897932;
 
-    vec3 viewDir = normalize(Pos);
-    float u = atan(viewDir.z, viewDir.x) / (2.0 * PI) + 0.5;
-    float v = asin(clamp(viewDir.y, -1.0, 1.0)) / PI + 0.5;
-    vec2 uv = vec2(u, v);
-    return vec4(Pos, 1.0);
+    return vec2(
+        atan(p.x, -p.z) / (2.0 * PI) + .5,
+        p.y * .5 + .5
+    );
+}
+
+vec4 applySpaceSkybox()
+{
+    vec3 p = normalize(Pos);
+    vec2 uv = sphere2mapUV_Equirectangular(p);
+    return vec4(uv, 0.0, 1.0);
 
     // Stars computation:
     vec3 stars_direction = normalize(vec3(uv * 2.0f - 1.0f, 1.0f)); // could be view vector for example
