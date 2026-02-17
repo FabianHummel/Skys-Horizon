@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_flat",
+  "textures": {
+    "rail": "skys_horizon:block/street_markings/solid_line"
+  }
+}

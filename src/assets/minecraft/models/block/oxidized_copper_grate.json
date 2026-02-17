@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "skys_horizon:block/stainless_steel_grate"
+  }
+}
