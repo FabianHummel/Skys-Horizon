@@ -1,0 +1,38 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"1": "skys_horizon:block/heavy_sheet_metal_outline",
+		"particle": "skys_horizon:block/heavy_sheet_metal",
+		"all": "skys_horizon:block/heavy_sheet_metal"
+	},
+	"elements": [
+		{
+			"from": [-1, -1, -1],
+			"to": [17, 17, 17],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-1, -1, -1]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"from": [-1.02, -1.02, -1.02],
+			"to": [17.02, 17.02, 17.02],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-1, -1, -1]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#all"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#all"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#all"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#all"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#all"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#all"}
+			}
+		}
+	]
+}

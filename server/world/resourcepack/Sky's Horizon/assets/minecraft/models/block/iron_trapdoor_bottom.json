@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_trapdoor_bottom",
+  "textures": {
+    "texture": "skys_horizon:block/stainless_steel_grate"
+  }
+}

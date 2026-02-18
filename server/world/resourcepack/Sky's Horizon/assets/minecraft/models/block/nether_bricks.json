@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "skys_horizon:block/floor_tiles/floor_tile_1"
+  }
+}
