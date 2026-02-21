@@ -3,6 +3,7 @@
         "skys_horizon:_tick",
         "skys_horizon:spaceship/_tick",
         "skys_horizon:debug/_tick",
-        "skys_horizon:space/_tick"
+        "skys_horizon:space/_tick",
+        "skys_horizon:interactable/_tick"
     ]
 }
