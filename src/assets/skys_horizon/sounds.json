@@ -7,12 +7,14 @@
             }
         ]
     },
-
-    "ambient.space.loop": {
-
-    },
-
-    "ambient.space.additions": {
-
+    "ambient.space.loop": {},
+    "ambient.space.additions": {},
+    "hangar.breaker": {
+        "sounds": [
+            {
+                "name": "skys_horizon:hangar/breaker",
+                "stream": true
+            }
+        ]
     }
 }
