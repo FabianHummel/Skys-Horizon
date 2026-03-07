@@ -1,0 +1,6 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "skys_horizon:scene/hangar/skybox"
+    }
+}

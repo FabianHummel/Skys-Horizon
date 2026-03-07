@@ -1,4 +1,4 @@
-const float LOG10 = 1./log(10.);
+const float LOG10 = 1. / log(10.);
 
 int[] digits = int[](31599, 11410, 10839, 25230, 23497, 31182, 31215, 29330, 31407, 31695);
 const int _A = 11245;
@@ -64,13 +64,12 @@ const int _SPACE = 0;
 const int __ = 0;
 const int _SEMICOLON = 1044;
 
-
 void drawChar(inout float state, vec2 uv, int bitmap) {
     ivec2 iuv = ivec2(floor(uv));
     if (iuv.x < 0 || iuv.y < 0 || iuv.x > 2 || iuv.y > 6) {
         return;
     }
-    int bit = bitmap >> (2-iuv.x + iuv.y * 3);
+    int bit = bitmap >> (2 - iuv.x + iuv.y * 3);
     if ((bit & 1) == 1) {
         state = 1.0;
     }
@@ -125,7 +124,7 @@ void drawFloat(inout float state, inout vec2 uv, float f) {
 }
 
 void drawVec2(inout float state, inout vec2 uv, vec2 v) {
-    int[] str1 = int[](_v,_e,_c,digits[2],_PAR_O);
+    int[] str1 = int[](_v, _e, _c, digits[2], _PAR_O);
     drawString(state, uv, str1);
     drawFloat(state, uv, v.x);
     drawChar(state, uv, _COMMA);
@@ -138,7 +137,7 @@ void drawVec2(inout float state, inout vec2 uv, vec2 v) {
 }
 
 void drawVec3(inout float state, inout vec2 uv, vec3 v) {
-    int[] str1 = int[](_v,_e,_c,digits[3],_PAR_O);
+    int[] str1 = int[](_v, _e, _c, digits[3], _PAR_O);
     drawString(state, uv, str1);
     drawFloat(state, uv, v.x);
     drawChar(state, uv, _COMMA);
@@ -156,7 +155,7 @@ void drawVec3(inout float state, inout vec2 uv, vec3 v) {
 }
 
 void drawIvec3(inout float state, inout vec2 uv, ivec3 v) {
-    int[] str1 = int[](_v,_e,_c,digits[3],_PAR_O);
+    int[] str1 = int[](_v, _e, _c, digits[3], _PAR_O);
     drawString(state, uv, str1);
     drawInt(state, uv, v.x);
     drawChar(state, uv, _COMMA);
@@ -175,25 +174,25 @@ void drawIvec3(inout float state, inout vec2 uv, ivec3 v) {
 
 void drawGlobals(inout float state, vec2 uv) {
     vec2 cursor = uv;
-    int[] str1 = int[](_C,_a,_m,_e,_r,_a,_B,_l,_o,_c,_k,_P,_o,_s,_SPACE,_EQUALS,_SPACE);
+    int[] str1 = int[](_C, _a, _m, _e, _r, _a, _B, _l, _o, _c, _k, _P, _o, _s, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str1);
     drawIvec3(state, cursor, CameraBlockPos);
 
     cursor = uv;
     cursor.y += 6.;
-    int[] str2 = int[](_C,_a,_m,_e,_r,_a,_O,_f,_f,_s,_e,_t,__,__,_SPACE,_EQUALS,_SPACE);
+    int[] str2 = int[](_C, _a, _m, _e, _r, _a, _O, _f, _f, _s, _e, _t, __, __, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str2);
     drawVec3(state, cursor, CameraOffset);
 
     cursor = uv;
     cursor.y += 12.;
-    int[] str3 = int[](_S,_c,_r,_e,_e,_n,_S,_i,_z,_e,__,__,__,__,_SPACE,_EQUALS,_SPACE);
+    int[] str3 = int[](_S, _c, _r, _e, _e, _n, _S, _i, _z, _e, __, __, __, __, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str3);
     drawVec2(state, cursor, ScreenSize);
 
     cursor = uv;
     cursor.y += 18.;
-    int[] str5 = int[](_G,_a,_m,_e,_T,_i,_m,_e,__,__,__,__,__,__,_SPACE,_EQUALS,_SPACE);
+    int[] str5 = int[](_G, _a, _m, _e, _T, _i, _m, _e, __, __, __, __, __, __, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str5);
     drawFloat(state, cursor, GameTime);
 }
