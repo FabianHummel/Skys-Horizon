@@ -2,7 +2,7 @@
 void main()
 #endif
 {
-    if (isSkyboxMarker()) {
+    if (isSpaceSkyboxMarker()) {
         // hide all other sides of the cube, as we only need 4 verts to display a screenquad
         if (gl_VertexID >= 4) {
             gl_Position = vec4(0.0);

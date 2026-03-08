@@ -18,6 +18,7 @@ uniform sampler2D Sampler2;
 
 out vec3 Pos;
 out vec2 texCoord;
+out vec2 atlasSize;
 out vec4 overlayColor;
 out vec4 lightColor;
 out vec4 vertexColor;
@@ -36,6 +37,7 @@ void main() {
     // Vanilla code
     Pos = Position;
     texCoord = UV0;
+    atlasSize = textureSize(Sampler0, 0);
     overlayColor = vec4(1);
     lightColor = texelFetch(Sampler2, UV2 / 16, 0);
     vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);

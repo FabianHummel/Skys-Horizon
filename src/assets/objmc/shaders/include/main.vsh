@@ -1,5 +1,3 @@
-ivec2 atlasSize = textureSize(Sampler0, 0);
-ivec2 uv = ivec2((UV0 * atlasSize));
 vec3 posoffset = vec3(0);
 ivec2 uvoffset;
 
@@ -8,8 +6,10 @@ void main()
 #endif
 {
     isObjmcModel = 0;
-    ivec4 uvoffsetRaw = ivec4(texelFetch(Sampler0, uv, 0) * 255);
-    uvoffset = ivec2(uvoffsetRaw.r * 256 + uvoffsetRaw.g, uvoffsetRaw.b * 256 + uvoffsetRaw.a);
+    ivec2 uv = ivec2((UV0 * atlasSize));
+    ivec4 t[8];
+    t[0] = ivec4(texelFetch(Sampler0, uv, 0) * 255);
+    uvoffset = ivec2(t[0].r * 256 + t[0].g, t[0].b * 256 + t[0].a);
     //find and read topleft pixel
     ivec2 topleft = uv - uvoffset;
     //if topleft marker is correct
@@ -20,7 +20,6 @@ void main()
         // header
         //| 2^32   | 2^16x2   | 2^32      | 2^16x2       |
         //| marker | tex size | nvertices | data heights |
-        ivec4 t[8];
         for (int i = 1; i < 8; i++) {
             t[i] = getmeta(topleft, i);
         }

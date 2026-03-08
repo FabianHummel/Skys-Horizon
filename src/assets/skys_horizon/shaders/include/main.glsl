@@ -1,9 +1,9 @@
 #moj_import <skys_horizon:utility.glsl>
 
-const int SKYBOX_ALPHA = 254;
+const int SPACE_SKYBOX_ALPHA = 254;
 const int PLANET_ALPHA = 253;
 const int WARP_ALPHA = 252;
-const int HANGAR_SKYBOX_ALPHA = 251;
+const int STATIONARY_SKYBOX_ALPHA = 251;
 
 #ifdef VSH
 
@@ -17,5 +17,4 @@ flat in ivec4 markerColor;
 
 #endif
 
-#moj_import <skys_horizon:scene/scene.glsl>
 #moj_import <skys_horizon:space/space.glsl>

@@ -10,6 +10,7 @@ uniform sampler2D Sampler0;
 
 in vec3 Pos;
 in vec2 texCoord;
+in vec2 atlasSize;
 in vec4 overlayColor;
 in vec4 lightColor;
 in vec4 vertexColor;
