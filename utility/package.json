@@ -1,0 +1,12 @@
+{
+    "name": "utility",
+    "version": "1.0.0",
+    "description": "Support files for Sky's Horizon",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "dependencies": {
+        "@types/node": "^25.4.0",
+        "fast-png": "^8.0.0"
+    }
+}
