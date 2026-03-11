@@ -1,0 +1,45 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "skys_horizon:font/logo.png",
+            "height": 10,
+            "ascent": 0,
+            "chars": [
+                "\u0001\uE002\uE003",
+                "\uEEEE\uEEEE\uEEEE",
+                "\uEEEE\uEEEE\uEEEE"
+            ]
+        },
+        {
+            "type": "bitmap",
+            "file": "skys_horizon:font/logo.png",
+            "height": 10,
+            "ascent": -10,
+            "chars": [
+                "\uEEEE\uEEEE\uEEEE",
+                "\uE004\uE005\uE006",
+                "\uEEEE\uEEEE\uEEEE"
+            ]
+        },
+        {
+            "type": "bitmap",
+            "file": "skys_horizon:font/logo.png",
+            "height": 10,
+            "ascent": -20,
+            "chars": [
+                "\uEEEE\uEEEE\uEEEE",
+                "\uEEEE\uEEEE\uEEEE",
+                "\uE007\uE008\uE009"
+            ]
+        },
+        {
+            "type": "space",
+            "advances": {
+                "\uE000": -1,
+                "\uE100": -21,
+                "\uE200": -25
+            }
+        }
+    ]
+}

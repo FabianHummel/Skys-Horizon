@@ -5,6 +5,9 @@
     "license": "ISC",
     "author": "",
     "type": "module",
+    "scripts": {
+        "generate-animated-logo": "cd .. && node utility/gray16_to_rgba8.js assets/logo-animated.png src/assets/skys_horizon/textures/font/logo.png"
+    },
     "dependencies": {
         "@types/node": "^25.4.0",
         "fast-png": "^8.0.0"

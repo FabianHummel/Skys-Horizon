@@ -29,7 +29,6 @@ flat out int isDebugMarker;
 out vec2 corner;
 
 void main() {
-    // Vanilla code
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
     // Debug Text
@@ -38,7 +37,6 @@ void main() {
     // ShaderSelector
     #moj_import <shader_selector:main.vsh>
 
-    // Vanilla code
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
     texCoord0 = UV0;

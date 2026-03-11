@@ -34,7 +34,6 @@ out float cylindricalVertexDistance;
 #undef VSH
 
 void main() {
-    // Vanilla code
     Pos = Position;
     texCoord = UV0;
     atlasSize = textureSize(Sampler0, 0);
@@ -50,7 +49,6 @@ void main() {
     mat4 ModelViewMatTmp = ModelViewMat;
     #moj_import <skys_horizon:main.vsh>
 
-    // Vanilla code
     gl_Position = ProjMat * ModelViewMatTmp * vec4(Pos, 1.0);
 
     sphericalVertexDistance = fog_spherical_distance(Pos);

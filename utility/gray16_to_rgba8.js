@@ -1,17 +1,11 @@
 import fs from "node:fs";
-import path from "node:path";
 import { decode, encode } from "fast-png";
 
-const inputPath = "assets/logo-animated.png";
-const outputPath = "src/assets/skys_horizon/textures/misc/logo.png";
-
-// correct working dir
-if (path.basename(path.resolve()) === "utility") {
-    process.chdir("../");
-}
+const inputPng = process.argv[2];
+const outputPng = process.argv[3];
 
 // read PNG
-const buffer = fs.readFileSync(inputPath);
+const buffer = fs.readFileSync(inputPng);
 const png = decode(buffer);
 
 const outData = new Uint8Array(png.width * png.height * 4);
@@ -34,4 +28,4 @@ const outPng = encode({
     data: outData,
 });
 
-fs.writeFileSync(outputPath, outPng);
+fs.writeFileSync(outputPng, outPng);

@@ -36,7 +36,6 @@ void main() {
     // Sky's Horizon
     #moj_import <skys_horizon:main.fsh>
 
-    // Vanilla code
     if (color.a < 0.1) {
         discard;
     }
