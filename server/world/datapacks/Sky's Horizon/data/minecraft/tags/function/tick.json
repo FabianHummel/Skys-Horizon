@@ -1,5 +1,6 @@
 {
     "values": [
+        "callback_scheduler:internal/tick",
         "skys_horizon:_tick",
         "skys_horizon:spaceship/_tick",
         "skys_horizon:debug/_tick",

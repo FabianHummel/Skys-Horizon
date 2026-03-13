@@ -14,17 +14,24 @@ in vec4 baseColor;
 
 out vec4 fragColor;
 
+#define SKYS_HORIZON_SCREEN_SHADER
+
+#define FSH
+
 // Sky's Horizon
-#moj_import <skys_horizon:logo/logo_animation.glsl>
+#moj_import <skys_horizon:main.glsl>
+
+#undef FSH
 
 void main() {
-    // Sky's Horizon
-    #moj_import <skys_horizon:logo/logo_animation.fsh>
-
     vec4 color = texture(Sampler0, texCoord0) * vertexColor * ColorModulator;
+
+    // Sky's Horizon
+    #moj_import <skys_horizon:main.fsh>
 
     if (color.a < 0.1) {
         discard;
     }
+
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }

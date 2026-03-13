@@ -1,5 +1,5 @@
 bool isWarpMarker() {
-    return markerColor.a == WARP_ALPHA;
+    return markerColor.a == SPACE_WARP_ALPHA;
 }
 
 #ifdef VSH

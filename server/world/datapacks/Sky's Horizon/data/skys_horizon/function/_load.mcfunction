@@ -8,6 +8,7 @@ scoreboard players set #256 skys_horizon.const 256
 scoreboard players set #360 skys_horizon.const 360
 scoreboard players set #4096 skys_horizon.const 4096
 scoreboard players set #9000 skys_horizon.const 9000
+scoreboard players set #24000 skys_horizon.const 24000
 scoreboard players set #36000 skys_horizon.const 36000
 scoreboard players set #65536 skys_horizon.const 65536
 scoreboard players set #1048576 skys_horizon.const 1048576
@@ -15,3 +16,9 @@ scoreboard players set #16777216 skys_horizon.const 16777216
 
 scoreboard objectives add skys_horizon.timer dummy
 scoreboard players set #10 skys_horizon.timer 0
+
+data merge storage skys_horizon {\
+    const:{\
+        int_to_hex:['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']\
+    }\
+}

@@ -6,17 +6,6 @@ bool isStationarySkyboxMarker() {
     return markerColor.a == STATIONARY_SKYBOX_ALPHA;
 }
 
-#ifdef VSH
-
-const vec2[] skyboxCorners = vec2[](
-        vec2(-1.0, 1.0),
-        vec2(-1.0, -1.0),
-        vec2(1.0, -1.0),
-        vec2(1.0, 1.0)
-    );
-
-#endif
-
 #ifdef FSH
 
 const vec2 SKYBOX_TEXTURE_SIZE = vec2(4096, 3072);

@@ -20,9 +20,14 @@ in float cylindricalVertexDistance;
 
 out vec4 fragColor;
 
+#define SKYS_HORIZON_SPACE_SHADER
+
 #define FSH
 
+// objmc
 #moj_import <objmc:main.glsl>
+
+// Sky's Horizon
 #moj_import <skys_horizon:main.glsl>
 
 #undef FSH

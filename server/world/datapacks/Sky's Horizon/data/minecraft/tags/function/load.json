@@ -1,6 +1,8 @@
 {
     "values": [
         "find_looking:internal/load",
+        "generate_uuid:zzz/load",
+        "callback_scheduler:internal/load",
         "skys_horizon:_load",
         "skys_horizon:spaceship/_load",
         "skys_horizon:debug/_load",

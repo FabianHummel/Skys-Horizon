@@ -9,7 +9,7 @@ void main()
             return;
         }
 
-        vec2 cornerPos = skyboxCorners[gl_VertexID % 4];
+        vec2 cornerPos = SCREEN_CORNERS[gl_VertexID % 4];
         gl_Position = vec4(cornerPos, 1.0, 1.0);
 
         vec3 rotation = decodeRotation();

@@ -26,9 +26,14 @@ out vec4 baseColor;
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
 
+#define SKYS_HORIZON_SPACE_SHADER
+
 #define VSH
 
+// objmc
 #moj_import <objmc:main.glsl>
+
+// Sky's Horizon
 #moj_import <skys_horizon:main.glsl>
 
 #undef VSH
