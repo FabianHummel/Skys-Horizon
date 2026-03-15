@@ -6,6 +6,10 @@ void main()
         const vec3 LOGO_COLOR = vec3(0.05, 0.05, 0.05);
 
         vec4 color = texture(Sampler0, texCoord0);
+        if (color.a < 0.1) {
+            discard;
+        }
+
         float timeScale = getTimeScale();
 
         // - Red channel has a configurable time scale (how long it takes to go from r=0 to r=255)

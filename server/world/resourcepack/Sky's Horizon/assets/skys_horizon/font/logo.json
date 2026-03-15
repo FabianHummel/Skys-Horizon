@@ -3,28 +3,41 @@
         {
             "type": "bitmap",
             "file": "skys_horizon:font/logo.png",
-            "height": 20,
-            "ascent": 20,
+            "height": 16,
+            "ascent": 16,
             "chars": [
                 "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007",
+                "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE",
                 "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE"
             ]
         },
         {
             "type": "bitmap",
             "file": "skys_horizon:font/logo.png",
-            "height": 20,
+            "height": 16,
             "ascent": 0,
             "chars": [
                 "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE",
-                "\uE008\uE009\uE00A\uE00B\uE00C\uE00D\uE00E\uE00F"
+                "\uE008\uE009\uE00A\uE00B\uE00C\uE00D\uE00E\uE00F",
+                "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE"
+            ]
+        },
+        {
+            "type": "bitmap",
+            "file": "skys_horizon:font/logo.png",
+            "height": 16,
+            "ascent": 0,
+            "chars": [
+                "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE",
+                "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE",
+                "\uE010\uE011\uE012\uE013\uE014\uE015\uE016\uE017"
             ]
         },
         {
             "type": "space",
             "advances": {
                 "\uE100": -1,
-                "\uE200": -160
+                "\uE200": -128
             }
         }
     ]
