@@ -1,5 +1,26 @@
 {
   "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 782164,
+      "minecraft:walk_one_cm": 1303416,
+      "minecraft:leave_game": 199,
+      "minecraft:damage_taken": 760,
+      "minecraft:mob_kills": 4,
+      "minecraft:damage_dealt": 515,
+      "minecraft:play_time": 22754388,
+      "minecraft:jump": 3132,
+      "minecraft:play_record": 1,
+      "minecraft:time_since_death": 782124,
+      "minecraft:drop": 113,
+      "minecraft:sprint_one_cm": 393395,
+      "minecraft:fall_one_cm": 5729,
+      "minecraft:total_world_time": 23812619,
+      "minecraft:fly_one_cm": 18517038,
+      "minecraft:crouch_one_cm": 62193,
+      "minecraft:sneak_time": 61915,
+      "minecraft:deaths": 4,
+      "minecraft:climb_one_cm": 1906
+    },
     "minecraft:dropped": {
       "minecraft:mace": 1,
       "minecraft:white_harness": 1,
@@ -120,6 +141,7 @@
       "minecraft:waxed_chiseled_copper": 1,
       "minecraft:andesite": 144,
       "minecraft:polished_deepslate": 11,
+      "minecraft:waxed_copper_block": 4,
       "minecraft:acacia_log": 3,
       "minecraft:verdant_froglight": 6,
       "minecraft:yellow_stained_glass": 99,
@@ -150,7 +172,7 @@
       "minecraft:oak_pressure_plate": 9,
       "minecraft:tuff_bricks": 19,
       "minecraft:gold_block": 6,
-      "minecraft:cracked_nether_bricks": 2468,
+      "minecraft:cracked_nether_bricks": 2470,
       "minecraft:mossy_stone_brick_slab": 1,
       "minecraft:horn_coral_block": 1,
       "minecraft:waxed_exposed_copper_grate": 47,
@@ -191,27 +213,6 @@
     "minecraft:killed": {
       "minecraft:llama": 2,
       "minecraft:zombie": 1
-    },
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 576976,
-      "minecraft:walk_one_cm": 1273925,
-      "minecraft:leave_game": 195,
-      "minecraft:damage_taken": 760,
-      "minecraft:mob_kills": 4,
-      "minecraft:damage_dealt": 515,
-      "minecraft:play_time": 22549200,
-      "minecraft:jump": 3070,
-      "minecraft:play_record": 1,
-      "minecraft:time_since_death": 576936,
-      "minecraft:drop": 113,
-      "minecraft:sprint_one_cm": 381822,
-      "minecraft:fall_one_cm": 5729,
-      "minecraft:total_world_time": 23607431,
-      "minecraft:fly_one_cm": 18351156,
-      "minecraft:crouch_one_cm": 60555,
-      "minecraft:sneak_time": 61286,
-      "minecraft:deaths": 4,
-      "minecraft:climb_one_cm": 1906
     },
     "minecraft:picked_up": {
       "minecraft:coal_ore": 1,

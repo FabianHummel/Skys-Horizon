@@ -35,7 +35,8 @@ void main() {
     baseColor = Color;
 
     // Sky's Horizon
+    vec3 PositionTmp = Position;
     #moj_import <skys_horizon:main.vsh>
 
-    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
+    gl_Position = ProjMat * ModelViewMat * vec4(PositionTmp, 1.0);
 }

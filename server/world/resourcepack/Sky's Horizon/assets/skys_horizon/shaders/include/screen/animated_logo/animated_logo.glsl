@@ -12,9 +12,9 @@ flat in int isAnimatedLogoMarker;
 
 #ifdef FSH
 
-float getTimeScale() {
-    ivec4 markerColor = ivec4(texelFetch(Sampler0, ivec2(1, 0), 0) * 255.0 + 0.5);
-    return markerColor.r / 255.0;
+float animatedLogoEasing(float x) {
+    const float PI = 3.1415926535897932;
+    return x < 1.0 ? x < 0.5 ? 4.0 * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 3.0) / 2.0 : 1.0;
 }
 
 #endif
