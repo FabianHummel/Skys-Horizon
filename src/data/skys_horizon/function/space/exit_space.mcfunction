@@ -1,2 +1,2 @@
-tag @s remove skys_horizon.player.in_space
+execute in minecraft:overworld run tp @s 0 0 0
 effect clear @s minecraft:invisibility

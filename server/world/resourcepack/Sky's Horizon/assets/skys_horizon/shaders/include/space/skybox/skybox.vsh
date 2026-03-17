@@ -26,7 +26,6 @@ void main()
         float aspect = ScreenSize.x / ScreenSize.y;
         cornerPos.x *= aspect;
         Pos = normalize(skyboxMat * vec3(cornerPos, -1.0));
-        Pos.x /= aspect;
 
         return;
     }

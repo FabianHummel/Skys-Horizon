@@ -1,1 +1,1 @@
-execute as @a[tag=skys_horizon.player.in_space] at @s run function skys_horizon:space/main
+execute as @a at @s if dimension skys_horizon:space run function skys_horizon:space/main
