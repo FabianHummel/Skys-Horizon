@@ -32,7 +32,7 @@ vec2 getScreenShake(vec2 uv, float intensity, float time)
 
 vec2 getDownscaledResolution(vec2 uv, float aspectRatio)
 {
-    const int TARGET_RESOLUTION = 720;
+    const int TARGET_RESOLUTION = 1080;
     vec2 targetResolution = vec2(TARGET_RESOLUTION, TARGET_RESOLUTION * aspectRatio);
     return floor(uv * targetResolution) / targetResolution;
 }
@@ -44,7 +44,7 @@ void main()
     float screenShakeIntensity = readChannel(SCREENSHAKE_CHANNEL);
     vec2 uv = getScreenShake(texCoord, screenShakeIntensity, time);
 
-    uv = getDownscaledResolution(uv, ScreenSize.y / ScreenSize.x);
+    //uv = getDownscaledResolution(uv, ScreenSize.y / ScreenSize.x);
 
     vec4 color = texture(MainSampler, uv);
 

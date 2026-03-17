@@ -2,7 +2,7 @@
 void main()
 #endif
 {
-    if (isSpaceSkyboxMarker() || isStationarySkyboxMarker()) {
+    if (isSkyboxMarker == 1) {
         vec3 p = -normalize(Pos);
         vec2 uv = sphere2mapUV_Equirectangular(p) / atlasSize * SKYBOX_TEXTURE_SIZE + texCoord;
         // exclude marker-row

@@ -1,3 +1,11 @@
-bool isPlanetMarker() {
-    return isObjmcModel == 1 && objmcMarker.a == SPACE_PLANET_ALPHA;
-}
+#ifdef VSH
+
+flat out int isPlanetMarker;
+
+#endif
+
+#ifdef FSH
+
+flat in int isPlanetMarker;
+
+#endif

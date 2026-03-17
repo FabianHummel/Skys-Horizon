@@ -1,10 +1,14 @@
-bool isSpaceSkyboxMarker() {
-    return markerColor.a == SPACE_SKYBOX_ALPHA;
-}
+#ifdef VSH
 
-bool isStationarySkyboxMarker() {
-    return markerColor.a == STATIONARY_SKYBOX_ALPHA;
-}
+flat out int isSkyboxMarker;
+
+#endif
+
+#ifdef FSH
+
+flat in int isSkyboxMarker;
+
+#endif
 
 #ifdef FSH
 

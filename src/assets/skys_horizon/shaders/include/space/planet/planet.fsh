@@ -2,7 +2,7 @@
 void main()
 #endif
 {
-    if (isPlanetMarker()) {
+    if (isPlanetMarker == 1) {
         fragColor = color;
         return;
     }

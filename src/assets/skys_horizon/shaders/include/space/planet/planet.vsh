@@ -2,7 +2,11 @@
 void main()
 #endif
 {
-    if (isPlanetMarker()) {
+    isPlanetMarker = 0;
+
+    if (isObjmcModel == 1 && objmcMarker.a == SPACE_PLANET_ALPHA) {
+        isPlanetMarker = 1;
+
         ModelViewMatTmp = mat4(1.0);
         ModelViewMatTmp[3] = ModelViewMat[3];
 
