@@ -10,7 +10,12 @@ void main()
         ModelViewMatTmp = mat4(1.0);
         ModelViewMatTmp[3] = ModelViewMat[3];
 
+        vec3 translation = vec3(0.0, 0.0, 0.0);
+
+        float scale = 1.0;
+
         vec3 rotation = decodeRotation();
-        Pos += rotate(rotation) * posoffset;
+
+        Pos = rotate(rotation) * posoffset * scale + translation;
     }
 }
