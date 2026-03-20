@@ -1,5 +1,6 @@
 vec3 posoffset = vec3(0);
 ivec2 uvoffset;
+ivec2 topleft;
 
 #if 0
 void main()
@@ -11,7 +12,7 @@ void main()
     t[0] = ivec4(texelFetch(Sampler0, uv, 0) * 255);
     uvoffset = ivec2(t[0].r * 256 + t[0].g, t[0].b * 256 + t[0].a);
     //find and read topleft pixel
-    ivec2 topleft = uv - uvoffset;
+    topleft = uv - uvoffset;
     //if topleft marker is correct
     objmcMarker = ivec4(texelFetch(Sampler0, topleft, 0) * 255);
     if (isObjmcMarker()) {

@@ -1,5 +1,4 @@
 const vec3 SUN_POSITION = vec3(0.0, 0.0, 0.0);
-const vec3 SORAX4B_POSITION = vec3(100.0, 0.0, 0.0);
 
 #ifdef VSH
 

@@ -4,10 +4,10 @@
         "property": "minecraft:custom_model_data",
         "cases": [
             {
-                "when": "earth",
+                "when": "sorax4b",
                 "model": {
                     "type": "minecraft:model",
-                    "model": "skys_horizon:space/planet/earth",
+                    "model": "skys_horizon:space/planet/sorax4b",
                     "tints": [
                         {
                             "type": "minecraft:dye",
