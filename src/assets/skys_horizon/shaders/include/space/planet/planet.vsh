@@ -2,25 +2,31 @@
 void main()
 #endif
 {
-    planetMarker = 0;
+    planetId = -1;
 
-    if (isObjmcModel == 1 && objmcMarker.a == SPACE_PLANET_ALPHA) {
+    if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a >= SPACE_PLANET_ALPHAS.y) {
+        // Disable rotation
         ModelViewMatTmp = mat4(1.0);
         ModelViewMatTmp[3] = ModelViewMat[3];
 
-        planetMarker = getmeta(topleft, 8).r;
-
+        // Absolute player position in world space
         vec3 playerPosition = CameraBlockPos - CameraOffset;
-        vec3 planetPosition = PLANET_POSITIONS[planetMarker - 1];
 
+        // Planet ID (0-10)
+        planetId = SPACE_PLANET_ALPHAS.x - objmcMarker.a;
+
+        // Absolute planet position in world space
+        vec3 planetPosition = PLANET_POSITIONS[planetId];
+
+        // Direction from player -> planet
         vec3 planetDirection = planetPosition - playerPosition;
 
+        // Planet transformations
         vec3 translation = planetDirection;
-
+        vec3 rotation = decodeRotation();
         float scale = 10.0;
 
-        vec3 rotation = decodeRotation();
-
-        Pos = rotate(rotation) * posoffset * scale + translation;
+        // Final vertex position
+        Pos = rotate(rotation) * posOffset * scale + translation;
     }
 }

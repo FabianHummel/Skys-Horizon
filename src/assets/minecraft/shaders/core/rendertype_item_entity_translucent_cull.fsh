@@ -35,9 +35,6 @@ out vec4 fragColor;
 void main() {
     vec4 color = texture(Sampler0, texCoord);
 
-    // objmc
-    #moj_import <objmc:main.fsh>
-
     // Sky's Horizon
     #moj_import <skys_horizon:main.fsh>
 

@@ -1,6 +1,0 @@
-{
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-        "*.glsl": "${capture}.fsh,${capture}.vsh"
-    }
-}

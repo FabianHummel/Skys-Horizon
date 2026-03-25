@@ -2,8 +2,8 @@
 void main()
 #endif
 {
-    if (planetMarker != 0) {
-        fragColor = color;
+    if (planetId != -1) {
+        fragColor = vec4(1.0, 0.0, 0.0, 1.0); // color;
         return;
     }
 }
