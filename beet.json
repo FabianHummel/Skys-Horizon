@@ -1,0 +1,19 @@
+{
+    "name": "Sky's Horizon",
+    "description": "Venture through foreign tales, research advanced technology, seek friendship with the unknown in the world of Sky's Horizon.",
+    "author": "Fabian Hummel",
+    "data_pack": {
+        "load": "src"
+    },
+    "resource_pack": {
+        "load": "src",
+        "name": "Sky's Horizon"
+    },
+    "pipeline": [
+        "beet.contrib.livereload",
+        "plugins.icon"
+    ],
+    "meta": {
+        "icon": "assets/icon.png"
+    }
+}

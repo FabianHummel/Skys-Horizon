@@ -1,1 +1,0 @@
-function skys_horizon:debug/shader/main

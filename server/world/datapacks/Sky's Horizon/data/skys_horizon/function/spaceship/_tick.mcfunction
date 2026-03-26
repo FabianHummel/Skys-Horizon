@@ -1,1 +1,0 @@
-execute as @a at @s run function skys_horizon:spaceship/main
