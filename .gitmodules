@@ -1,0 +1,3 @@
+[submodule "src/assets/objmc"]
+	path = src/assets/objmc
+	url = https://github.com/FabianHummel/objmc-rs
