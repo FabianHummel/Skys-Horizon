@@ -1,8 +1,3 @@
-server/*
-!server/world
-server/world/datapacks
-!server/server-icon.png
-!server/server.properties
 .idea
 .zed
 .DS_Store

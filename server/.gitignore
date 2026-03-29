@@ -1,0 +1,5 @@
+*
+!.gitignore
+!world
+!server-icon.png
+!server.properties
