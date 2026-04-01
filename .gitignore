@@ -4,3 +4,4 @@
 *.lock
 *~lock~
 __pycache__
+*.blend1
