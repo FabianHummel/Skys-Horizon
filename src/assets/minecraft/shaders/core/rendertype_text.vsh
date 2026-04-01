@@ -3,6 +3,7 @@
 #moj_import <minecraft:fog.glsl>
 #moj_import <minecraft:dynamictransforms.glsl>
 #moj_import <minecraft:projection.glsl>
+#moj_import <minecraft:sample_lightmap.glsl>
 
 in vec3 Position;
 in vec4 Color;
@@ -30,13 +31,13 @@ out vec4 baseColor;
 void main() {
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
-    vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
+    vertexColor = Color * sample_lightmap(Sampler2, UV2);
     texCoord0 = UV0;
     baseColor = Color;
 
     // Sky's Horizon
-    vec3 PositionTmp = Position;
+    vec3 Pos = Position;
     #moj_import <skys_horizon:main.vsh>
 
-    gl_Position = ProjMat * ModelViewMat * vec4(PositionTmp, 1.0);
+    gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
 }

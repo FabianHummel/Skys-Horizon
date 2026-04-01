@@ -1,9 +1,9 @@
 [project]
 name = "skys-horizon"
 version = "0.1.0"
-description = "Venture through foreign tales, research advanced technology, seek friendship with the unknown in the world of Sky's Horizon."
+description = "Build tool for Sky's Horizon."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "beet>=0.114.1",
+    "beet>=0.115.0",
 ]

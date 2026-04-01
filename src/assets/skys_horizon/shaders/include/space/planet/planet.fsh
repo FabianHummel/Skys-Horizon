@@ -3,7 +3,9 @@ void main()
 #endif
 {
     if (planetId != -1) {
-        fragColor = vec4(vertexNormal, 1.0);
+        vec3 normal = normalize(cross(dFdx(Pos), dFdy(Pos)));
+        color *= minecraft_mix_light(Light0_Direction, Light1_Direction, normal, overlayColor) * SUN_COLOR * ColorModulator;
+        fragColor = color;
         return;
     }
 }

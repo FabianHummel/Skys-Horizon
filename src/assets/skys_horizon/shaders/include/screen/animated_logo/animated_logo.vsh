@@ -7,6 +7,6 @@ void main()
     if (markerColor == ivec4(12, 34, 56, ANIMATED_LOGO_ALPHA)) {
         isAnimatedLogoMarker = 1;
 
-        PositionTmp.y -= 30.0;
+        Pos.y -= 30.0;
     }
 }

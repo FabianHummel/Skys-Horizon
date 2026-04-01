@@ -1,4 +1,5 @@
 const vec3 SUN_POSITION = vec3(0.0, 0.0, 0.0);
+const vec4 SUN_COLOR = vec4(1.0, 1.0, 1.0, 1.0);
 
 #ifdef VSH
 
