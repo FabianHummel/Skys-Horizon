@@ -4,7 +4,7 @@ void main()
 {
     planetId = -1;
 
-    if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a >= SPACE_PLANET_ALPHAS.y) {
+    if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a > SPACE_PLANET_ALPHAS.y) {
         // Disable rotation
         ModelViewMatTmp = mat4(1.0);
         ModelViewMatTmp[3] = ModelViewMat[3];
@@ -12,7 +12,7 @@ void main()
         // Absolute player position in world space
         vec3 playerPosition = CameraBlockPos - CameraOffset;
 
-        // Planet ID (0-10)
+        // Planet ID (0-9)
         planetId = SPACE_PLANET_ALPHAS.x - objmcMarker.a;
 
         // Absolute planet position in world space
@@ -30,3 +30,5 @@ void main()
         Pos = rotate(rotation) * posOffset * scale + translation;
     }
 }
+
+#moj_import <skys_horizon:space/planet/atmosphere/atmosphere.vsh>

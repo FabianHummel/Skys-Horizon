@@ -9,3 +9,5 @@ void main()
         return;
     }
 }
+
+#moj_import <skys_horizon:space/planet/atmosphere/atmosphere.fsh>

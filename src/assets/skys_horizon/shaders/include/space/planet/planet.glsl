@@ -16,3 +16,5 @@ const vec3[] PLANET_POSITIONS = vec3[](
 flat in int planetId;
 
 #endif
+
+#moj_import <skys_horizon:space/planet/atmosphere/atmosphere.glsl>
