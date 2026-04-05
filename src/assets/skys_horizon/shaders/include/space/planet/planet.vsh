@@ -33,7 +33,8 @@ void main()
         // Differentiate mesh between planet and atmosphere
         if (length(texCoord) < 0.001) {
             isPlanetAtmosphere = 1;
-            scale += 5.0; // TODO: ~1 when player is near, but converges to ~5 at high distances.
+            vertexColor = vec4(PLANET_ATMOSPHERE_COLORS[planetId], 1.0);
+            scale += 1; // TODO: ~1 when player is near, but converges to ~5 at high distances.
         }
 
         // Final vertex position
