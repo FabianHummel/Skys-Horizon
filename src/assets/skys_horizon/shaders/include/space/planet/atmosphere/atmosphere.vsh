@@ -21,24 +21,19 @@ void main()
         // Direction from player -> planet
         vec3 planetDirection = planetPosition - playerPosition;
 
+        // Rotation matrix to make the plane look at the player
         vec3 forward = normalize(-planetDirection);
-        vec3 right = normalize(cross(vec3(0.0, 1.0, 0.0), forward));
+        vec3 right = normalize(cross(WORLD_UP, forward));
         vec3 up = cross(forward, right);
-
-        mat3 lookAt = mat3(
-                right,
-                up,
-                forward
-            );
+        mat3 lookAt = mat3(right, up, forward);
 
         // Atmosphere transformations
         float scale = 15.0;
         vec3 rotation = decodeRotation();
         vec2 cornerPos = SCREEN_CORNERS[gl_VertexID % 4];
         texCoord = cornerPos / 2.0 + vec2(.5);
-        posOffset = planetDirection + lookAt * vec3(cornerPos, 0.0) * scale;
 
         // Final vertex position
-        Pos = rotate(rotation) * posOffset;
+        Pos = rotate(rotation) * (planetDirection + lookAt * vec3(cornerPos, 0.0) * scale);
     }
 }

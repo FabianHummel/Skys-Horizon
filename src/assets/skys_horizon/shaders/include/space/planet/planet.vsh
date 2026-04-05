@@ -27,7 +27,7 @@ void main()
         float scale = 10.0;
 
         // Final vertex position
-        Pos = rotate(rotation) * posOffset * scale + translation;
+        Pos = rotate(rotation) * (posOffset * scale + translation);
     }
 }
 

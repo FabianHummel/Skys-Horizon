@@ -12,3 +12,5 @@ mat3 rotate(vec3 angles) {
         cx * sy, -sx, cx * cy
     );
 }
+
+const vec3 WORLD_UP = vec3(0.0, 1.0, 0.0);
