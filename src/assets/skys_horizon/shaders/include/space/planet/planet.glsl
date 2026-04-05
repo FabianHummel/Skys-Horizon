@@ -1,6 +1,7 @@
 #ifdef VSH
 
 flat out int planetId;
+flat out int isPlanetAtmosphere;
 
 const vec3 SORAX4B_POSITION = vec3(0.0, 20.0, 0.0);
 
@@ -14,7 +15,6 @@ const vec3[] PLANET_POSITIONS = vec3[](
 #ifdef FSH
 
 flat in int planetId;
+flat in int isPlanetAtmosphere;
 
 #endif
-
-#moj_import <skys_horizon:space/planet/atmosphere/atmosphere.glsl>

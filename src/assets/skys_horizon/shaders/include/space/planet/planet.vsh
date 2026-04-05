@@ -3,6 +3,7 @@ void main()
 #endif
 {
     planetId = -1;
+    isPlanetAtmosphere = 0;
 
     if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a > SPACE_PLANET_ALPHAS.y) {
         // Disable rotation
@@ -21,14 +22,21 @@ void main()
         // Direction from player -> planet
         vec3 planetDirection = planetPosition - playerPosition;
 
+        // Distance from player -> planet
+        float distance = length(planetDirection);
+
         // Planet transformations
         vec3 translation = planetDirection;
         vec3 rotation = decodeRotation();
         float scale = 10.0;
 
+        // Differentiate mesh between planet and atmosphere
+        if (length(texCoord) < 0.001) {
+            isPlanetAtmosphere = 1;
+            scale += 0.0; // TODO: ~1 when player is near, but converges to ~5 at high distances.
+        }
+
         // Final vertex position
         Pos = rotate(rotation) * (posOffset * scale + translation);
     }
 }
-
-#moj_import <skys_horizon:space/planet/atmosphere/atmosphere.vsh>
