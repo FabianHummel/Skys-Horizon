@@ -1,5 +1,5 @@
 //3d rotation matrix from Barf Creations
-mat3 rotate(vec3 angles) {
+mat3 applyRotation(vec3 angles) {
     float sx = sin(angles.x);
     float cx = cos(angles.x);
     float sy = sin(-angles.y);

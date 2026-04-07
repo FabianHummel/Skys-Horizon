@@ -1,10 +1,10 @@
-const vec3 SUN_POSITION = vec3(0.0, 0.0, 0.0);
-const vec4 SUN_COLOR = vec4(1.0, 1.0, 1.0, 1.0);
-
 #ifdef VSH
 
 out float Yaw;
 out float Pitch;
+out vec3 SunDirection;
+
+const vec3 SUN_POSITION = vec3(0.0, 0.0, 0.0);
 
 vec3 decodeRotation() {
     const float PI = 3.1415926535897932;
@@ -23,6 +23,11 @@ vec3 decodeRotation() {
 
 in float Yaw;
 in float Pitch;
+in vec3 SunDirection;
+
+const vec4 SUN_COLOR = vec4(1.0, 1.0, 1.0, 1.0);
+const float SUN_INTENSITY = 2.0;
+const float SPACE_AMBIENT_LIGHT = 0.1;
 
 #endif
 

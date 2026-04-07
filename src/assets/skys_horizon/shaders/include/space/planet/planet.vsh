@@ -16,28 +16,24 @@ void main()
         // Planet ID (0-9)
         planetId = SPACE_PLANET_ALPHAS.x - objmcMarker.a;
 
-        // Absolute planet position in world space
         vec3 planetPosition = PLANET_POSITIONS[planetId];
-
-        // Direction from player -> planet
+        planetAtmosphereColor = PLANET_ATMOSPHERE_COLORS[planetId];
+        SunDirection = normalize(planetPosition - SUN_POSITION);
         vec3 planetDirection = planetPosition - playerPosition;
-
-        // Distance from player -> planet
-        float distance = length(planetDirection);
+        float planetDistance = length(planetDirection);
 
         // Planet transformations
         vec3 translation = planetDirection;
-        vec3 rotation = decodeRotation();
+        mat3 rotation = applyRotation(decodeRotation());
         float scale = 10.0;
 
-        // Differentiate mesh between planet and atmosphere
-        if (length(texCoord) < 0.001) {
+        if (isPlanetAtmosphereMesh()) {
             isPlanetAtmosphere = 1;
-            vertexColor = vec4(PLANET_ATMOSPHERE_COLORS[planetId], 1.0);
+            vertexNormal *= -1;
             scale += 1; // TODO: ~1 when player is near, but converges to ~5 at high distances.
         }
 
-        // Final vertex position
-        Pos = rotate(rotation) * (posOffset * scale + translation);
+        vertexNormal = rotation * vertexNormal;
+        Pos = rotation * (posOffset * scale + translation);
     }
 }

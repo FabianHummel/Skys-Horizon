@@ -2,18 +2,22 @@
 void main()
 #endif
 {
-    if (isPlanetAtmosphere == 1) {
-        vec3 viewDir = normalize(Pos);
-        float angle = dot(-vertexNormal, viewDir);
-        float brightness = calculatePlanetAtmosphereBrightness(angle);
-        float t = max(brightness - 1.0, 0.0);
-        fragColor = vec4(mix(vertexColor.rgb, vec3(1.0), t), brightness);
-        return;
-    }
-
     if (planetId != -1) {
-        color *= minecraft_mix_light(Light0_Direction, Light1_Direction, vertexNormal, overlayColor) * SUN_COLOR * ColorModulator;
-        fragColor = color;
+        vec3 viewDir = normalize(Pos);
+        float angle = dot(vertexNormal, viewDir);
+        float lightValue = max(0.0, dot(SunDirection, vertexNormal));
+
+        if (isPlanetAtmosphere == 1) {
+            float brightness = calculatePlanetAtmosphereBrightness(angle) * lightValue;
+            float t = max(brightness - 1.0, 0.0);
+            fragColor = vec4(mix(planetAtmosphereColor, vec3(1.0), t), brightness);
+            return;
+        }
+
+        vec4 sunLight = vec4(SUN_COLOR.rgb * lightValue * SUN_INTENSITY + SPACE_AMBIENT_LIGHT, SUN_COLOR.a);
+        float innerGlowBrightness = calculatePlanetInnerGlowBrightness(angle);
+        // TODO: Implement inner glow
+        fragColor = vec4(mix(color.rgb, planetAtmosphereColor, 0.0), color.a) * sunLight * ColorModulator;
         return;
     }
 }
