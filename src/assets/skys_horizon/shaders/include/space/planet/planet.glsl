@@ -7,7 +7,7 @@ out vec3 planetAtmosphereColor;
 const vec3 SUN_ATMOSPHERE_COLOR = vec3(252, 221, 126);
 
 const vec3 SORAX4B_POSITION = vec3(20.0, 20.0, 0.0);
-const vec3 SORAX4B_ATMOSPHERE_COLOR = vec3(255, 115, 0);
+const vec3 SORAX4B_ATMOSPHERE_COLOR = vec3(230, 115, 0);
 
 const vec3[] PLANET_POSITIONS = vec3[](
         SUN_POSITION,
@@ -34,7 +34,7 @@ flat in int isPlanetAtmosphere;
 in vec3 planetAtmosphereColor;
 
 float calculatePlanetAtmosphereBrightness(float angle) {
-    return pow(angle, 3) * 30.0;
+    return pow(angle, 5) * 180.0;
 }
 
 float calculatePlanetInnerGlowBrightness(float angle) {

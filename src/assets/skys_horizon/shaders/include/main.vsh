@@ -1,3 +1,6 @@
+bool disableRotation = false;
+mat4 ModelViewMatTmp = ModelViewMat;
+
 #if 0
 void main()
 #endif
@@ -24,3 +27,14 @@ void main()
 #moj_import <skys_horizon:screen/screen.vsh>
 
 #endif
+
+#if 0
+void main()
+#endif
+{
+    if (disableRotation == true) {
+        // Disable rotation
+        ModelViewMatTmp = mat4(1.0);
+        ModelViewMatTmp[3] = ModelViewMat[3];
+    }
+}

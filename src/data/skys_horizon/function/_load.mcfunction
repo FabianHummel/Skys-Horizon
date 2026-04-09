@@ -8,6 +8,7 @@ scoreboard players set #256 skys_horizon.const 256
 scoreboard players set #360 skys_horizon.const 360
 scoreboard players set #4096 skys_horizon.const 4096
 scoreboard players set #9000 skys_horizon.const 9000
+scoreboard players set #18000 skys_horizon.const 18000
 scoreboard players set #24000 skys_horizon.const 24000
 scoreboard players set #36000 skys_horizon.const 36000
 scoreboard players set #65536 skys_horizon.const 65536

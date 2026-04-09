@@ -52,15 +52,7 @@ void main() {
     #moj_import <objmc:main.vsh>
 
     // Sky's Horizon
-    bool disableRotation = false;
     #moj_import <skys_horizon:main.vsh>
-
-    mat4 ModelViewMatTmp = ModelViewMat;
-    if (disableRotation == true) {
-        // Disable rotation
-        ModelViewMatTmp = mat4(1.0);
-        ModelViewMatTmp[3] = ModelViewMat[3];
-    }
 
     gl_Position = ProjMat * ModelViewMatTmp * vec4(Pos, 1.0);
 

@@ -14,7 +14,8 @@
     },
     "pipeline": [
         "beet.contrib.livereload",
-        "plugins.icon"
+        "plugins.icon",
+        "src.assets.skys_horizon.items.spaceship"
     ],
     "meta": {
         "icon": "assets/icon.png"
