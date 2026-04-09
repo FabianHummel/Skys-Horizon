@@ -9,3 +9,4 @@ void main()
 #moj_import <skys_horizon:space/planet/planet.vsh>
 #moj_import <skys_horizon:space/warp/warp.vsh>
 #moj_import <skys_horizon:space/skybox/skybox.vsh>
+#moj_import <skys_horizon:space/spaceship/spaceship.vsh>

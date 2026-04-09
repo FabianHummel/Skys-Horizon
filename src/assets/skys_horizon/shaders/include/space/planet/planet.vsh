@@ -6,16 +6,12 @@ void main()
     isPlanetAtmosphere = 0;
 
     if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a > SPACE_PLANET_ALPHAS.y) {
-        // Disable rotation
-        ModelViewMatTmp = mat4(1.0);
-        ModelViewMatTmp[3] = ModelViewMat[3];
-
-        // Absolute player position in world space
-        vec3 playerPosition = CameraBlockPos - CameraOffset;
-
         // Planet ID (0-9)
         planetId = SPACE_PLANET_ALPHAS.x - objmcMarker.a;
 
+        disableRotation = true;
+
+        vec3 playerPosition = CameraBlockPos - CameraOffset;
         vec3 planetPosition = PLANET_POSITIONS[planetId];
         planetAtmosphereColor = PLANET_ATMOSPHERE_COLORS[planetId];
         SunDirection = normalize(planetPosition - SUN_POSITION);

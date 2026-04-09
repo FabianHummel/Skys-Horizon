@@ -34,3 +34,4 @@ const float SPACE_AMBIENT_LIGHT = 0.1;
 #moj_import <skys_horizon:space/planet/planet.glsl>
 #moj_import <skys_horizon:space/warp/warp.glsl>
 #moj_import <skys_horizon:space/skybox/skybox.glsl>
+#moj_import <skys_horizon:space/spaceship/spaceship.glsl>

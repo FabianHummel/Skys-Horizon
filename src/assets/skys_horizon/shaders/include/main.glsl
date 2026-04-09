@@ -4,6 +4,7 @@ const int SPACE_SKYBOX_ALPHA = 254;
 const int SPACE_WARP_ALPHA = 252;
 const int STATIONARY_SKYBOX_ALPHA = 251;
 const ivec2 SPACE_PLANET_ALPHAS = ivec2(250, 240);
+const int SPACESHIP_ALPHA = 239;
 
 const int SOLID_COLOR_ALPHA = 254;
 const int ANIMATED_LOGO_ALPHA = 253;

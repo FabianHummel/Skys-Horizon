@@ -45,15 +45,22 @@ void main() {
     atlasSize = textureSize(Sampler0, 0);
     overlayColor = vec4(1);
     lightColor = sample_lightmap(Sampler2, UV2);
-    vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
+    vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, overlayColor);
     baseColor = Color;
 
     // objmc
     #moj_import <objmc:main.vsh>
 
     // Sky's Horizon
-    mat4 ModelViewMatTmp = ModelViewMat;
+    bool disableRotation = false;
     #moj_import <skys_horizon:main.vsh>
+
+    mat4 ModelViewMatTmp = ModelViewMat;
+    if (disableRotation == true) {
+        // Disable rotation
+        ModelViewMatTmp = mat4(1.0);
+        ModelViewMatTmp[3] = ModelViewMat[3];
+    }
 
     gl_Position = ProjMat * ModelViewMatTmp * vec4(Pos, 1.0);
 

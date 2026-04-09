@@ -2,7 +2,7 @@
 void main()
 #endif
 {
-    if (isWarpMarker()) {
+    if (isWarpMarker == 1) {
         const float PI = 3.1415926535897932;
 
         const float speed = 500.0;

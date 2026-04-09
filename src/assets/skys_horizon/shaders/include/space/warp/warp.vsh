@@ -2,9 +2,12 @@
 void main()
 #endif
 {
-    if (isWarpMarker()) {
-        ModelViewMatTmp = mat4(1.0);
-        ModelViewMatTmp[3] = ModelViewMat[3];
+    isWarpMarker = 0;
+
+    if (markerColor.a == SPACE_WARP_ALPHA) {
+        isWarpMarker = 1;
+
+        disableRotation = true;
 
         // decode information into roll angle and effect opacity
         ivec3 encodedValues = ivec3(round(Color * 255.));
