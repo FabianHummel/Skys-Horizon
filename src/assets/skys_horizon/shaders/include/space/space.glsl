@@ -26,7 +26,8 @@ in float Pitch;
 in vec3 SunDirection;
 
 const vec4 SUN_COLOR = vec4(1.0, 1.0, 1.0, 1.0);
-const float SUN_INTENSITY = 2.0;
+const float SUN_PLANET_INTENSITY = 2.0;
+const float SUN_OBJECT_INTENSITY = 0.3;
 const float SPACE_AMBIENT_LIGHT = 0.1;
 
 #endif

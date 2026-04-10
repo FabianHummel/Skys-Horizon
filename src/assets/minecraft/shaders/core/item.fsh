@@ -44,6 +44,11 @@ void main() {
     }
     #endif
 
+    // Sky's Horizon
+    if (isSpaceObject == true) {
+        return;
+    }
+
     color *= vertexColor * lightColor * ColorModulator;
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }

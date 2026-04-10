@@ -7,7 +7,7 @@ void main()
     if (markerColor.a == SPACE_WARP_ALPHA) {
         isWarpMarker = 1;
 
-        disableRotation = true;
+        isSpaceObject = true;
 
         // decode information into roll angle and effect opacity
         ivec3 encodedValues = ivec3(round(Color * 255.));

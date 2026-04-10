@@ -1,7 +1,7 @@
 # Update steering based on player input
-execute if predicate skys_horizon:spaceship/surface/steering_left unless score @s skys_horizon.spaceship.steering matches ..-30 run scoreboard players remove @s skys_horizon.spaceship.steering 2
-execute if predicate skys_horizon:spaceship/surface/steering_right unless score @s skys_horizon.spaceship.steering matches 30.. run scoreboard players add @s skys_horizon.spaceship.steering 2
-execute unless predicate skys_horizon:spaceship/surface/steering_left unless predicate skys_horizon:spaceship/surface/steering_right run function skys_horizon:spaceship/surface/steering_center
+execute if predicate skys_horizon:spaceship/steering/steering_left unless score @s skys_horizon.spaceship.steering matches ..-30 run scoreboard players remove @s skys_horizon.spaceship.steering 2
+execute if predicate skys_horizon:spaceship/steering/steering_right unless score @s skys_horizon.spaceship.steering matches 30.. run scoreboard players add @s skys_horizon.spaceship.steering 2
+execute unless predicate skys_horizon:spaceship/steering/steering_left unless predicate skys_horizon:spaceship/steering/steering_right run function skys_horizon:spaceship/surface/steering_center
 
 # Rotate spaceship on the roll-axis based on steering value
 execute store result entity @e[tag=skys_horizon.spaceship.model,limit=1,sort=nearest] transformation.right_rotation[2] double 0.01 run scoreboard players get @s skys_horizon.spaceship.steering

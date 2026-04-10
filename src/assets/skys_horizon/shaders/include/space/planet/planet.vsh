@@ -8,8 +8,7 @@ void main()
     if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a > SPACE_PLANET_ALPHAS.y) {
         // Planet ID (0-9)
         planetId = SPACE_PLANET_ALPHAS.x - objmcMarker.a;
-
-        disableRotation = true;
+        isSpaceObject = true;
 
         vec3 playerPosition = CameraBlockPos - CameraOffset;
         vec3 planetPosition = PLANET_POSITIONS[planetId];
@@ -25,11 +24,10 @@ void main()
 
         if (isPlanetAtmosphereMesh()) {
             isPlanetAtmosphere = 1;
-            vertexNormal *= -1;
+            vertexNormal = rotation * -vertexNormal;
             scale += 1; // TODO: ~1 when player is near, but converges to ~5 at high distances.
         }
 
-        vertexNormal = rotation * vertexNormal;
         Pos = rotation * (posOffset * scale + translation);
     }
 }

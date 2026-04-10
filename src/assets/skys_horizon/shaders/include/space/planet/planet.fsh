@@ -14,7 +14,7 @@ void main()
             return;
         }
 
-        vec4 sunLight = vec4(SUN_COLOR.rgb * lightValue * SUN_INTENSITY + SPACE_AMBIENT_LIGHT, SUN_COLOR.a);
+        vec4 sunLight = vec4(SUN_COLOR.rgb * lightValue * SUN_PLANET_INTENSITY + SPACE_AMBIENT_LIGHT, SUN_COLOR.a);
         float innerGlowBrightness = calculatePlanetInnerGlowBrightness(angle);
         // TODO: Implement inner glow
         fragColor = vec4(mix(color.rgb, planetAtmosphereColor, 0.0), color.a) * sunLight * ColorModulator;
