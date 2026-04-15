@@ -4,11 +4,11 @@ void main()
 {
     isSkyboxMarker = 0;
 
-    if (markerColor.a == STATIONARY_SKYBOX_ALPHA) {
+    if (uvMarkerColor.a == STATIONARY_SKYBOX_ALPHA) {
         isSkyboxMarker = 1;
     }
 
-    if (markerColor.a == SPACE_SKYBOX_ALPHA) {
+    if (uvMarkerColor.a == SPACE_SKYBOX_ALPHA) {
         isSkyboxMarker = 1;
 
         // hide all other sides of the cube, as we only need 4 verts to display a screenquad
@@ -20,7 +20,7 @@ void main()
         vec2 cornerPos = SCREEN_CORNERS[gl_VertexID % 4];
         gl_Position = vec4(cornerPos, 1.0, 1.0);
 
-        vec3 rotation = decodeRotation();
+        vec3 rotation = decodeRotationPrecise();
         mat3 skyboxMat = applyRotation(-rotation);
 
         float aspect = ScreenSize.x / ScreenSize.y;

@@ -1,0 +1,29 @@
+# Update horizontal player rotation
+execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[0] 1000
+execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 25
+scoreboard players operation @s skys_horizon.space.yaw += #tmp1 skys_horizon.temp
+execute rotated as @s run function skys_horizon:space/apply_horizontal_rotation with storage skys_horizon temp
+
+# Update vertical player rotation
+execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[1] 1000
+execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 25
+scoreboard players operation @s skys_horizon.space.pitch -= #tmp1 skys_horizon.temp
+execute rotated as @s run function skys_horizon:space/apply_vertical_rotation with storage skys_horizon temp
+
+# Update roll velocity based on player input
+execute if predicate skys_horizon:spaceship/steering/steering_left run scoreboard players operation @s skys_horizon.spaceship.roll_velocity -= #roll_acceleration skys_horizon.spaceship.const
+execute if predicate skys_horizon:spaceship/steering/steering_right run scoreboard players operation @s skys_horizon.spaceship.roll_velocity += #roll_acceleration skys_horizon.spaceship.const
+
+# Decelerate roll velocity when no input
+execute unless predicate skys_horizon:spaceship/steering/steering_right if score @s skys_horizon.spaceship.roll_velocity matches 0.. run function skys_horizon:spaceship/space/decelerate_roll
+execute unless predicate skys_horizon:spaceship/steering/steering_left if score @s skys_horizon.spaceship.roll_velocity matches ..0 run function skys_horizon:spaceship/space/decelerate_roll
+
+# Clamp roll velocity
+scoreboard players operation @s skys_horizon.spaceship.roll_velocity < #max_roll_velocity skys_horizon.spaceship.const
+scoreboard players operation @s skys_horizon.spaceship.roll_velocity > #min_roll_velocity skys_horizon.spaceship.const
+
+# Update roll based on roll velocity
+scoreboard players operation @s skys_horizon.space.roll -= @s skys_horizon.spaceship.roll_velocity
+
+# Clamp rotation to wrap around 360°
+function skys_horizon:space/clamp_rotation

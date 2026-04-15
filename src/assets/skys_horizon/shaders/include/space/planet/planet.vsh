@@ -14,12 +14,12 @@ void main()
         vec3 planetPosition = PLANET_POSITIONS[planetId];
         planetAtmosphereColor = PLANET_ATMOSPHERE_COLORS[planetId];
         SunDirection = normalize(planetPosition - SUN_POSITION);
-        vec3 planetDirection = planetPosition - playerPosition;
+        vec3 planetDirection = planetPosition - PLAYER_POS_MAT * playerPosition;
         float planetDistance = length(planetDirection);
 
         // Planet transformations
         vec3 translation = planetDirection;
-        mat3 rotation = applyRotation(decodeRotation());
+        mat3 rotation = applyRotation(decodeRotationPrecise());
         float scale = 10.0;
 
         if (isPlanetAtmosphereMesh()) {

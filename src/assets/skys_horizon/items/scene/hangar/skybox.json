@@ -1,6 +1,12 @@
 {
     "model": {
         "type": "minecraft:model",
-        "model": "skys_horizon:scene/hangar/skybox"
+        "model": "skys_horizon:scene/hangar/skybox",
+        "tints": [
+            {
+                "type": "minecraft:dye",
+                "default": 0
+            }
+        ]
     }
 }

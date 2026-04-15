@@ -11,20 +11,12 @@ const int ANIMATED_LOGO_ALPHA = 253;
 
 #ifdef VSH
 
-flat out ivec4 markerColor;
-
 const vec2[] SCREEN_CORNERS = vec2[](
         vec2(-1.0, 1.0),
         vec2(-1.0, -1.0),
         vec2(1.0, -1.0),
         vec2(1.0, 1.0)
     );
-
-#endif
-
-#ifdef FSH
-
-flat in ivec4 markerColor;
 
 #endif
 

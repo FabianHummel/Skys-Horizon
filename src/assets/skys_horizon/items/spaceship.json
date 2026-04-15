@@ -1,0 +1,21 @@
+{
+    "model": {
+        "type": "minecraft:select",
+        "property": "minecraft:custom_model_data",
+        "cases": [
+            {
+                "when": "basic",
+                "model": {
+                    "type": "minecraft:model",
+                    "model": "skys_horizon:spaceship/basic",
+                    "tints": [
+                        {
+                            "type": "minecraft:dye",
+                            "default": 0
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

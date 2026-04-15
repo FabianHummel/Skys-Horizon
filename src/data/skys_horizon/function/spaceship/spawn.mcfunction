@@ -30,8 +30,7 @@ summon armor_stand ~ ~ ~ {\
                     "minecraft:item_model": "skys_horizon:spaceship",\
                     "minecraft:dyed_color": 0,\
                     "minecraft:custom_model_data": {\
-                        strings: ["basic"],\
-                        flags: [false]\
+                        strings: ["basic"]\
                     }\
                 }\
             },\

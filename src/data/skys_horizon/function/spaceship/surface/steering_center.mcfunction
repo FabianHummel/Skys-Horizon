@@ -1,2 +1,2 @@
-execute if score @s skys_horizon.spaceship.steering matches ..-1 run scoreboard players add @s skys_horizon.spaceship.steering 1
-execute if score @s skys_horizon.spaceship.steering matches 1.. run scoreboard players remove @s skys_horizon.spaceship.steering 1
+execute store result storage skys_horizon temp.in int 0.8 run scoreboard players get @s skys_horizon.spaceship.steering
+execute store result score @s skys_horizon.spaceship.steering run data get storage minecraft:skys_horizon temp.in
