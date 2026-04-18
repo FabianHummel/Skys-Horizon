@@ -10,7 +10,7 @@ function skys_horizon:space/shared/encode_yaw
 # Map 0.00-360.00 to 0-4096: ⌊pitch * 2¹² / 360°⌋
 scoreboard players operation #tmp1 skys_horizon.temp = @p skys_horizon.space.pitch
 scoreboard players operation #tmp1 skys_horizon.temp *= #4096 skys_horizon.const
-scoreboard players operation #tmp1 skys_horizon.temp /= #36000 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp /= #360000 skys_horizon.const
 
 # Red (8 bits): (value >> 4) << 16
 scoreboard players operation #tmp2 skys_horizon.temp = #tmp1 skys_horizon.temp
@@ -27,7 +27,7 @@ scoreboard players operation #out skys_horizon.temp += #tmp2 skys_horizon.temp
 # Map 0.00-360.00 to 0-4096: ⌊roll * 2¹² / 360°⌋
 scoreboard players operation #tmp1 skys_horizon.temp = @p skys_horizon.space.roll
 scoreboard players operation #tmp1 skys_horizon.temp *= #4096 skys_horizon.const
-scoreboard players operation #tmp1 skys_horizon.temp /= #36000 skys_horizon.const
+scoreboard players operation #tmp1 skys_horizon.temp /= #360000 skys_horizon.const
 
 # Green (high 4 bits): (value >> 8) << 8
 scoreboard players operation #tmp2 skys_horizon.temp = #tmp1 skys_horizon.temp

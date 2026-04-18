@@ -6,7 +6,7 @@ out vec3 SunDirection;
 
 const vec3 SUN_POSITION = vec3(0.0, 0.0, 0.0);
 
-const mat3 PLAYER_POS_MAT = mat3(
+const mat3 PLAYER_ROT_MAT = mat3(
         -1.0, 0.0, 0.0,
         0.0, 1.0, 0.0,
         0.0, 0.0, -1.0);

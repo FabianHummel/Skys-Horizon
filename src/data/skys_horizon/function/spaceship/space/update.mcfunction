@@ -1,12 +1,12 @@
 # Update horizontal player rotation
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[0] 1000
-execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 25
+execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 250
 scoreboard players operation @s skys_horizon.space.yaw += #tmp1 skys_horizon.temp
 execute rotated as @s run function skys_horizon:space/apply_horizontal_rotation with storage skys_horizon temp
 
 # Update vertical player rotation
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[1] 1000
-execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 25
+execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 250
 scoreboard players operation @s skys_horizon.space.pitch -= #tmp1 skys_horizon.temp
 execute rotated as @s run function skys_horizon:space/apply_vertical_rotation with storage skys_horizon temp
 

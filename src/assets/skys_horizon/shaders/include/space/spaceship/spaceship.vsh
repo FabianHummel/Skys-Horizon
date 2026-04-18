@@ -12,7 +12,7 @@ void main()
         vec3 playerPosition = CameraBlockPos - CameraOffset;
         mat3 rotation = applyRotation(decodeRotationRough());
         vertexNormal = rotation * -vertexNormal;
-        SunDirection = normalize(SUN_POSITION - PLAYER_POS_MAT * playerPosition);
-        Pos = SPACESHIP_MAT * PLAYER_POS_MAT * Pos;
+        SunDirection = normalize(PLAYER_ROT_MAT * playerPosition - SUN_POSITION);
+        Pos = SPACESHIP_MAT * Pos;
     }
 }
