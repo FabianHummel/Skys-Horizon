@@ -1,13 +1,11 @@
 # Update horizontal player rotation
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[0] 1000
-execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 250
-scoreboard players operation @s skys_horizon.space.yaw += #tmp1 skys_horizon.temp
+execute store result score @s skys_horizon.spaceship.yaw_velocity run data get storage skys_horizon temp.in -250
 execute rotated as @s run function skys_horizon:space/apply_horizontal_rotation with storage skys_horizon temp
 
 # Update vertical player rotation
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[1] 1000
-execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.in 250
-scoreboard players operation @s skys_horizon.space.pitch -= #tmp1 skys_horizon.temp
+execute store result score @s skys_horizon.spaceship.pitch_velocity run data get storage skys_horizon temp.in 250
 execute rotated as @s run function skys_horizon:space/apply_vertical_rotation with storage skys_horizon temp
 
 # Update roll velocity based on player input
@@ -21,9 +19,3 @@ execute unless predicate skys_horizon:spaceship/steering/steering_left if score 
 # Clamp roll velocity
 scoreboard players operation @s skys_horizon.spaceship.roll_velocity < #max_roll_velocity skys_horizon.spaceship.const
 scoreboard players operation @s skys_horizon.spaceship.roll_velocity > #min_roll_velocity skys_horizon.spaceship.const
-
-# Update roll based on roll velocity
-scoreboard players operation @s skys_horizon.space.roll -= @s skys_horizon.spaceship.roll_velocity
-
-# Clamp rotation to wrap around 360°
-function skys_horizon:space/clamp_rotation

@@ -1,5 +1,11 @@
 scoreboard objectives add skys_horizon.spaceship.steering dummy
+
+scoreboard objectives add skys_horizon.spaceship.yaw_velocity dummy
+
+scoreboard objectives add skys_horizon.spaceship.pitch_velocity dummy
+
 scoreboard objectives add skys_horizon.spaceship.roll_velocity dummy
+
 scoreboard objectives add skys_horizon.spaceship.velocity dummy
 
 scoreboard objectives add skys_horizon.spaceship.const dummy
