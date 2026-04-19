@@ -1,5 +1,3 @@
-#moj_import <skys_horizon:utility.glsl>
-
 const int SPACE_SKYBOX_ALPHA = 254;
 const int SPACE_WARP_ALPHA = 252;
 const int STATIONARY_SKYBOX_ALPHA = 251;
