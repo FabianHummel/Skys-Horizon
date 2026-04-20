@@ -88,6 +88,8 @@ scoreboard players operation #tmp1 skys_horizon.temp *= #2 skys_horizon.const
 scoreboard players operation #mat3-2.2 skys_horizon.temp -= #tmp1 skys_horizon.temp
 
 # Calculate directional vector for the updated rotation
+
+# BUG: integer overflow here!
 scoreboard players operation #mat3-0.0 skys_horizon.temp *= @s skys_horizon.spaceship.pitch_velocity
 scoreboard players operation #mat3-0.1 skys_horizon.temp *= @s skys_horizon.spaceship.pitch_velocity
 scoreboard players operation #mat3-0.2 skys_horizon.temp *= @s skys_horizon.spaceship.pitch_velocity
@@ -100,6 +102,7 @@ scoreboard players operation #mat3-2.0 skys_horizon.temp *= @s skys_horizon.spac
 scoreboard players operation #mat3-2.1 skys_horizon.temp *= @s skys_horizon.spaceship.roll_velocity
 scoreboard players operation #mat3-2.2 skys_horizon.temp *= @s skys_horizon.spaceship.roll_velocity
 
+# BUG: especially here!
 scoreboard players operation #omega.x skys_horizon.temp = #mat3-0.0 skys_horizon.temp
 scoreboard players operation #omega.x skys_horizon.temp += #mat3-1.0 skys_horizon.temp
 scoreboard players operation #omega.x skys_horizon.temp += #mat3-2.0 skys_horizon.temp
@@ -113,11 +116,11 @@ scoreboard players operation #omega.z skys_horizon.temp += #mat3-1.2 skys_horizo
 scoreboard players operation #omega.z skys_horizon.temp += #mat3-2.2 skys_horizon.temp
 
 # Find length of directional vector
-execute store result storage skys_horizon temp.x float 1 run scoreboard players get #omega.x skys_horizon.temp
-execute store result storage skys_horizon temp.y float 1 run scoreboard players get #omega.y skys_horizon.temp
-execute store result storage skys_horizon temp.z float 1 run scoreboard players get #omega.z skys_horizon.temp
+execute store result storage skys_horizon temp.x float 0.001 run scoreboard players get #omega.x skys_horizon.temp
+execute store result storage skys_horizon temp.y float 0.001 run scoreboard players get #omega.y skys_horizon.temp
+execute store result storage skys_horizon temp.z float 0.001 run scoreboard players get #omega.z skys_horizon.temp
 function skys_horizon:space/get_distance with storage skys_horizon temp
-execute store result storage skys_horizon temp.in double 0.5 store result score #omega.length skys_horizon.temp run data get entity @s 0-0-0-0-0 transformation.scale[0]
+execute store result storage skys_horizon temp.in int 0.005 store result score #omega.length skys_horizon.temp run data get entity 0-0-0-0-0 transformation.scale[0]
 
 # Normalize vector
 scoreboard players operation #omega.x skys_horizon.temp /= #omega.length skys_horizon.temp
@@ -128,9 +131,12 @@ scoreboard players operation #omega.z skys_horizon.temp /= #omega.length skys_ho
 function skys_horizon:utility/get_sin_cos with storage skys_horizon temp
 execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.out[0]
 scoreboard players operation #omega.x skys_horizon.temp *= #tmp1 skys_horizon.temp
+scoreboard players operation #omega.x skys_horizon.temp /= #1.000 skys_horizon.const
 scoreboard players operation #omega.y skys_horizon.temp *= #tmp1 skys_horizon.temp
+scoreboard players operation #omega.y skys_horizon.temp /= #1.000 skys_horizon.const
 scoreboard players operation #omega.z skys_horizon.temp *= #tmp1 skys_horizon.temp
-execute store result score #omega.w skys_horizon.temp run data get storage skys_horizon temp.out[1]
+scoreboard players operation #omega.z skys_horizon.temp /= #1.000 skys_horizon.const
+execute store result score #omega.w skys_horizon.temp run data get storage skys_horizon temp.out[1] 0.001
 
 # Mutliply the updated quaternion onto the current rotation (Hamilton product)
 # x = a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y

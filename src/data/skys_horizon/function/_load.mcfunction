@@ -7,6 +7,7 @@ scoreboard players set #16 skys_horizon.const 16
 scoreboard players set #128 skys_horizon.const 128
 scoreboard players set #256 skys_horizon.const 256
 scoreboard players set #360 skys_horizon.const 360
+scoreboard players set #1.000 skys_horizon.const 1000
 scoreboard players set #4096 skys_horizon.const 4096
 scoreboard players set #9000 skys_horizon.const 9000
 scoreboard players set #18000 skys_horizon.const 18000
@@ -22,5 +23,3 @@ scoreboard objectives add skys_horizon.timer dummy
 scoreboard players set #10 skys_horizon.timer 0
 
 data modify storage skys_horizon const.int_to_hex set value ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
-
-data modify storage skys_horizon const.angle_to_sin_cos set value []

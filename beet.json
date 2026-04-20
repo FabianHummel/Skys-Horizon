@@ -14,7 +14,8 @@
     },
     "pipeline": [
         "beet.contrib.livereload",
-        "plugins.icon"
+        "plugins.icon",
+        "src.data.skys_horizon.function.plugins.generate_sin_cos"
     ],
     "meta": {
         "icon": "assets/icon.png"
