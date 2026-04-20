@@ -2,6 +2,7 @@ scoreboard objectives add skys_horizon.temp dummy
 
 scoreboard objectives add skys_horizon.const dummy
 scoreboard players set #1 skys_horizon.const 1
+scoreboard players set #2 skys_horizon.const 2
 scoreboard players set #16 skys_horizon.const 16
 scoreboard players set #128 skys_horizon.const 128
 scoreboard players set #256 skys_horizon.const 256
@@ -14,13 +15,12 @@ scoreboard players set #36000 skys_horizon.const 36000
 scoreboard players set #65536 skys_horizon.const 65536
 scoreboard players set #360000 skys_horizon.const 360000
 scoreboard players set #1048576 skys_horizon.const 1048576
+scoreboard players set #1.000.000 skys_horizon.const 1000000
 scoreboard players set #16777216 skys_horizon.const 16777216
 
 scoreboard objectives add skys_horizon.timer dummy
 scoreboard players set #10 skys_horizon.timer 0
 
-data merge storage skys_horizon {\
-    const:{\
-        int_to_hex:['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']\
-    }\
-}
+data modify storage skys_horizon const.int_to_hex set value ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+
+data modify storage skys_horizon const.angle_to_sin_cos set value []
