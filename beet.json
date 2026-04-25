@@ -15,7 +15,7 @@
     "pipeline": [
         "beet.contrib.livereload",
         "plugins.icon",
-        "src.data.skys_horizon.function.plugins.generate_sin_cos"
+        "src.data.skys_horizon.function.space.generate_sin_cos"
     ],
     "meta": {
         "icon": "assets/icon.png"

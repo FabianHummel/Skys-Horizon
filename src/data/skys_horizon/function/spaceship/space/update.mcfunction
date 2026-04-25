@@ -1,4 +1,6 @@
 # Update horizontal player rotation
+rotate @s[y_rotation=67..180] 67 ~
+rotate @s[y_rotation=-180..-67] -67 ~
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[0] 1000
 execute store result score @s skys_horizon.spaceship.yaw_velocity run data get storage skys_horizon temp.in -100
 execute rotated as @s run function skys_horizon:space/apply_horizontal_rotation with storage skys_horizon temp
