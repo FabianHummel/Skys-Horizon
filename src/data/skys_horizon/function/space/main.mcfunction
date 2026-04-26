@@ -204,6 +204,19 @@ scoreboard players operation #quat.w skys_horizon.temp -= #tmp1 skys_horizon.tem
 scoreboard players operation #quat.w skys_horizon.temp /= #1.000.000 skys_horizon.const
 
 # Normalize final quaternion
+# # > Input scale: ×1.000.000
+scoreboard players operation #tmp1 skys_horizon.temp = #quat.x skys_horizon.temp
+scoreboard players operation #tmp1 skys_horizon.temp *= #quat.x skys_horizon.temp
+scoreboard players operation #tmp2 skys_horizon.temp = #quat.y skys_horizon.temp
+scoreboard players operation #tmp2 skys_horizon.temp *= #quat.y skys_horizon.temp
+scoreboard players operation #tmp1 skys_horizon.temp += #tmp2 skys_horizon.temp
+scoreboard players operation #tmp2 skys_horizon.temp = #quat.z skys_horizon.temp
+scoreboard players operation #tmp2 skys_horizon.temp *= #quat.z skys_horizon.temp
+scoreboard players operation #tmp1 skys_horizon.temp += #tmp2 skys_horizon.temp
+scoreboard players operation #tmp2 skys_horizon.temp = #quat.w skys_horizon.temp
+scoreboard players operation #tmp2 skys_horizon.temp *= #quat.w skys_horizon.temp
+scoreboard players operation #tmp1 skys_horizon.temp += #tmp2 skys_horizon.temp
+function skys_horizon:space/utility/sqrt
 
 # Apply as new rotation
 scoreboard players operation @s skys_horizon.space.x = #quat.x skys_horizon.temp
