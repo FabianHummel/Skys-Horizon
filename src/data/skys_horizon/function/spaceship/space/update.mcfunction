@@ -3,12 +3,12 @@ rotate @s[y_rotation=67..180] 67 ~
 rotate @s[y_rotation=-180..-67] -67 ~
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[0] 1000
 execute store result score @s skys_horizon.spaceship.yaw_velocity run data get storage skys_horizon temp.in -100
-execute rotated as @s run function skys_horizon:space/apply_horizontal_rotation with storage skys_horizon temp
+execute rotated as @s run function skys_horizon:spaceship/space/apply_horizontal_rotation with storage skys_horizon temp
 
 # Update vertical player rotation
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[1] 1000
 execute store result score @s skys_horizon.spaceship.pitch_velocity run data get storage skys_horizon temp.in 100
-execute rotated as @s run function skys_horizon:space/apply_vertical_rotation with storage skys_horizon temp
+execute rotated as @s run function skys_horizon:spaceship/space/apply_vertical_rotation with storage skys_horizon temp
 
 # Update roll velocity based on player input
 execute if predicate skys_horizon:spaceship/steering/steering_left run scoreboard players operation @s skys_horizon.spaceship.roll_velocity -= #roll_acceleration skys_horizon.spaceship.const

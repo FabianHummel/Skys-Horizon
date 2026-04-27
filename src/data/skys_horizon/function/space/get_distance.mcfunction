@@ -1,2 +1,0 @@
-# Credits: https://discord.com/channels/154777837382008833/15709006500806656/1139627709690028092 by Triton365
-$data modify entity 0-0-0-0-0 transformation set value [$(x)f,0f,0f,0f,$(y)f,0f,0f,0f,$(z)f,0f,0f,0f,0f,0f,0f,1f]
