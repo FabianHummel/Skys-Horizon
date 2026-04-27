@@ -1,3 +1,2 @@
 function skys_horizon:scene/hangar/spaceship/remove
-function skys_horizon:spaceship/spawn
-tp @e[tag=skys_horizon.spaceship.base] 80.0 1.20 31.0 180.0 0.0
+function skys_horizon:spaceship/spawn {x: 80.0, y: 1.20, z: 31.0, yaw: 180.0, pitch: 0.0}

@@ -1,5 +1,5 @@
 function skys_horizon:spaceship/remove
-summon armor_stand ~ ~ ~ {\
+$summon armor_stand $(x) $(y) $(z) {\
     Silent: true,\
     Invulnerable: true,\
     Small: true,\
@@ -13,6 +13,7 @@ summon armor_stand ~ ~ ~ {\
     ],\
     Passengers: [\
         {\
+            Rotation: [$(yaw)f, $(pitch)f],\
             id: "minecraft:item_display",\
             item_display: "head",\
             interpolation_duration: 10,\
@@ -38,5 +39,4 @@ summon armor_stand ~ ~ ~ {\
         }\
     ]\
 }
-ride @s mount @e[type=item_display,tag=skys_horizon.spaceship,limit=1,sort=nearest]
-scoreboard players set @s skys_horizon.spaceship.velocity 0
+#ride @s mount @e[type=item_display,tag=skys_horizon.spaceship,limit=1,sort=nearest]
