@@ -1,7 +1,5 @@
-execute unless dimension minecraft:overworld unless data storage skys_horizon {correct_reset_location:1b} run return run function {
-    data merge storage skys_horizon {correct_reset_location:1b}
-    execute in skys_horizon:space run function skys_horizon:_reset
-}
+execute unless dimension minecraft:overworld run tellraw @a {text:"Warning: A full reset must be run from the overworld!",color:"gold"}
+execute unless dimension minecraft:overworld unless data storage skys_horizon {correct_reset_location:1b} run return run function skys_horizon:utility/rerun_in {dimension: "minecraft:overworld", function: "skys_horizon:_reset"}
 data merge storage skys_horizon {correct_reset_location:0b}
 
 tellraw @a {text:"Resetting world..."}

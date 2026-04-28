@@ -5,23 +5,23 @@
       "minecraft:zombie": 1
     },
     "minecraft:custom": {
-      "minecraft:time_since_rest": 437159,
-      "minecraft:walk_one_cm": 1398505,
-      "minecraft:leave_game": 297,
-      "minecraft:damage_taken": 1360,
+      "minecraft:time_since_rest": 474985,
+      "minecraft:walk_one_cm": 1401674,
+      "minecraft:leave_game": 304,
+      "minecraft:damage_taken": 1480,
       "minecraft:mob_kills": 4,
       "minecraft:damage_dealt": 515,
-      "minecraft:play_time": 28593886,
-      "minecraft:jump": 3189,
+      "minecraft:play_time": 28631712,
+      "minecraft:jump": 3200,
       "minecraft:play_record": 1,
-      "minecraft:time_since_death": 437120,
-      "minecraft:drop": 123,
-      "minecraft:sprint_one_cm": 421064,
+      "minecraft:time_since_death": 474946,
+      "minecraft:drop": 126,
+      "minecraft:sprint_one_cm": 423745,
       "minecraft:fall_one_cm": 5729,
-      "minecraft:total_world_time": 30638372,
-      "minecraft:fly_one_cm": 31036681,
-      "minecraft:crouch_one_cm": 69596,
-      "minecraft:sneak_time": 78543,
+      "minecraft:total_world_time": 31367509,
+      "minecraft:fly_one_cm": 31323063,
+      "minecraft:crouch_one_cm": 69775,
+      "minecraft:sneak_time": 79168,
       "minecraft:deaths": 6,
       "minecraft:climb_one_cm": 1906
     },
@@ -181,7 +181,7 @@
       "minecraft:yellow_terracotta": 18,
       "minecraft:tripwire_hook": 3,
       "minecraft:stone_button": 10,
-      "minecraft:debug_stick": 548,
+      "minecraft:debug_stick": 559,
       "minecraft:deepslate_brick_stairs": 12,
       "minecraft:stone_stairs": 2,
       "minecraft:chiseled_nether_bricks": 2111,
@@ -196,6 +196,7 @@
       "minecraft:heavy_weighted_pressure_plate": 5
     },
     "minecraft:dropped": {
+      "minecraft:chiseled_quartz_block": 3,
       "minecraft:mace": 1,
       "minecraft:white_harness": 1,
       "minecraft:white_carpet": 2,
@@ -242,7 +243,8 @@
       "minecraft:polished_blackstone_button": 4,
       "minecraft:music_disc_lava_chicken": 1,
       "minecraft:mace": 1,
-      "minecraft:white_carpet": 2
+      "minecraft:white_carpet": 2,
+      "minecraft:chiseled_quartz_block": 3
     }
   },
   "DataVersion": 4786

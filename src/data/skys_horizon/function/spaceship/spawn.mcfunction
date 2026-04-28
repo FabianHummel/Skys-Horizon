@@ -1,5 +1,5 @@
 function skys_horizon:spaceship/remove
-$summon armor_stand $(x) $(y) $(z) {\
+$summon armor_stand ~ ~ ~ {\
     Silent: true,\
     Invulnerable: true,\
     Small: true,\
@@ -13,7 +13,6 @@ $summon armor_stand $(x) $(y) $(z) {\
     ],\
     Passengers: [\
         {\
-            Rotation: [$(yaw)f, $(pitch)f],\
             id: "minecraft:item_display",\
             item_display: "head",\
             interpolation_duration: 10,\
@@ -31,12 +30,12 @@ $summon armor_stand $(x) $(y) $(z) {\
                     "minecraft:item_model": "skys_horizon:spaceship",\
                     "minecraft:dyed_color": 0,\
                     "minecraft:custom_model_data": {\
-                        strings: ["basic"]\
+                        strings: [$(type)]\
                     }\
                 }\
             },\
-            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.model"]\
+            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.model"],\
+            Rotation: [-180.0, 0.0]\
         }\
     ]\
 }
-#ride @s mount @e[type=item_display,tag=skys_horizon.spaceship,limit=1,sort=nearest]

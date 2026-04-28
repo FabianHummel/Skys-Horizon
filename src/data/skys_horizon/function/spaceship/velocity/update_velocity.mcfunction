@@ -18,4 +18,4 @@ function skys_horizon:spaceship/velocity/apply_fov with storage skys_horizon spa
 
 # Apply velocity to spaceship movement
 execute store result storage skys_horizon spaceship.velocity_in_distance double 0.005 run scoreboard players get @s skys_horizon.spaceship.velocity
-execute as @e[tag=skys_horizon.spaceship.base,limit=1,sort=nearest] run function skys_horizon:spaceship/velocity/apply_velocity with storage skys_horizon spaceship
+execute as @n[tag=skys_horizon.spaceship.base] run function skys_horizon:spaceship/velocity/apply_velocity with storage skys_horizon spaceship
