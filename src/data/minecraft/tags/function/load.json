@@ -2,6 +2,7 @@
     "values": [
         "find_looking:internal/load",
         "generate_uuid:zzz/load",
+        "gm:zzz/load",
         "callback_scheduler:internal/load",
         "skys_horizon:_load"
     ]

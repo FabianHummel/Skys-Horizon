@@ -24,4 +24,7 @@ scoreboard players set #10 skys_horizon.timer 0
 
 data modify storage skys_horizon const.int_to_hex set value ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
 
+forceload add 29999999 91665
+setblock 29999999 0 91665 minecraft:barrel{Items:[{id:"minecraft:stone"}]}
+
 execute unless data storage skys_horizon {initialized:1b} run schedule function skys_horizon:_reset 1t
