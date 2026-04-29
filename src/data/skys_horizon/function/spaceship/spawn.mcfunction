@@ -34,8 +34,9 @@ $summon armor_stand ~ ~ ~ {\
                     }\
                 }\
             },\
-            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.model"],\
-            Rotation: [-180.0, 0.0]\
+            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.model"]\
         }\
     ]\
 }
+
+rotate @n[tag=skys_horizon.spaceship.model] ~ ~

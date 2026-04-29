@@ -1,25 +1,29 @@
 {
   "stats": {
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 543729,
-      "minecraft:walk_one_cm": 1402094,
-      "minecraft:leave_game": 309,
-      "minecraft:damage_taken": 1480,
-      "minecraft:mob_kills": 4,
-      "minecraft:damage_dealt": 515,
-      "minecraft:play_time": 28700456,
-      "minecraft:jump": 3201,
-      "minecraft:play_record": 1,
-      "minecraft:time_since_death": 543690,
-      "minecraft:drop": 126,
-      "minecraft:sprint_one_cm": 423745,
-      "minecraft:fall_one_cm": 5729,
-      "minecraft:total_world_time": 32616339,
-      "minecraft:fly_one_cm": 31325024,
-      "minecraft:crouch_one_cm": 69775,
-      "minecraft:sneak_time": 79168,
-      "minecraft:deaths": 6,
-      "minecraft:climb_one_cm": 1906
+    "minecraft:dropped": {
+      "minecraft:chiseled_quartz_block": 3,
+      "minecraft:mace": 1,
+      "minecraft:white_harness": 1,
+      "minecraft:white_carpet": 2,
+      "minecraft:yellow_concrete": 1,
+      "minecraft:red_concrete": 1,
+      "minecraft:wooden_sword": 1,
+      "minecraft:oak_log": 4,
+      "minecraft:open_eyeblossom": 2,
+      "minecraft:glass": 1,
+      "minecraft:coal_ore": 1,
+      "minecraft:gold_block": 1,
+      "minecraft:green_concrete": 1,
+      "minecraft:iron_trapdoor": 1,
+      "minecraft:ochre_froglight": 8,
+      "minecraft:yellow_terracotta": 2,
+      "minecraft:leather_horse_armor": 93,
+      "minecraft:oak_pressure_plate": 1,
+      "minecraft:leather_helmet": 1
+    },
+    "minecraft:killed": {
+      "minecraft:llama": 2,
+      "minecraft:zombie": 1
     },
     "minecraft:picked_up": {
       "minecraft:coal_ore": 1,
@@ -50,6 +54,28 @@
       "minecraft:mace": 1,
       "minecraft:white_carpet": 2,
       "minecraft:chiseled_quartz_block": 3
+    },
+    "minecraft:custom": {
+      "minecraft:pig_one_cm": 19461,
+      "minecraft:time_since_rest": 15548,
+      "minecraft:walk_one_cm": 1402668,
+      "minecraft:leave_game": 310,
+      "minecraft:damage_taken": 1600,
+      "minecraft:mob_kills": 4,
+      "minecraft:damage_dealt": 515,
+      "minecraft:play_time": 28724621,
+      "minecraft:jump": 3202,
+      "minecraft:play_record": 1,
+      "minecraft:time_since_death": 15520,
+      "minecraft:drop": 126,
+      "minecraft:sprint_one_cm": 424504,
+      "minecraft:fall_one_cm": 5729,
+      "minecraft:total_world_time": 32679665,
+      "minecraft:fly_one_cm": 31339240,
+      "minecraft:crouch_one_cm": 69775,
+      "minecraft:sneak_time": 79191,
+      "minecraft:deaths": 7,
+      "minecraft:climb_one_cm": 1906
     },
     "minecraft:used": {
       "minecraft:polished_tuff": 453,
@@ -220,31 +246,6 @@
       "minecraft:polished_andesite_slab": 3,
       "minecraft:acacia_pressure_plate": 2,
       "minecraft:heavy_weighted_pressure_plate": 5
-    },
-    "minecraft:killed": {
-      "minecraft:llama": 2,
-      "minecraft:zombie": 1
-    },
-    "minecraft:dropped": {
-      "minecraft:chiseled_quartz_block": 3,
-      "minecraft:mace": 1,
-      "minecraft:white_harness": 1,
-      "minecraft:white_carpet": 2,
-      "minecraft:yellow_concrete": 1,
-      "minecraft:red_concrete": 1,
-      "minecraft:wooden_sword": 1,
-      "minecraft:oak_log": 4,
-      "minecraft:open_eyeblossom": 2,
-      "minecraft:glass": 1,
-      "minecraft:coal_ore": 1,
-      "minecraft:gold_block": 1,
-      "minecraft:green_concrete": 1,
-      "minecraft:iron_trapdoor": 1,
-      "minecraft:ochre_froglight": 8,
-      "minecraft:yellow_terracotta": 2,
-      "minecraft:leather_horse_armor": 93,
-      "minecraft:oak_pressure_plate": 1,
-      "minecraft:leather_helmet": 1
     }
   },
   "DataVersion": 4786
