@@ -12,47 +12,47 @@ execute as @e[x=0,type=minecraft:item_display,tag=skys_horizon.space.warp] run f
 title @s actionbar {storage:"skys_horizon",nbt:"space.rotation"}
 
 # Calculate products of individual quaternion components.
-# x × x
+#> x × x
 data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[0]
 function gm:square with storage skys_horizon temp
 data modify storage skys_horizon temp.xx set from storage gm:io out
 
-# x × y
+#> x × y
 data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[1]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.xy set from storage gm:io out
 
-# x × z
+#> x × z
 data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.xz set from storage gm:io out
 
-# x × w
+#> x × w
 data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.xw set from storage gm:io out
 
-# y × y
+#> y × y
 data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[1]
 function gm:square with storage skys_horizon temp
 data modify storage skys_horizon temp.yy set from storage gm:io out
 
-# y × z
+#> y × z
 data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.yz set from storage gm:io out
 
-# y × w
+#> y × w
 data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.yw set from storage gm:io out
 
-# z × z
+#> z × z
 data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[2]
 function gm:square with storage skys_horizon temp
 data modify storage skys_horizon temp.zz set from storage gm:io out
 
-# z × w
+#> z × w
 data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.zw set from storage gm:io out
@@ -228,18 +228,18 @@ data modify storage skys_horizon temp.omega set from storage gm:io out
 data modify storage skys_horizon temp.x set from storage skys_horizon temp.y
 data modify storage skys_horizon temp.y set value 2f
 function gm:divide with storage skys_horizon temp
-data modify storage skys_horizon temp.tmp1 set from storage gm:io out
+data modify storage skys_horizon temp.alpha set from storage gm:io out
 
-#> Calculate sin(α) with Taylor Series (first degree): sin(α) ≅ α - α³ ÷ 3!
-data modify storage skys_horizon temp.x set from storage skys_horizon temp.tmp1
+#> Approximate sin(α) with Taylor series (third order): sin(α) ≅ α - α³ ÷ 3!
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.alpha
 function gm:square with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.tmp1
+data modify storage skys_horizon temp.y set from storage skys_horizon temp.alpha
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
 data modify storage skys_horizon temp.y set value 6f
 function gm:divide with storage skys_horizon temp
-data modify storage skys_horizon temp.x set from storage skys_horizon temp.tmp1
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.alpha
 data modify storage skys_horizon temp.y set from storage gm:io out
 function gm:subtract with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
@@ -256,3 +256,23 @@ data modify storage skys_horizon temp.omega[1] set from storage gm:io out
 data modify storage skys_horizon temp.y set from storage skys_horizon temp.omega[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.omega[2] set from storage gm:io out
+
+#> Approximate cos(α) with Taylor series (fourth order): cos(α) ≅ 1 - α² ÷ 2! + α⁴ ÷ 4!
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.alpha
+function gm:square with storage skys_horizon temp
+data modify storage skys_horizon temp.x set from storage gm:io out
+data modify storage skys_horizon temp.alpha_squared set from storage gm:io out
+data modify storage skys_horizon temp.y set value 2f
+function gm:divide with storage skys_horizon temp
+data modify storage skys_horizon temp.temp.x set from storage gm:io out
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.alpha_squared
+function gm:square with storage skys_horizon temp
+data modify storage skys_horizon temp.x set from storage gm:io out
+data modify storage skys_horizon temp.y set value 24f
+function gm:divide with storage skys_horizon temp
+data modify storage skys_horizon temp.temp.y set from storage gm:io out
+function gm:add with storage skys_horizon temp.temp
+data modify storage skys_horizon temp.y set from storage gm:io out
+data modify storage skys_horizon temp.x set value 1f
+function gm:subtract with storage skys_horizon temp
+data modify storage skys_horizon temp.omega append from storage gm:io out
