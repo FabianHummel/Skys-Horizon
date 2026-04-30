@@ -10,8 +10,8 @@ void main()
     //    isSpaceObject = true;
 
     //    vec3 playerPosition = CameraBlockPos - CameraOffset;
-    //    mat3 rotation = applyRotation(decodeRotationRough());
-    //    vertexNormal = rotation * -vertexNormal;
+    //    vec4 rotation = decodeRotationRough();
+    //    vertexNormal = rotate(-vertexNormal, rotation);
     //    SunDirection = normalize(PLAYER_ROT_MAT * playerPosition - SUN_POSITION);
     //    Pos = SPACESHIP_MAT * Pos;
     //}

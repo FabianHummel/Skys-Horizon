@@ -19,15 +19,15 @@ void main()
 
         // Planet transformations
         vec3 translation = planetDirection;
-        mat3 rotation = applyRotation(decodeRotationPrecise());
+        vec4 rotation = decodeRotationPrecise();
         float scale = 10.0;
 
         if (isPlanetAtmosphereMesh()) {
             isPlanetAtmosphere = 1;
-            vertexNormal = rotation * -vertexNormal;
+            vertexNormal = rotate(-vertexNormal, rotation);
             scale += 1; // TODO: ~1 when player is near, but converges to ~5 at high distances.
         }
 
-        Pos = rotation * (posOffset * scale + translation);
+        Pos = rotate(posOffset * scale + translation, rotation);
     }
 }

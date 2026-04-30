@@ -11,38 +11,59 @@ const mat3 PLAYER_ROT_MAT = mat3(
         0.0, 1.0, 0.0,
         0.0, 0.0, -1.0);
 
-#define TAU 6.28318530717958647692
+vec4 decodeQuaternion(float x, float y, float z, int index) {
+    float w = sqrt(1.0 - x * x - y * y - z * z);
 
-vec3 decodeRotationPrecise() {
-    ivec3 encodedRotation = ivec3(round(Color * 255.));
-    int iPitch = encodedRotation.r << 4 | encodedRotation.g >> 4;
-    float pitch = float(iPitch) * (TAU / 4095.0);
-    int iRoll = (encodedRotation.g & 0x0F) << 8 | encodedRotation.b;
-    float roll = -float(iRoll) * (TAU / 4095.0);
-    return vec3(pitch, Yaw, roll);
+    switch (index) {
+        case 0:
+        return vec4(w, x, y, z);
+        case 1:
+        return vec4(x, w, y, z);
+        case 2:
+        return vec4(x, y, w, z);
+        case 3:
+        return vec4(x, y, z, w);
+        default:
+        return vec4(0);
+    }
 }
 
-vec3 decodeRotationRough() {
-    ivec3 encodedRotation = ivec3(round(Color * 255.));
-    float yaw = float(encodedRotation.r) * (TAU / 255.0);
-    float pitch = float(encodedRotation.g) * (TAU / 255.0);
-    float roll = float(encodedRotation.b) * (TAU / 255.0);
-    return vec3(pitch, yaw, roll);
+vec4 decodeRotationPrecise() {
+    ivec3 encoded = ivec3(round(Color * 255.));
+    int index = encoded.r >> 6;
+
+    int xI = (encoded.r & 0x3F) << 5 + (encoded.g >> 3);
+    float x = float(xI - 1024) / 1448.0f;
+
+    int yI = (encoded.g & 0x7) << 8 + encoded.b;
+    float y = float(yI - 1024) / 1448.0f;
+
+    // 1 ÷ (π × √(2))
+    const float scale = 0.225079079;
+    float z = Yaw * scale;
+
+    return decodeQuaternion(x, y, z, index);
+}
+
+vec4 decodeRotationRough() {
+    ivec3 encoded = ivec3(round(Color * 255.));
+    int index = (encoded.r >> 5) & 0x3;
+
+    int xI = (encoded.r & 0x1F) << 2 + (encoded.g >> 6);
+    float x = float(xI - 90) / 90.0f;
+
+    int yI = (encoded.g & 0x3F) << 1 + (encoded.b >> 7);
+    float y = float(yI - 90) / 90.0f;
+
+    int zI = (encoded.b & 0x7F);
+    float z = float(zI - 90) / 90.0f;
+
+    return decodeQuaternion(x, y, z, index);
 }
 
 //3d rotation matrix from Barf Creations
-mat3 applyRotation(vec3 angles) {
-    float sx = sin(angles.x);
-    float cx = cos(angles.x);
-    float sy = sin(-angles.y);
-    float cy = cos(-angles.y);
-    float sz = sin(-angles.z);
-    float cz = cos(-angles.z);
-    return mat3(
-        -sx * sy * sz + cy * cz, -cx * sz, -sx * cy * sz - sy * cz,
-        sx * sy * cz + cy * sz, cx * cz, -sy * sz + sx * cy * cz,
-        cx * sy, -sx, cx * cy
-    );
+vec3 rotate(vec3 v, vec4 q) {
+    return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v);
 }
 
 #endif
