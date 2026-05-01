@@ -17,7 +17,7 @@ execute if score #flipped skys_horizon.temp matches 1 run function skys_horizon:
 #       |-----red-----| |----green----| |-----blue----|
 
 # Left shift by 22 bits and add to color
-scoreboard players operation $rotation_color_precise skys_horizon.space = #index skys_horizon.temp
+execute store result score $rotation_color_precise skys_horizon.space run data get storage skys_horizon temp.index
 scoreboard players operation $rotation_color_precise skys_horizon.space *= #2^22 skys_horizon.const
 
 # Map ±√(2)÷2 → 0-2048, shift by 11 bits and add to color
@@ -31,7 +31,7 @@ execute store result score #tmp1 skys_horizon.temp run data get storage skys_hor
 scoreboard players add #tmp1 skys_horizon.temp 1024
 scoreboard players operation $rotation_color_precise skys_horizon.space += #tmp1 skys_horizon.temp
 
-# Make sure we don't use 0, so we default to 1.
+# Make sure we default to one in case it's zero.
 scoreboard players operation $rotation_color_precise skys_horizon.space > #1 skys_horizon.const
 
 # Map ±√(2)÷2 → 0-360.000 and provide for later use in yaw rotation
@@ -46,25 +46,25 @@ scoreboard players add $rotation_yaw skys_horizon.space 180000
 #       |-----red-----| |----green----| |-----blue----|
 
 # Left shift by 22 bits and add to color
-scoreboard players operation $rotation_color_rough skys_horizon.space = #index skys_horizon.temp
+execute store result score $rotation_color_rough skys_horizon.space run data get storage skys_horizon temp.index
 scoreboard players operation $rotation_color_rough skys_horizon.space *= #2^21 skys_horizon.const
 
 # Map ±√(2)÷2 → 0-128, shift by 14 bits and add to color
 execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.rotation[0] 90
-scoreboard players add #tmp1 skys_horizon.temp 90
+scoreboard players add #tmp1 skys_horizon.temp 64
 scoreboard players operation #tmp1 skys_horizon.temp *= #2^14 skys_horizon.const
 scoreboard players operation $rotation_color_rough skys_horizon.space += #tmp1 skys_horizon.temp
 
 # Map ±√(2)÷2 → 0-128, shift by 7 bits and add to color
 execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.rotation[1] 90
-scoreboard players add #tmp1 skys_horizon.temp 90
+scoreboard players add #tmp1 skys_horizon.temp 64
 scoreboard players operation #tmp1 skys_horizon.temp *= #2^7 skys_horizon.const
 scoreboard players operation $rotation_color_rough skys_horizon.space += #tmp1 skys_horizon.temp
 
 # Map ±√(2)÷2 → 0-128 and add to color
 execute store result score #tmp1 skys_horizon.temp run data get storage skys_horizon temp.rotation[2] 90
-scoreboard players add #tmp1 skys_horizon.temp 90
+scoreboard players add #tmp1 skys_horizon.temp 64
 scoreboard players operation $rotation_color_rough skys_horizon.space += #tmp1 skys_horizon.temp
 
-# Make sure we don't use 0, so we default to 1.
+# Make sure we default to one in case it's zero.
 scoreboard players operation $rotation_color_rough skys_horizon.space > #1 skys_horizon.const

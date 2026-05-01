@@ -24,7 +24,7 @@ vec4 decodeQuaternion(float x, float y, float z, int index) {
         case 3:
         return vec4(x, y, z, w);
         default:
-        return vec4(0);
+        return vec4(0, 0, 0, 1);
     }
 }
 
@@ -50,18 +50,17 @@ vec4 decodeRotationRough() {
     int index = (encoded.r >> 5) & 0x3;
 
     int xI = (encoded.r & 0x1F) << 2 + (encoded.g >> 6);
-    float x = float(xI - 90) / 90.0f;
+    float x = float(xI - 64) / 90.0f;
 
     int yI = (encoded.g & 0x3F) << 1 + (encoded.b >> 7);
-    float y = float(yI - 90) / 90.0f;
+    float y = float(yI - 64) / 90.0f;
 
     int zI = (encoded.b & 0x7F);
-    float z = float(zI - 90) / 90.0f;
+    float z = float(zI - 64) / 90.0f;
 
     return decodeQuaternion(x, y, z, index);
 }
 
-//3d rotation matrix from Barf Creations
 vec3 rotate(vec3 v, vec4 q) {
     return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v);
 }
