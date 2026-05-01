@@ -34,9 +34,8 @@ scoreboard players operation $rotation_color_precise skys_horizon.space += #tmp1
 # Make sure we default to one in case it's zero.
 scoreboard players operation $rotation_color_precise skys_horizon.space > #1 skys_horizon.const
 
-# Map ±√(2)÷2 → 0-360.000 and provide for later use in yaw rotation
+# Map ±√(2)÷2 → ±180.000 and provide for later use in yaw rotation
 execute store result score $rotation_yaw skys_horizon.space run data get storage skys_horizon temp.rotation[2] 254558
-scoreboard players add $rotation_yaw skys_horizon.space 180000
 
 # Encode values in a 24 bit color (rough)
 #  one bit is wasted here :(

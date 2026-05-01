@@ -23,3 +23,5 @@ function skys_horizon:space/rotation/multiply_quaternion
 
 function skys_horizon:space/rotation/normalize_quaternion
 function skys_horizon:space/rotation/encode_rotation
+
+title @s actionbar {storage:"skys_horizon",nbt:"space.rotation"}

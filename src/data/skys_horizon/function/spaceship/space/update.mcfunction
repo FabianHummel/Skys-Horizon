@@ -7,7 +7,7 @@ execute rotated as @s run function skys_horizon:spaceship/space/apply_horizontal
 
 # Update vertical player rotation
 execute store result storage skys_horizon temp.in float -0.0003 run data get entity @s Rotation[1] 1000
-execute store result score @s skys_horizon.spaceship.pitch_velocity run data get storage skys_horizon temp.in 100
+execute store result score @s skys_horizon.spaceship.pitch_velocity run data get storage skys_horizon temp.in -100
 execute rotated as @s run function skys_horizon:spaceship/space/apply_vertical_rotation with storage skys_horizon temp
 
 # Update roll velocity based on player input

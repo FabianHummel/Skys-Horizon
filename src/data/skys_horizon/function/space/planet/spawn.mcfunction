@@ -1,6 +1,5 @@
 $summon item_display 0 0 0 {\
     item_display: "head",\
-    teleport_duration: 5,\
     view_range: 100f,\
     item: {\
         id: "minecraft:leather_horse_armor",\
