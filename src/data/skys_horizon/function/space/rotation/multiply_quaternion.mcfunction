@@ -1,96 +1,96 @@
 data modify storage skys_horizon temp.summands set value []
 
 #> x = a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[3]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[0]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[0]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[1]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[2]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[1]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
 function gm:negate with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
 #> y = a.w * b.y - a.x * b.z + a.y * b.w + a.z * b.x
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[3]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[1]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[0]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
 function gm:negate with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[1]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[2]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[0]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
 #> z = a.w * b.z + a.x * b.y - a.y * b.x + a.z * b.w
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[3]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[0]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[1]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[1]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[0]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
 function gm:negate with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[2]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
 #> w = a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[3]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[3]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[3]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[0]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[0]
-function gm:multiply with storage skys_horizon temp
-data modify storage skys_horizon temp.x set from storage gm:io out
-function gm:negate with storage skys_horizon temp
-data modify storage skys_horizon temp.summands append from storage gm:io out
-
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[1]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[0]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[0]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
 function gm:negate with storage skys_horizon temp
 data modify storage skys_horizon temp.summands append from storage gm:io out
 
-data modify storage skys_horizon temp.x set from storage skys_horizon space.rotation[2]
-data modify storage skys_horizon temp.y set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[1]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[1]
+function gm:multiply with storage skys_horizon temp
+data modify storage skys_horizon temp.x set from storage gm:io out
+function gm:negate with storage skys_horizon temp
+data modify storage skys_horizon temp.summands append from storage gm:io out
+
+data modify storage skys_horizon temp.x set from storage skys_horizon temp.rotation[2]
+data modify storage skys_horizon temp.y set from storage skys_horizon space.rotation[2]
 function gm:multiply with storage skys_horizon temp
 data modify storage skys_horizon temp.x set from storage gm:io out
 function gm:negate with storage skys_horizon temp
