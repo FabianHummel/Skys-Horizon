@@ -4,15 +4,15 @@ function_types = ["_reset", "_tick", "_load"]
 
 
 def beet_default(ctx: Context):
-    for [path, directories, _] in ctx.data.functions.walk():
-        if not path.startswith("skys_horizon"):
-            continue
-
+    for [path, directories, _] in reversed(list(ctx.data.functions.walk())):
         for function_type in function_types:
-            current_function = ctx.data.functions.setdefault(
-                f"{path}{function_type}", Function()
-            )
             for directory in directories:
-                current_function.lines.append(
-                    f"function {path}{directory}/{function_type}"
+                function_path = f"{path}{directory}/{function_type}"
+                if ctx.data.functions.get(function_path) is None:
+                    continue
+
+                function = ctx.data.functions.setdefault(
+                    f"{path}{function_type}", Function()
                 )
+
+                function.lines.append(f"function {function_path}")

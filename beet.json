@@ -6,11 +6,18 @@
         "instance"
     ],
     "data_pack": {
-        "load": "src"
+        "name": "Sky's Horizon",
+        "load": [
+            "src",
+            "include/*"
+        ]
     },
     "resource_pack": {
-        "load": "src",
-        "name": "Sky's Horizon"
+        "name": "Sky's Horizon",
+        "load": [
+            "src",
+            "include/*"
+        ]
     },
     "pipeline": [
         "beet.contrib.livereload",
