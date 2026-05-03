@@ -4,11 +4,11 @@ void main()
 {
     isSkyboxMarker = 0;
 
-    if (uvMarkerColor.a == STATIONARY_SKYBOX_ALPHA) {
+    if (markerColor.a == STATIONARY_SKYBOX_ALPHA) {
         isSkyboxMarker = 1;
     }
 
-    if (uvMarkerColor.a == SPACE_SKYBOX_ALPHA) {
+    if (markerColor.a == SPACE_SKYBOX_ALPHA) {
         isSkyboxMarker = 1;
 
         // hide all other sides of the cube, as we only need 4 verts to display a screenquad
