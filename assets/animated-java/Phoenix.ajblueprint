@@ -17,8 +17,7 @@
 		"resource_pack": "../../include/skys-horizon_entity_phoenix_resourcepack",
 		"data_pack": "../../include/skys-horizon_entity_phoenix_datapack",
 		"custom_rig_entity_tags": "skys_horizon.entity.phoenix",
-		"auto_update_rig_orientation": false,
-		"use_storage_for_animation": true
+		"auto_update_rig_orientation": false
 	},
 	"elements": [
 		{
