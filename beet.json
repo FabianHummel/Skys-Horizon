@@ -26,6 +26,6 @@
         "plugins.icon"
     ],
     "meta": {
-        "icon": "assets/icon.png"
+        "icon": "assets/logo/icon.png"
     }
 }
