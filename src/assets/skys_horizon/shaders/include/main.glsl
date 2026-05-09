@@ -3,6 +3,7 @@ const int SPACE_WARP_ALPHA = 252;
 const int STATIONARY_SKYBOX_ALPHA = 251;
 const ivec2 SPACE_PLANET_ALPHAS = ivec2(250, 240);
 const int SPACESHIP_ALPHA = 239;
+const int PHOENIX_ALPHA = 238;
 
 const int SOLID_COLOR_ALPHA = 254;
 const int ANIMATED_LOGO_ALPHA = 253;
@@ -19,13 +20,13 @@ const vec2[] SCREEN_CORNERS = vec2[](
 #endif
 
 #ifdef SKYS_HORIZON_SPACE_SHADER
-
 #moj_import <skys_horizon:space/space.glsl>
-
 #endif
 
 #ifdef SKYS_HORIZON_SCREEN_SHADER
-
 #moj_import <skys_horizon:screen/screen.glsl>
+#endif
 
+#ifdef SKYS_HORIZON_ENTITY_SHADER
+#moj_import <skys_horizon:entity/entity.glsl>
 #endif

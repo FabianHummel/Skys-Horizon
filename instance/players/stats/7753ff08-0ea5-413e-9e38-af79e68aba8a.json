@@ -1,5 +1,9 @@
 {
   "stats": {
+    "minecraft:killed": {
+      "minecraft:llama": 2,
+      "minecraft:zombie": 1
+    },
     "minecraft:dropped": {
       "minecraft:chiseled_quartz_block": 3,
       "minecraft:mace": 1,
@@ -12,6 +16,7 @@
       "minecraft:open_eyeblossom": 2,
       "minecraft:glass": 1,
       "minecraft:coal_ore": 1,
+      "minecraft:stone": 2,
       "minecraft:gold_block": 1,
       "minecraft:green_concrete": 1,
       "minecraft:iron_trapdoor": 1,
@@ -29,6 +34,7 @@
       "minecraft:tripwire_hook": 2,
       "minecraft:yellow_terracotta": 2,
       "minecraft:glass": 1,
+      "minecraft:stone": 2,
       "minecraft:leather": 2,
       "minecraft:redstone": 1,
       "minecraft:red_concrete": 1,
@@ -53,32 +59,6 @@
       "minecraft:white_carpet": 2,
       "minecraft:chiseled_quartz_block": 3
     },
-    "minecraft:custom": {
-      "minecraft:pig_one_cm": 19461,
-      "minecraft:time_since_rest": 442407,
-      "minecraft:walk_one_cm": 1616257,
-      "minecraft:leave_game": 334,
-      "minecraft:damage_taken": 1640,
-      "minecraft:mob_kills": 4,
-      "minecraft:damage_dealt": 515,
-      "minecraft:play_time": 29151480,
-      "minecraft:jump": 3553,
-      "minecraft:play_record": 1,
-      "minecraft:time_since_death": 442379,
-      "minecraft:drop": 126,
-      "minecraft:sprint_one_cm": 537205,
-      "minecraft:fall_one_cm": 6885,
-      "minecraft:total_world_time": 33465785,
-      "minecraft:fly_one_cm": 32125056,
-      "minecraft:crouch_one_cm": 75652,
-      "minecraft:sneak_time": 83150,
-      "minecraft:deaths": 7,
-      "minecraft:climb_one_cm": 1922
-    },
-    "minecraft:killed": {
-      "minecraft:llama": 2,
-      "minecraft:zombie": 1
-    },
     "minecraft:used": {
       "minecraft:polished_tuff": 453,
       "minecraft:stone_brick_wall": 7,
@@ -101,7 +81,7 @@
       "minecraft:lantern": 5,
       "minecraft:black_terracotta": 3,
       "minecraft:polished_blackstone": 28,
-      "minecraft:activator_rail": 412,
+      "minecraft:activator_rail": 413,
       "minecraft:tuff_brick_wall": 3,
       "minecraft:chiseled_tuff_bricks": 4,
       "minecraft:waxed_exposed_chiseled_copper": 11,
@@ -141,7 +121,7 @@
       "minecraft:chiseled_quartz_block": 11,
       "minecraft:polished_diorite": 9,
       "minecraft:waxed_exposed_copper": 14,
-      "minecraft:quartz_pillar": 15,
+      "minecraft:quartz_pillar": 18,
       "minecraft:chiseled_tuff": 2,
       "minecraft:quartz_bricks": 1,
       "minecraft:glowstone": 19,
@@ -258,6 +238,28 @@
       "minecraft:polished_andesite_slab": 3,
       "minecraft:acacia_pressure_plate": 2,
       "minecraft:heavy_weighted_pressure_plate": 5
+    },
+    "minecraft:custom": {
+      "minecraft:pig_one_cm": 19461,
+      "minecraft:time_since_rest": 476711,
+      "minecraft:walk_one_cm": 1627259,
+      "minecraft:leave_game": 347,
+      "minecraft:damage_taken": 1850,
+      "minecraft:mob_kills": 4,
+      "minecraft:damage_dealt": 515,
+      "minecraft:play_time": 29185784,
+      "minecraft:jump": 3587,
+      "minecraft:play_record": 1,
+      "minecraft:time_since_death": 476683,
+      "minecraft:drop": 128,
+      "minecraft:sprint_one_cm": 546593,
+      "minecraft:fall_one_cm": 9470,
+      "minecraft:total_world_time": 33727849,
+      "minecraft:fly_one_cm": 32513363,
+      "minecraft:crouch_one_cm": 76496,
+      "minecraft:sneak_time": 84246,
+      "minecraft:deaths": 7,
+      "minecraft:climb_one_cm": 1922
     }
   },
   "DataVersion": 4786

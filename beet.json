@@ -8,15 +8,13 @@
     "data_pack": {
         "name": "Sky's Horizon",
         "load": [
-            "src",
-            "include/*"
+            "src"
         ]
     },
     "resource_pack": {
         "name": "Sky's Horizon",
         "load": [
-            "src",
-            "include/*"
+            "src"
         ]
     },
     "pipeline": [

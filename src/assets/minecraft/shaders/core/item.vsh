@@ -28,6 +28,7 @@ out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
 
 #define SKYS_HORIZON_SPACE_SHADER
+#define SKYS_HORIZON_ENTITY_SHADER
 
 #define VSH
 
