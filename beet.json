@@ -17,13 +17,27 @@
             "src"
         ]
     },
+    "require": [
+        "plugins.objmc-rs.register_objs"
+    ],
     "pipeline": [
+        "beet.contrib.log_level",
         "beet.contrib.livereload",
         "plugins.generate_auto_called_nested_functions",
         "plugins.inline_function_declaration",
-        "plugins.icon"
+        "plugins.icon",
+        "plugins.objmc-rs"
     ],
     "meta": {
-        "icon": "assets/logo/icon.png"
+        "icon": "assets/logo/icon.png",
+        "objmc": {
+            "markers": {
+                "skys_horizon:space/planet/sorax4b": 249,
+                "skys_horizon:entity/phoenix": 238
+            }
+        },
+        "log_level": {
+            "level": "INFO"
+        }
     }
 }
