@@ -1,0 +1,37 @@
+participant phoenix:
+    name: {text:"Phoenix",color:"#FAB100"}
+    base: {color:"#123456"}
+
+participant chance:
+    name: {text:"Chance",color:"#4798f5"}
+
+paragraph phoenix:
+    text: "hello"
+
+paragraph chance:
+    text: "more text"
+    sound: "skys_horizon:dialog.test"
+
+paragraph chance:
+    text: {text:"fancy text",color:"#000000"}
+
+paragraph chance:
+    text: "Slow text"
+    duration: 5s
+
+paragraph phoenix:
+    text: "wait... " 2s "nevermind!"
+
+option "option 1":
+    paragraph phoenix:
+        text: "reply to option 1"
+
+    paragraph chance:
+        text: "some more text"
+
+option "option 2":
+    paragraph phoenix:
+        text: "reply to option 2"
+
+    paragraph phoenix:
+        text: "more text after reply"
