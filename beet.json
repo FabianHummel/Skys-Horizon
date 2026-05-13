@@ -31,7 +31,7 @@
     "meta": {
         "icon": "assets/logo/icon.png",
         "objmc": {
-            "markers": {
+            "models": {
                 "skys_horizon:space/planet/sorax4b": 249,
                 "skys_horizon:entity/phoenix": 238
             }

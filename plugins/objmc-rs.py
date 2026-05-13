@@ -1,10 +1,8 @@
 import logging
-import os
-import re
 import subprocess
 import tempfile
 from pathlib import Path
-from typing import ClassVar, Optional
+from typing import ClassVar
 
 from beet import (
     Context,
@@ -26,27 +24,23 @@ def register_objs(ctx: Context):
 
 
 logger = logging.getLogger(__name__)
-is_animation_pattern = r"(?:^|[/:])0$"
 
 
 def beet_default(ctx: Context):
     meta = ctx.meta.get("objmc")
     bin = meta.get("binary") or "objmc-rs"
+    models = meta.get("models")
     obj_assets: dict[str, ObjAsset] = ctx.assets[ObjAsset]
-    skipping = None
-    for path, obj in obj_assets.items():
-        if skipping and path.startswith(skipping):
-            continue
-        else:
-            skipping = None
 
-        obj_path = obj.source_path
-
-        is_animation = bool(re.search(is_animation_pattern, path))
-        if is_animation:
-            path = path[:-2]
-            obj_path = os.path.dirname(obj_path)
-            skipping = path
+    for path, marker in models.items():
+        try:
+            source_paths = [obj_assets[path].source_path]
+        except KeyError:
+            source_paths = [
+                item.source_path
+                for key, item in obj_assets.items()
+                if key.startswith(path)
+            ]
 
         # objmc texture is always in "item" folder for Sky's Horizon
         tex_ns = path.replace(":", ":item/")
@@ -56,16 +50,15 @@ def beet_default(ctx: Context):
                 f"Could not find matching texture ('{tex_ns}') for model '{path}'"
             )
 
-        marker_value: Optional[int] = meta.get("markers").get(path)
-        if marker_value is None:
+        if marker is None:
             raise ErrorMessage(f"No marker value defined for model '{path}'")
 
-        logger.info(f'Generating "{path}"')
-        (model, texture) = invoke_objmc(
-            bin, obj_path, tex.source_path, marker_value, tex_ns
+        logger.info(f' → Generating "{path}"')
+        (json, texture) = invoke_objmc(
+            bin, source_paths, tex.source_path, marker, tex_ns
         )
 
-        ctx.assets.models[path] = model
+        ctx.assets.models[path] = json
         ctx.assets.textures[tex_ns] = texture
 
     remove_obj_resources(ctx)
@@ -73,7 +66,7 @@ def beet_default(ctx: Context):
 
 def invoke_objmc(
     bin: str,
-    obj_path: str,
+    obj_paths: list[str],
     texture_path: str,
     marker_value: int,
     texture_namespace: str,
@@ -90,8 +83,7 @@ def invoke_objmc(
         subprocess.run(
             [
                 bin,
-                "--obj",
-                obj_path,
+                *[x for item in obj_paths for x in ("--objs", item)],
                 "--texture",
                 texture_path,
                 "--marker",
@@ -124,3 +116,4 @@ def invoke_objmc(
 
 def remove_obj_resources(ctx: Context):
     ctx.assets[ObjAsset].clear()
+    logger.info("Done.")

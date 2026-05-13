@@ -4,7 +4,7 @@ void main()
 {
     isPhoenix = 0;
 
-    if (isObjmcModel == 1 && objmcMarker.a == PHOENIX_ALPHA) {
+    if (isObjmcModel == 1) {
         isPhoenix = 1;
         Pos += posOffset;
     }
