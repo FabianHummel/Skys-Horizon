@@ -20,8 +20,7 @@ void main()
         // Used to programmatically start the animation.
         // The lower 8 bits (red) and upper 8 bits (green) = 65.536 values
         //  which is more than the needed 24.000 ticks of the GameTime ;)
-        //                 |--------red--------| |---green---|
-        float timeOffset = (iBaseColor.r * 256.0 + iBaseColor.g) / 24000.0;
+        float timeOffset = (iBaseColor.g * 256.0 + iBaseColor.b) / 24000.0;
 
         float seconds = (GameTime - timeOffset) * 1200.0 * ANIMATED_LOGO_TIME_SCALE;
 

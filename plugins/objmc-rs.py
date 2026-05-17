@@ -19,14 +19,14 @@ class ObjAsset(TextFile):
     extension: ClassVar[str] = ".obj"
 
 
-def register_objs(ctx: Context):
-    ctx.assets.extend_namespace.append(ObjAsset)
-
-
 logger = logging.getLogger(__name__)
 
 
 def beet_default(ctx: Context):
+    ctx.assets.extend_namespace.append(ObjAsset)
+
+    yield
+
     meta = ctx.meta.get("objmc")
     bin = meta.get("binary") or "objmc-rs"
     models = meta.get("models")
@@ -61,7 +61,8 @@ def beet_default(ctx: Context):
         ctx.assets.models[path] = json
         ctx.assets.textures[tex_ns] = texture
 
-    remove_obj_resources(ctx)
+    ctx.assets[ObjAsset].clear()
+    logger.info("Done.")
 
 
 def invoke_objmc(
@@ -112,8 +113,3 @@ def invoke_objmc(
     finally:
         output_model_path.unlink(missing_ok=True)
         output_texture_path.unlink(missing_ok=True)
-
-
-def remove_obj_resources(ctx: Context):
-    ctx.assets[ObjAsset].clear()
-    logger.info("Done.")

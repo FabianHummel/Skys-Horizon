@@ -7,6 +7,7 @@ const int PHOENIX_ALPHA = 238;
 
 const int SOLID_COLOR_ALPHA = 254;
 const int ANIMATED_LOGO_ALPHA = 253;
+const ivec2 CROSSHAIR_ALPHAS = ivec2(252, 200);
 
 #ifdef VSH
 
@@ -30,3 +31,8 @@ const vec2[] SCREEN_CORNERS = vec2[](
 #ifdef SKYS_HORIZON_ENTITY_SHADER
 #moj_import <skys_horizon:entity/entity.glsl>
 #endif
+
+int get_int_from_color() {
+    ivec4 iBaseColor = ivec4(baseColor * 255);
+    return (iBaseColor.r << 16) + (iBaseColor.g << 8) + iBaseColor.b;
+}

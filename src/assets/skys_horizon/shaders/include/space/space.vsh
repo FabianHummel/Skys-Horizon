@@ -24,4 +24,6 @@ void main()
         ModelViewMatTmp = mat4(1.0);
         ModelViewMatTmp[3] = ModelViewMat[3];
     }
+
+    #define ModelViewMat ModelViewMatTmp
 }

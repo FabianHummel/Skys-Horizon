@@ -18,15 +18,15 @@
         ]
     },
     "require": [
-        "plugins.objmc-rs.register_objs"
+        "plugins.objmc-rs",
+        "plugins.marker_color"
     ],
     "pipeline": [
         "beet.contrib.log_level",
         "beet.contrib.livereload",
         "plugins.generate_auto_called_nested_functions",
         "plugins.inline_function_declaration",
-        "plugins.icon",
-        "plugins.objmc-rs"
+        "plugins.icon"
     ],
     "meta": {
         "icon": "assets/logo/icon.png",

@@ -7,7 +7,7 @@
             "ascent": 16,
             "chars": [
                 "\uE000\uE001\uE002\uE003\uE004\uE005\uE006\uE007",
-                "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE"
+                "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
             ]
         },
         {
@@ -16,7 +16,7 @@
             "height": 16,
             "ascent": 0,
             "chars": [
-                "\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE\uEEEE",
+                "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
                 "\uE008\uE009\uE00A\uE00B\uE00C\uE00D\uE00E\uE00F"
             ]
         },

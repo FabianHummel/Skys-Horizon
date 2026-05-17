@@ -5,7 +5,7 @@ void main()
     planetId = -1;
     isPlanetAtmosphere = 0;
 
-    if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a > SPACE_PLANET_ALPHAS.y) {
+    if (isObjmcModel == 1 && objmcMarker.a <= SPACE_PLANET_ALPHAS.x && objmcMarker.a >= SPACE_PLANET_ALPHAS.y) {
         // Planet ID (0-9)
         planetId = SPACE_PLANET_ALPHAS.x - objmcMarker.a;
         isSpaceObject = true;

@@ -3,7 +3,6 @@
         {
             "type": "bitmap",
             "file": "skys_horizon:font/solid_color.png",
-            "height": 1,
             "ascent": 0,
             "chars": [
                 "\uE000"
