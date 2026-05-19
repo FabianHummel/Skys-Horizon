@@ -19,7 +19,8 @@
     },
     "require": [
         "plugins.objmc-rs",
-        "plugins.marker_color"
+        "plugins.marker_color",
+        "bookshelf.module.raycast"
     ],
     "pipeline": [
         "beet.contrib.log_level",
