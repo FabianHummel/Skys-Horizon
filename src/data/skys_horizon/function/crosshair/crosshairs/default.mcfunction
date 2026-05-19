@@ -3,3 +3,5 @@ function skys_horizon:crosshair/display_internal {\
     duration: 0,\
     color: "#000000",\
 }
+
+scoreboard players set $duration skys_horizon.crosshair 0

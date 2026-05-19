@@ -16,7 +16,7 @@ void main()
 
     float angle = atan(texCoord0.x, texCoord0.y);
     float t = mod(angle + 2.0 * PI, 2.0 * PI) / (2.0 * PI);
-    float arc = step(t, 1.0 - vertexColor.a);
+    float arc = step(t, 1.0 - crosshair_get_progress());
     float alpha = mix(EMPTY_ALPHA * TRANSPARENCY, 1.0, arc);
 
     float donut = outer - inner;

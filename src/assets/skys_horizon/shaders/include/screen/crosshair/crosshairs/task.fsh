@@ -7,7 +7,7 @@ void main()
     const float WIDTH = 0.2;
     const float EMPTY_ALPHA = 0.7;
 
-    float t = 1.0 - pow(1.0 - vertexColor.a, 3.0);
+    float t = crosshair_get_progress();
     float outerRadius = mix(FROM_RADIUS, OUTER_RADIUS, t);
     float innerRadius = outerRadius - WIDTH;
 

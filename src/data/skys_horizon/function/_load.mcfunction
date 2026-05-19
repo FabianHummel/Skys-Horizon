@@ -2,8 +2,10 @@ scoreboard objectives add skys_horizon.temp dummy
 
 scoreboard objectives add skys_horizon.const dummy
 scoreboard players set #-1 skys_horizon.const -1
+scoreboard players set #0 skys_horizon.const 0
 scoreboard players set #1 skys_horizon.const 1
 scoreboard players set #2 skys_horizon.const 2
+scoreboard players set #100 skys_horizon.const 100
 scoreboard players set #360 skys_horizon.const 360
 scoreboard players set #1.000 skys_horizon.const 1000
 scoreboard players set #24.000 skys_horizon.const 24000

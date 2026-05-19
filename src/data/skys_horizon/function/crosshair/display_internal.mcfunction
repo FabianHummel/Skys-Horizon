@@ -1,4 +1,4 @@
-$title @s times $(duration) 1d 0
+$title @s times $(duration)t 1d 0
 
 $title @s title {\
     "text": "$(type)",\
@@ -6,3 +6,5 @@ $title @s title {\
     "shadow_color": 0,\
     "color": "$(color)"\
 }
+
+$scoreboard players set $duration skys_horizon.crosshair $(duration)
