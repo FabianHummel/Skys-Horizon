@@ -1,1 +1,1 @@
-function skys_horizon:update_timer
+function skys_horizon:crosshair/remove_tags

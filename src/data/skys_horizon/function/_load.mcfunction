@@ -26,9 +26,6 @@ scoreboard players set #2^24 skys_horizon.const 16777216
 
 scoreboard players set #10^6 skys_horizon.const 1000000
 
-scoreboard objectives add skys_horizon.timer dummy
-scoreboard players set #10 skys_horizon.timer 0
-
 data modify storage skys_horizon const.int_to_hex set value ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
 
 forceload add 29999999 91665

@@ -1,4 +1,4 @@
-$function skys_horizon:crosshair/display_internal {\
+$function skys_horizon:crosshair/show {\
     type: "\uE004",\
     duration: $(duration),\
     color: "$(offset)",\
