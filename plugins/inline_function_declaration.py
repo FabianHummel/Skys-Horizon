@@ -1,10 +1,8 @@
-from typing import Dict
-
 from beet import Context, Function
 
 
 def beet_default(ctx: Context):
-    functions_to_add: Dict[str, Function] = {}
+    functions_to_add: dict[str, Function] = {}
 
     for [path, function] in ctx.data.functions.items():
         result = []

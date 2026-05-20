@@ -27,6 +27,7 @@
         "beet.contrib.livereload",
         "plugins.generate_auto_called_nested_functions",
         "plugins.inline_function_declaration",
+        "plugins.dialog",
         "plugins.icon"
     ],
     "meta": {
