@@ -1,13 +1,14 @@
 
 // define distinct values, counting from 1:
 #define SCREENSHAKE_CHANNEL 1
+#define PHOSPHOR_CHANNEL 2
 
 /*
 signature:
  ADD_MARKER(channel, id, op)
 */
 // append different marker definitions
-#define LIST_MARKERS ADD_MARKER(SCREENSHAKE_CHANNEL, 1, 1) ADD_MARKER(SCREENSHAKE_CHANNEL, 2, 0)
+#define LIST_MARKERS ADD_MARKER(SCREENSHAKE_CHANNEL, 1, 1) ADD_MARKER(SCREENSHAKE_CHANNEL, 2, 0) ADD_MARKER(PHOSPHOR_CHANNEL, 3, 1) ADD_MARKER(PHOSPHOR_CHANNEL, 4, 0)
 
 #define MARKER_ALPHA 251
 

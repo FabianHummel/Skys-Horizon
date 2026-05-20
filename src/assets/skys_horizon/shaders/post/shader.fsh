@@ -3,6 +3,7 @@
 uniform sampler2D MainSampler;
 uniform sampler2D MainDepthSampler;
 uniform sampler2D DataSampler;
+uniform sampler2D PrevSampler;
 
 #moj_import <minecraft:globals.glsl>
 
@@ -37,6 +38,12 @@ vec2 getDownscaledResolution(vec2 uv, float aspectRatio)
     return floor(uv * targetResolution) / targetResolution;
 }
 
+vec4 getPhosphor(vec4 current, vec2 uv, float intensity)
+{
+    vec4 prev = texture(PrevSampler, uv);
+    return vec4(max(prev.rgb * intensity, current.rgb), 1.0);
+}
+
 void main()
 {
     float time = GameTime * 1200.0;
@@ -44,9 +51,13 @@ void main()
     float screenShakeIntensity = readChannel(SCREENSHAKE_CHANNEL);
     vec2 uv = getScreenShake(texCoord, screenShakeIntensity, time);
 
+    // float downscaledQuality = readChannel(DOWNSCALE_CHANNEL);
     //uv = getDownscaledResolution(uv, ScreenSize.y / ScreenSize.x);
 
     vec4 color = texture(MainSampler, uv);
+
+    float phosphorIntensity = readChannel(PHOSPHOR_CHANNEL);
+    color = getPhosphor(color, uv, phosphorIntensity);
 
     fragColor = color;
 }

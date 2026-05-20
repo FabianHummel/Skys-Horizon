@@ -2,14 +2,15 @@
     "targets": {
         "final": {},
         "swap": {},
+        "previous": {},
         "data": {
             "width": 5,
-            "height": 2,
+            "height": 3,
             "persistent": true
         },
         "data_swap": {
             "width": 5,
-            "height": 2
+            "height": 3
         }
     },
     "passes": [
@@ -130,11 +131,26 @@
                     "use_depth_buffer": true
                 },
                 {
+                    "sampler_name": "Prev",
+                    "target": "previous"
+                },
+                {
                     "sampler_name": "Data",
                     "target": "data"
                 }
             ],
             "output": "swap"
+        },
+        {
+            "vertex_shader": "minecraft:core/screenquad",
+            "fragment_shader": "minecraft:post/blit",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap"
+                }
+            ],
+            "output": "previous"
         },
         {
             "vertex_shader": "minecraft:core/screenquad",
