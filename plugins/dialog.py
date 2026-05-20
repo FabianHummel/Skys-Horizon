@@ -29,7 +29,7 @@ class FlowElement:
 class Paragraph(FlowElement):
     participant: str
     sound: str
-    duration: float
+    text: list[tuple[int, str]]
 
     def __init__(self, participant):
         self.participant = participant
@@ -73,15 +73,43 @@ def beet_default(ctx: Context):
             if property is not None:
                 if last_entry is None:
                     raise ErrorMessage("Properties need to be declared within a definition.")
-                key, value = [x.strip() for x in property.group().split(':')]
+                key, value = [x.strip() for x in property.group().split(':', 1)]
                 if not hasattr(last_entry, key):
                     raise ErrorMessage(f"{type(last_entry).__name__} definition does not have a property '{key}'.")
-                setattr(last_entry, key, value)
+                setattr(last_entry, key, parse_property(key, value))
 
         ctx.data.functions[path] = Function(generate_code_for_dialog(dialog))
 
     ctx.data[DialogDefinition].clear()
 
+def parse_property(key: str, value: str):
+    match key:
+        case "rate":
+            return float(value)
+
+        case "duration":
+            num = int(value[:-1])
+            match value[-1]:
+                case 't':
+                    return num
+                case 's':
+                    return num * 20
+                case _:
+                    raise ErrorMessage("Duration signature must be either ticks (t) or seconds (s).")
+
+        case "text":
+            elements = value.split()
+            try:
+                parse_property("duration", elements[0])
+            except:
+                elements.insert(0, "0t") # First element always starts at t=0
+            return [
+                (parse_property("duration", duration), text) 
+                for duration, text in zip(elements[::2], elements[1::2])
+            ]
+
+        case _:
+            return value
 
 def generate_code_for_dialog(dialog: Dialog):
     return ""
