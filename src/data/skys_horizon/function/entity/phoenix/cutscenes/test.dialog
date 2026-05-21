@@ -6,7 +6,7 @@ participant chance:
     name: {text:"Chance",color:"#4798f5"}
 
 paragraph phoenix:
-    text: "hello"
+    text: 
 
 paragraph chance:
     text: "more text"
@@ -22,16 +22,18 @@ paragraph chance:
 paragraph phoenix:
     text: "wait... " 2s "nevermind!"
 
-choice
+option 1:
+    name: "option 1"
 
-option "option 1":
     paragraph phoenix:
         text: "reply to option 1"
 
     paragraph chance:
         text: "some more text"
 
-option "option 2":
+option 2:
+    name: "option 2"
+
     paragraph phoenix:
         text: "reply to option 2"
 
