@@ -1,0 +1,1 @@
+$execute if data storage skys_horizon dialog.participants.$(participant).rate run data modify storage skys_horizon dialog.current_rate set from storage skys_horizon dialog.participants.$(participant).rate

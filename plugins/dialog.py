@@ -177,7 +177,7 @@ class Paragraph(FlowElement):
 
     def __str__(self) -> str:
         return f"""{{\\
-    id: "paragraph",\\
+    type: "paragraph",\\
     participant: "{self.participant}",\\{
             f'''
     sound: {self.sound},\\'''
@@ -237,7 +237,7 @@ class Choice(FlowElement):
 
     def __str__(self) -> str:
         return f"""{{\\
-    id: "choice",\\
+    type: "choice",\\
     options: [\\
 {
             indent(
