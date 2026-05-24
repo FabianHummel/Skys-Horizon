@@ -6,7 +6,7 @@ participant chance:
     name: {text:"Chance",color:"#4798f5"}
 
 paragraph phoenix:
-    text: 
+    text: "Hi!"
 
 paragraph chance:
     text: "more text"
@@ -17,12 +17,12 @@ paragraph chance:
 
 paragraph chance:
     text: "Slow text"
-    duration: 5s
+    rate: 0.5
 
 paragraph phoenix:
-    text: "wait... " 2s "nevermind!"
+    text: "wait... " 2s "nevermind!" 1s {text:"snbt text"}
 
-option 1:
+option abc:
     name: "option 1"
 
     paragraph phoenix:
@@ -31,7 +31,15 @@ option 1:
     paragraph chance:
         text: "some more text"
 
-option 2:
+    option nice:
+        name: "nice option"
+
+        paragraph chance:
+            text: "very cool"
+
+    end choice
+
+option abc:
     name: "option 2"
 
     paragraph phoenix:
@@ -39,6 +47,8 @@ option 2:
 
     paragraph phoenix:
         text: "more text after reply"
+
+end choice
 
 paragraph phoenix:
     text: "end!"

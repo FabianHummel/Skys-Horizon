@@ -20,6 +20,7 @@
     "require": [
         "plugins.objmc-rs",
         "plugins.marker_color",
+        "plugins.dialog",
         "bookshelf.module.raycast"
     ],
     "pipeline": [
@@ -27,7 +28,6 @@
         "beet.contrib.livereload",
         "plugins.generate_auto_called_nested_functions",
         "plugins.inline_function_declaration",
-        "plugins.dialog",
         "plugins.icon"
     ],
     "meta": {
