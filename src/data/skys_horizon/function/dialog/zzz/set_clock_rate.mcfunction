@@ -1,1 +1,1 @@
-time of skys_horizon:dialog rate $(current_rate)
+$time of skys_horizon:dialog rate $(current_rate)
