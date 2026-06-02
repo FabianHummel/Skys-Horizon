@@ -62,7 +62,6 @@ def beet_default(ctx: Context):
         ctx.assets.textures[tex_ns] = texture
 
     ctx.assets[ObjAsset].clear()
-    logger.info("Done.")
 
 
 def invoke_objmc(

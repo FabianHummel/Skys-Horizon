@@ -22,6 +22,7 @@ out vec4 fragColor;
 
 #define SKYS_HORIZON_SPACE_SHADER
 #define SKYS_HORIZON_ENTITY_SHADER
+#define SKYS_HORIZON_SCENE_SHADER
 
 #define FSH
 

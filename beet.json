@@ -18,9 +18,11 @@
         ]
     },
     "require": [
+        "plugins.done_message",
         "plugins.objmc-rs",
         "plugins.marker_color",
         "plugins.dialog",
+        "plugins.aseprite",
         "bookshelf.module.raycast"
     ],
     "pipeline": [

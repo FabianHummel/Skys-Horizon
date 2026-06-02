@@ -1,4 +1,3 @@
-ivec4 markerColor = ivec4(texture(Sampler0, UV0) * 255.0 + 0.5);
 bool isSpaceObject = false;
 mat4 ModelViewMatTmp = ModelViewMat;
 

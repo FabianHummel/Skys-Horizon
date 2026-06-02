@@ -1,0 +1,31 @@
+{
+    "attributes": {
+        "minecraft:visual/ambient_particles": {
+            "modifier": "override",
+            "argument": [
+                {
+                    "particle": {
+                        "type": "minecraft:mycelium"
+                    },
+                    "probability": 0.1
+                }
+            ]
+        },
+        "minecraft:visual/sky_color": 0,
+        "minecraft:visual/sky_light_color": 16777215,
+        "minecraft:visual/fog_end_distance": 90,
+        "minecraft:visual/fog_color": 592400,
+        "minecraft:visual/sky_light_factor": 1
+    },
+    "temperature": 0,
+    "downfall": 0,
+    "has_precipitation": false,
+    "temperature_modifier": "none",
+    "effects": {
+        "water_color": 0
+    },
+    "spawners": {},
+    "spawn_costs": {},
+    "carvers": [],
+    "features": []
+}

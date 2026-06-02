@@ -1,0 +1,22 @@
+{
+    "model": {
+        "type": "minecraft:select",
+        "property": "minecraft:custom_model_data",
+        "cases": [
+            {
+                "when": "scientific_paper_1",
+                "model": {
+                    "type": "minecraft:model",
+                    "model": "skys_horizon:scene/paper/scientific_paper_1"
+                }
+            },
+            {
+                "when": "scientific_paper_2",
+                "model": {
+                    "type": "minecraft:model",
+                    "model": "skys_horizon:scene/paper/scientific_paper_2"
+                }
+            }
+        ]
+    }
+}

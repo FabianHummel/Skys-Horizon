@@ -4,33 +4,40 @@
 	"texture_size": [1, 1],
 	"textures": {
 		"0": "skys_horizon:item/scene/hangar/ceiling_light",
+		"1": "skys_horizon:item/scene/hangar/ceiling_light_side",
 		"particle": "skys_horizon:item/scene/hangar/ceiling_light"
 	},
 	"elements": [
 		{
-			"from": [0, -2.5, 7.5],
-			"to": [16, 8.5, 7.5],
-			"rotation": {"angle": 15, "axis": "x", "origin": [8, 8, 7.5]},
+			"from": [0, -2.65986, 7.87256],
+			"to": [16, 8.34014, 7.87256],
+			"rotation": {"angle": 20, "axis": "x", "origin": [8, 8.5, 8.175]},
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"}
 			}
 		},
 		{
-			"from": [0, -2.5, 8.5],
-			"to": [16, 8.5, 8.5],
-			"rotation": {"angle": -15, "axis": "x", "origin": [8, 8, 8.5]},
+			"from": [0, -2.65986, 8.12744],
+			"to": [16, 8.34014, 8.12744],
+			"rotation": {"angle": -20, "axis": "x", "origin": [8, 8.5, 7.825]},
 			"faces": {
-				"north": {"uv": [16, 0, 0, 16], "texture": "#0"},
-				"east": {"uv": [16, 0, 0, 16], "texture": "#0"},
-				"south": {"uv": [16, 0, 0, 16], "texture": "#0"},
-				"west": {"uv": [16, 0, 0, 16], "texture": "#0"},
-				"up": {"uv": [0, 16, 16, 0], "texture": "#0"},
-				"down": {"uv": [0, 16, 16, 0], "texture": "#0"}
+				"south": {"uv": [16, 0, 0, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, -2.5, 3.5],
+			"to": [0, 8.5, 12.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -2.5, 7.5]},
+			"faces": {
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"from": [16, -2.5, 3.5],
+			"to": [16, 8.5, 12.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [16, -2.5, 7.5]},
+			"faces": {
+				"east": {"uv": [16, 0, 0, 16], "texture": "#1"}
 			}
 		}
 	]

@@ -1,0 +1,7 @@
+{
+    "parent": "skys_horizon:scene/paper/document_a4",
+    "textures": {
+        "0": "skys_horizon:item/scene/paper/scientific_paper_2",
+        "particle": "skys_horizon:item/scene/paper/scientific_paper_2"
+    }
+}

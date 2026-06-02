@@ -9,3 +9,7 @@
 #ifdef SKYS_HORIZON_ENTITY_SHADER
 #moj_import <skys_horizon:entity/entity.fsh>
 #endif
+
+#ifdef SKYS_HORIZON_SCENE_SHADER
+#moj_import <skys_horizon:scene/scene.fsh>
+#endif
