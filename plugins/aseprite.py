@@ -1,6 +1,7 @@
 import logging
 import subprocess
 import tempfile
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import ClassVar
 
@@ -30,10 +31,23 @@ def beet_default(ctx: Context):
 
     config = ctx.meta.get("aseprite") or {}
     binary_path = config.get("binary_path") or "aseprite"
+    max_workers = config.get("workers") or 8
 
-    for path, asset in aseprite_assets.items():
-        logger.info(f' → Converting "{path}"')
-        ctx.assets.textures[path] = invoke_aseprite(binary_path, asset.source_path)
+    futures = {}
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        for path, asset in aseprite_assets.items():
+            logger.info(f' → Converting "{path}"')
+            future = executor.submit(
+                invoke_aseprite,
+                binary_path,
+                asset.source_path,
+            )
+            futures[future] = path
+
+        for future in as_completed(futures):
+            path = futures[future]
+            ctx.assets.textures[path] = future.result()
 
     ctx.assets[AsepriteAsset].clear()
 
@@ -48,7 +62,7 @@ def invoke_aseprite(
 
     try:
         subprocess.run(
-            [bin, "-b", texture_path, "--save-as", str(output_texture_path)],
+            args=[bin, "-b", texture_path, "--save-as", str(output_texture_path)],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.PIPE,

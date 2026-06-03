@@ -1,6 +1,7 @@
 import logging
 import subprocess
 import tempfile
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import ClassVar
 
@@ -27,39 +28,53 @@ def beet_default(ctx: Context):
 
     yield
 
-    meta = ctx.meta.get("objmc")
-    bin = meta.get("binary") or "objmc-rs"
-    models = meta.get("models")
     obj_assets: dict[str, ObjAsset] = ctx.assets[ObjAsset]
 
-    for path, marker in models.items():
-        try:
-            source_paths = [obj_assets[path].source_path]
-        except KeyError:
-            source_paths = [
-                item.source_path
-                for key, item in obj_assets.items()
-                if key.startswith(path)
-            ]
+    meta = ctx.meta.get("objmc") or {}
+    bin = meta.get("binary") or "objmc-rs"
+    models = meta.get("models") or {}
+    max_workers = meta.get("workers") or 8
 
-        # objmc texture is always in "item" folder for Sky's Horizon
-        tex_ns = path.replace(":", ":item/")
-        tex = ctx.assets.textures.get(tex_ns)
-        if tex is None:
-            raise ErrorMessage(
-                f"Could not find matching texture ('{tex_ns}') for model '{path}'"
+    futures = {}
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        for path, marker in models.items():
+            try:
+                source_paths = [obj_assets[path].source_path]
+            except KeyError:
+                source_paths = [
+                    item.source_path
+                    for key, item in obj_assets.items()
+                    if key.startswith(path)
+                ]
+
+            tex_ns = path.replace(":", ":item/")
+            tex = ctx.assets.textures.get(tex_ns)
+            if tex is None:
+                raise ErrorMessage(
+                    f"Could not find matching texture ('{tex_ns}') for model '{path}'"
+                )
+
+            if marker is None:
+                raise ErrorMessage(f"No marker value defined for model '{path}'")
+
+            logger.info(f' → Generating "{path}"')
+            future = executor.submit(
+                invoke_objmc,
+                bin,
+                source_paths,
+                tex.source_path,
+                marker,
+                tex_ns,
             )
+            futures[future] = (path, tex_ns)
 
-        if marker is None:
-            raise ErrorMessage(f"No marker value defined for model '{path}'")
+        for future in as_completed(futures):
+            path, tex_ns = futures[future]
+            model, texture = future.result()
 
-        logger.info(f' → Generating "{path}"')
-        (json, texture) = invoke_objmc(
-            bin, source_paths, tex.source_path, marker, tex_ns
-        )
-
-        ctx.assets.models[path] = json
-        ctx.assets.textures[tex_ns] = texture
+            ctx.assets.models[path] = model
+            ctx.assets.textures[tex_ns] = texture
 
     ctx.assets[ObjAsset].clear()
 
@@ -70,7 +85,7 @@ def invoke_objmc(
     texture_path: str,
     marker_value: int,
     texture_namespace: str,
-) -> (Model, Texture):
+) -> tuple[Model, Texture]:
     output_model_tmp = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
     output_model_path = Path(output_model_tmp.name)
     output_model_tmp.close()
@@ -81,7 +96,7 @@ def invoke_objmc(
 
     try:
         subprocess.run(
-            [
+            args=[
                 bin,
                 *[x for item in obj_paths for x in ("--objs", item)],
                 "--texture",
