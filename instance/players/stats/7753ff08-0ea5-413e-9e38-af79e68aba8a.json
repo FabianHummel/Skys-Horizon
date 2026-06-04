@@ -8,7 +8,7 @@
       "minecraft:mud": 5,
       "minecraft:shulker_box": 1,
       "minecraft:resin_brick_stairs": 2,
-      "minecraft:glass": 44,
+      "minecraft:glass": 45,
       "minecraft:polished_diorite_stairs": 47,
       "minecraft:black_terracotta": 3,
       "minecraft:polished_blackstone": 28,
@@ -252,31 +252,6 @@
       "minecraft:polished_andesite_slab": 4,
       "minecraft:heavy_weighted_pressure_plate": 14
     },
-    "minecraft:custom": {
-      "minecraft:pig_one_cm": 19461,
-      "minecraft:time_since_rest": 1580760,
-      "minecraft:walk_one_cm": 2194391,
-      "minecraft:leave_game": 401,
-      "minecraft:damage_taken": 2070,
-      "minecraft:mob_kills": 4,
-      "minecraft:damage_dealt": 525,
-      "minecraft:play_time": 30289833,
-      "minecraft:jump": 4656,
-      "minecraft:play_record": 1,
-      "minecraft:time_since_death": 1580732,
-      "minecraft:drop": 173,
-      "minecraft:open_barrel": 3,
-      "minecraft:sprint_one_cm": 910435,
-      "minecraft:interact_with_smithing_table": 5,
-      "minecraft:inspect_hopper": 13,
-      "minecraft:fall_one_cm": 22587,
-      "minecraft:total_world_time": 36355669,
-      "minecraft:fly_one_cm": 39143523,
-      "minecraft:crouch_one_cm": 89042,
-      "minecraft:sneak_time": 104840,
-      "minecraft:deaths": 7,
-      "minecraft:climb_one_cm": 2764
-    },
     "minecraft:dropped": {
       "minecraft:yellow_stained_glass": 14,
       "minecraft:barrier": 1,
@@ -307,9 +282,30 @@
       "minecraft:ochre_froglight": 8,
       "minecraft:leather_helmet": 1
     },
-    "minecraft:killed": {
-      "minecraft:llama": 2,
-      "minecraft:zombie": 1
+    "minecraft:custom": {
+      "minecraft:pig_one_cm": 19461,
+      "minecraft:time_since_rest": 6014,
+      "minecraft:walk_one_cm": 2259626,
+      "minecraft:leave_game": 405,
+      "minecraft:damage_taken": 2280,
+      "minecraft:mob_kills": 4,
+      "minecraft:damage_dealt": 525,
+      "minecraft:play_time": 30316779,
+      "minecraft:jump": 4682,
+      "minecraft:play_record": 1,
+      "minecraft:time_since_death": 5988,
+      "minecraft:drop": 173,
+      "minecraft:open_barrel": 3,
+      "minecraft:sprint_one_cm": 930823,
+      "minecraft:interact_with_smithing_table": 5,
+      "minecraft:inspect_hopper": 13,
+      "minecraft:fall_one_cm": 23022,
+      "minecraft:total_world_time": 36468360,
+      "minecraft:fly_one_cm": 39289667,
+      "minecraft:crouch_one_cm": 89184,
+      "minecraft:sneak_time": 105126,
+      "minecraft:deaths": 8,
+      "minecraft:climb_one_cm": 2764
     },
     "minecraft:picked_up": {
       "minecraft:coal_ore": 1,
@@ -350,6 +346,10 @@
       "minecraft:red_stained_glass": 7,
       "minecraft:barrier": 1,
       "minecraft:light_blue_stained_glass": 1
+    },
+    "minecraft:killed": {
+      "minecraft:llama": 2,
+      "minecraft:zombie": 1
     }
   },
   "DataVersion": 4786

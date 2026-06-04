@@ -2,8 +2,8 @@
 
 uniform sampler2D MainSampler;
 uniform sampler2D MainDepthSampler;
-uniform sampler2D DataSampler;
 uniform sampler2D PrevSampler;
+uniform sampler2D DataSampler;
 
 #moj_import <minecraft:globals.glsl>
 
@@ -14,22 +14,6 @@ uniform sampler2D PrevSampler;
 in vec2 texCoord;
 
 out vec4 fragColor;
-
-float random(vec2 uv)
-{
-    return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453123);
-}
-
-vec2 getScreenShake(vec2 uv, float intensity, float time)
-{
-    if (intensity <= 0.0) return uv;
-    float val1 = random(vec2(0.25, 0.25) + time);
-    float val2 = random(vec2(0.75, 0.75) + time);
-    val1 = clamp(val1, 0.0, 1.0);
-    val2 = clamp(val2, 0.0, 1.0);
-    vec2 shake = vec2(val1, val2) * intensity * 0.025;
-    return uv + shake;
-}
 
 vec2 getDownscaledResolution(vec2 uv, float aspectRatio)
 {
@@ -46,20 +30,15 @@ vec4 getPhosphor(vec4 current, vec2 uv, float intensity)
 
 void main()
 {
-    float time = GameTime * 1200.0;
+    vec2 uv = texCoord;
 
-    float screenShakeIntensity = readChannel(SCREENSHAKE_CHANNEL);
-    vec2 uv = getScreenShake(texCoord, screenShakeIntensity, time);
-
-    // float downscaledQuality = readChannel(DOWNSCALE_CHANNEL);
+    //float downscaledQuality = readChannel(DOWNSCALE_CHANNEL);
     //uv = getDownscaledResolution(uv, ScreenSize.y / ScreenSize.x);
 
     vec4 color = texture(MainSampler, uv);
 
-    float phosphorIntensity = readChannel(PHOSPHOR_CHANNEL);
-    color = getPhosphor(color, uv, phosphorIntensity);
+    float intensity = readChannel(PHOSPHOR_CHANNEL);
+    color = getPhosphor(color, uv, intensity);
 
     fragColor = color;
-
-    //fragColor = vec4(texture(MainDepthSampler, texCoord).rgb, 1.0);
 }

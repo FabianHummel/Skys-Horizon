@@ -2,7 +2,9 @@
     "targets": {
         "final": {},
         "swap": {},
-        "previous": {},
+        "previous": {
+            "persistent": true
+        },
         "data": {
             "width": 5,
             "height": 3,
@@ -117,7 +119,7 @@
             "output": "final"
         },
         {
-            "_comment": "Sky's Horizon post processing",
+            "_comment": "Sky's Horizon post processing shader",
             "fragment_shader": "skys_horizon:post/shader",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
@@ -150,7 +152,37 @@
                     "target": "swap"
                 }
             ],
+            "uniforms": {
+                "BlitConfig": [
+                    {
+                        "name": "ColorModulate",
+                        "type": "vec4",
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
             "output": "previous"
+        },
+        {
+            "_comment": "Sky's Horizon screenshake shader",
+            "fragment_shader": "skys_horizon:post/screenshake",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "swap"
+                },
+                {
+                    "sampler_name": "Data",
+                    "target": "data"
+                }
+            ],
+            "output": "final"
         },
         {
             "vertex_shader": "minecraft:core/screenquad",
@@ -158,7 +190,7 @@
             "inputs": [
                 {
                     "sampler_name": "In",
-                    "target": "swap"
+                    "target": "final"
                 }
             ],
             "uniforms": {
