@@ -60,4 +60,6 @@ void main()
     color = getPhosphor(color, uv, phosphorIntensity);
 
     fragColor = color;
+
+    //fragColor = vec4(texture(MainDepthSampler, texCoord).rgb, 1.0);
 }

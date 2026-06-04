@@ -1,0 +1,15 @@
+{
+    "criteria": {
+        "right_click": {
+            "trigger": "minecraft:player_interacted_with_entity",
+            "conditions": {
+                "entity": {
+                    "minecraft:nbt": "{Tags:['skys_horizon:scene/card_reader']}"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "skys_horizon:scene/card_reader/on_read"
+    }
+}

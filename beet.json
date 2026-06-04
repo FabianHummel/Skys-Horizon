@@ -8,13 +8,15 @@
     "data_pack": {
         "name": "Sky's Horizon",
         "load": [
-            "src"
+            "src",
+            "include/animated_java-datapack"
         ]
     },
     "resource_pack": {
         "name": "Sky's Horizon",
         "load": [
-            "src"
+            "src",
+            "include/animated_java-resourcepack"
         ]
     },
     "require": [
