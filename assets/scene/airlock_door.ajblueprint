@@ -15,8 +15,9 @@
 		"render_box": [48, 48],
 		"resource_pack": "/Users/fabian/Documents/Projects/Sky's Horizon/include/animated_java-resourcepack",
 		"data_pack": "/Users/fabian/Documents/Projects/Sky's Horizon/include/animated_java-datapack",
-		"auto_update_rig_orientation": false,
-		"use_storage_for_animation": true
+		"interpolation_duration": 3,
+		"teleportation_duration": 0,
+		"auto_update_rig_orientation": false
 	},
 	"elements": [
 		{
@@ -173,10 +174,10 @@
 		},
 		{
 			"name": "block_display16",
-			"position": [-0.1, -8, -4],
+			"position": [-0.1, -7.5, -3.5],
 			"rotation": [0, 0, 0],
 			"pivotOffset": [0, 0, 0],
-			"scale": [0, 4, 0.5],
+			"scale": [0, 3.9375, 0.4375],
 			"color": 8,
 			"visibility": true,
 			"locked": false,
@@ -333,10 +334,10 @@
 		},
 		{
 			"name": "block_display17",
-			"position": [0.1, -8, -4],
+			"position": [0.1, -7.5, -3.5],
 			"rotation": [0, 0, 0],
 			"pivotOffset": [0, 0, 0],
-			"scale": [0, 4, 0.5],
+			"scale": [0, 3.9375, 0.4375],
 			"color": 8,
 			"visibility": true,
 			"locked": false,
@@ -413,7 +414,7 @@
 			"visibility": true,
 			"autouv": 0,
 			"isOpen": true,
-			"primary_selected": true
+			"primary_selected": false
 		}
 	],
 	"outliner": [
@@ -475,93 +476,7 @@
 			"blend_weight": "",
 			"start_delay": "",
 			"loop_delay": "0",
-			"excluded_nodes": [
-				{
-					"icon": "fa-anchor",
-					"name": "anchor",
-					"value": "045aee3b-5c77-cb9f-dc8f-8dbe5702af7b"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display",
-					"value": "0f460baa-d9c8-f70e-3efa-f363c1414d6b"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display1",
-					"value": "a74cd0f0-b381-55d8-47fb-5d219c6123b4"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display10",
-					"value": "65224989-d1fb-947e-97bb-8e92ef7bfec7"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display11",
-					"value": "f2fe94c8-3f7b-7059-ec20-8f62e69c0c05"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display12",
-					"value": "6adabfb1-7da6-da02-4cee-f78b05d28ad1"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display13",
-					"value": "66db1a7e-c21f-b07a-249c-fbf78eeb87c3"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display14",
-					"value": "6b94ebc4-a901-ae4d-a82c-09d9ab67e9e6"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display16",
-					"value": "0b5ca82f-54f3-9e15-9eb6-798ff7bf06be"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display17",
-					"value": "3f635dd8-d854-6319-a52a-4f2f0747e151"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display2",
-					"value": "19530462-1fbb-cbbc-5dc1-e7eef28b31c0"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display3",
-					"value": "a0b1211b-ae6d-6feb-7c83-cc319a20e24c"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display4",
-					"value": "a61d30dd-8e5c-a07a-0e29-4edac55d96cd"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display5",
-					"value": "f3309cb8-6683-37ab-c1b6-dbcedcb3f630"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display6",
-					"value": "cb7dd049-18b4-0c46-ca8f-e142c33fc14d"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display7",
-					"value": "0c4aaa2b-6201-af6e-b600-a979c70b54e0"
-				},
-				{
-					"icon": "deployed_code",
-					"name": "block_display9",
-					"value": "24ccd8b8-3a0f-db18-95a1-10c32f854d42"
-				}
-			],
+			"excluded_nodes": [],
 			"animators": {
 				"a7b62ff8-f9f5-2e6b-f464-48dccc901160": {
 					"name": "left_doorside",
@@ -589,7 +504,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "24",
+									"x": "22",
 									"y": "0",
 									"z": "0"
 								}
@@ -629,7 +544,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-24",
+									"x": "-22",
 									"y": "0",
 									"z": "0"
 								}
@@ -638,7 +553,8 @@
 							"time": 1,
 							"color": -1,
 							"interpolation": "linear",
-							"easing": "easeInOutQuad"
+							"easing": "easeInOutQuad",
+							"easingArgs": []
 						}
 					]
 				},
@@ -683,6 +599,332 @@
 							],
 							"uuid": "886430aa-593d-47e5-58c0-05ff6b5994c0",
 							"time": 0.5,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "function",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0",
+									"function": "playsound minecraft:block.beacon.activate block @a ~ ~ ~ 1.0 2.0\ntag @s add skys_horizon.scene.airlock_door.open\n\n",
+									"execute_condition": "",
+									"repeat": false,
+									"repeat_frequency": 1
+								}
+							],
+							"uuid": "ecb817a7-9f08-48f8-9c3f-ece0aaed4f1a",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "function",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0",
+									"function": "tag @s remove skys_horizon.scene.airlock_door.closed\n",
+									"execute_condition": "",
+									"repeat": false,
+									"repeat_frequency": 1
+								}
+							],
+							"uuid": "96a9099f-a716-e4b5-0717-920d7def43fc",
+							"time": 1,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "linear"
+						}
+					]
+				},
+				"0f460baa-d9c8-f70e-3efa-f363c1414d6b": {
+					"name": "block_display",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a74cd0f0-b381-55d8-47fb-5d219c6123b4": {
+					"name": "block_display1",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a0b1211b-ae6d-6feb-7c83-cc319a20e24c": {
+					"name": "block_display3",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"19530462-1fbb-cbbc-5dc1-e7eef28b31c0": {
+					"name": "block_display2",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"24ccd8b8-3a0f-db18-95a1-10c32f854d42": {
+					"name": "block_display9",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"65224989-d1fb-947e-97bb-8e92ef7bfec7": {
+					"name": "block_display10",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f2fe94c8-3f7b-7059-ec20-8f62e69c0c05": {
+					"name": "block_display11",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0b5ca82f-54f3-9e15-9eb6-798ff7bf06be": {
+					"name": "block_display16",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a61d30dd-8e5c-a07a-0e29-4edac55d96cd": {
+					"name": "block_display4",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f3309cb8-6683-37ab-c1b6-dbcedcb3f630": {
+					"name": "block_display5",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"cb7dd049-18b4-0c46-ca8f-e142c33fc14d": {
+					"name": "block_display6",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0c4aaa2b-6201-af6e-b600-a979c70b54e0": {
+					"name": "block_display7",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6adabfb1-7da6-da02-4cee-f78b05d28ad1": {
+					"name": "block_display12",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"66db1a7e-c21f-b07a-249c-fbf78eeb87c3": {
+					"name": "block_display13",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6b94ebc4-a901-ae4d-a82c-09d9ab67e9e6": {
+					"name": "block_display14",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"3f635dd8-d854-6319-a52a-4f2f0747e151": {
+					"name": "block_display17",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"effects": {
+					"name": "Effects",
+					"type": "effect"
+				}
+			}
+		},
+		{
+			"uuid": "36fe8d6c-53b8-dcc1-f771-b3f38c4a2ad3",
+			"name": "close",
+			"loop": "hold",
+			"override": false,
+			"length": 1,
+			"snapping": 20,
+			"selected": false,
+			"saved": true,
+			"path": "/Users/fabian/Downloads/model.animation.json",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "0",
+			"excluded_nodes": [],
+			"animators": {
+				"a7b62ff8-f9f5-2e6b-f464-48dccc901160": {
+					"name": "left_doorside",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "b5807d59-e950-ff79-f77e-2843cd160bac",
+							"time": 1,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "easeOutQuad",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "22",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "5b4b6ce0-1a03-d9a1-1e70-3d73164b5be6",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "easeInOutQuad",
+							"easingArgs": []
+						}
+					]
+				},
+				"1ddbf732-8ff9-a86b-a31d-92b7c149fc9d": {
+					"name": "right_doorside",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "c1b9106f-4a15-a67c-d481-87d5f7b9f262",
+							"time": 1,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "easeOutQuad",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-22",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "f175b65c-9400-b606-ff77-9bb5480a2205",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "easeInOutQuad",
+							"easingArgs": []
+						}
+					]
+				},
+				"045aee3b-5c77-cb9f-dc8f-8dbe5702af7b": {
+					"name": "anchor",
+					"type": "locator",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "function",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0",
+									"function": "fill ~ ~ ~ ~ ~2 ~ minecraft:barrier",
+									"execute_condition": "",
+									"repeat": false,
+									"repeat_frequency": 1
+								}
+							],
+							"uuid": "14511522-08fa-7ab4-9196-e66c9663ba69",
+							"time": 0.5,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "function",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0",
+									"function": "fill ^-1 ^ ^ ^-1 ^2 ^ minecraft:barrier\nfill ^1 ^ ^ ^1 ^2 ^ minecraft:barrier\n",
+									"execute_condition": "",
+									"repeat": false,
+									"repeat_frequency": 1
+								}
+							],
+							"uuid": "886430aa-593d-47e5-58c0-05ff6b5994c0",
+							"time": 0.3,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "function",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0",
+									"function": "playsound minecraft:block.beacon.deactivate block @a ~ ~ ~ 1.0 2.0\ntag @s add skys_horizon.scene.airlock_door.closed\n",
+									"execute_condition": "",
+									"repeat": false,
+									"repeat_frequency": 1
+								}
+							],
+							"uuid": "9b49b6f7-3c94-2c96-e4bf-391d7269fac3",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "function",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0",
+									"function": "tag @s remove skys_horizon.scene.airlock_door.open\n",
+									"execute_condition": "",
+									"repeat": false,
+									"repeat_frequency": 1
+								}
+							],
+							"uuid": "da28f312-51f0-7b43-deb9-e38d6e28f3f5",
+							"time": 1,
 							"color": -1,
 							"interpolation": "linear",
 							"easing": "linear",
