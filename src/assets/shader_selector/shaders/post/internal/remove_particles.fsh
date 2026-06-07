@@ -23,4 +23,8 @@ void main() {
     ) {
         fragColor = texture(ParticlesSampler, texCoord + vec2(1./OutSize.x, 0.0));
     }
+
+    if (iColor.rga == POST_MASK_RGA) {
+        discard;
+    }
 }

@@ -1,4 +1,6 @@
 
+const ivec3 POST_MASK_RGA = ivec3(12, 34, 255);
+
 // define distinct values, counting from 1:
 #define SCREENSHAKE_CHANNEL 1
 #define PHOSPHOR_CHANNEL 2

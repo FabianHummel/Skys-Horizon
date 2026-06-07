@@ -133,6 +133,10 @@
                     "use_depth_buffer": true
                 },
                 {
+                    "sampler_name": "Particles",
+                    "target": "minecraft:particles"
+                },
+                {
                     "sampler_name": "Prev",
                     "target": "previous"
                 },
