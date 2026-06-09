@@ -44,7 +44,8 @@ vec4 getSobel(vec4 baseColor, vec2 uv)
         return baseColor;
     }
 
-    const vec4 LINE_COLOR = vec4(vec3(20, 17, 19) / 255.0, 1.0);
+    const vec4 DARK_LINE_COLOR = vec4(vec3(20, 17, 19) / 255.0, 1.0);
+    const vec4 LIGHT_LINE_COLOR = vec4(vec3(117, 111, 108) / 255.0, 1.0);
     vec2 resolution = textureSize(MainSampler, 0);
 
     // kernel definition (in glsl matrices are filled in column-major order)
@@ -82,7 +83,10 @@ vec4 getSobel(vec4 baseColor, vec2 uv)
     float G = (valueGx * valueGx) + (valueGy * valueGy);
     float sobelValue = clamp(G, 0.0, 1.0);
 
-    return sobelValue > 0.05 ? LINE_COLOR : baseColor;
+    const vec3 luma = vec3(0.299, 0.587, 0.114);
+    float baseLuminance = dot(baseColor.rgb, luma);
+
+    return sobelValue > 0.05 ? baseLuminance < 0.5 ? DARK_LINE_COLOR : LIGHT_LINE_COLOR : baseColor;
 }
 
 void main()
