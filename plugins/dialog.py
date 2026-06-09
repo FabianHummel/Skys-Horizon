@@ -1,6 +1,5 @@
 import logging
 import re
-from itertools import accumulate
 from textwrap import indent
 from typing import ClassVar
 
@@ -129,9 +128,7 @@ def parse_property(key: str, value: str):
                 parse_property("duration", elements[0])
             except ValueError:
                 elements.insert(0, "0t")  # First element always starts at t=0
-            times = list(
-                accumulate(parse_property("duration", time) for time in elements[::2])
-            )
+            times = list(parse_property("duration", time) for time in elements[::2])
             return list(zip(times, elements[1::2]))
 
         case _:
