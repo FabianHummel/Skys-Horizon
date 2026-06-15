@@ -4,7 +4,7 @@
             "trigger": "minecraft:player_interacted_with_entity",
             "conditions": {
                 "entity": {
-                    "minecraft:nbt": "{Tags:['skys_horizon:scene/card_reader']}"
+                    "nbt": "{Tags:[\"skys_horizon.scene.card_reader\"]}"
                 }
             }
         }

@@ -4,3 +4,5 @@ data merge storage skys_horizon {correct_reset_location:0b}
 
 tellraw @a {text:"Resetting world..."}
 data merge storage skys_horizon {initialized:1b}
+
+scoreboard players reset * skys_horizon.counter
