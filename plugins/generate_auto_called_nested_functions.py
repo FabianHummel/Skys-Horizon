@@ -15,4 +15,8 @@ def beet_default(ctx: Context):
                     f"{path}{function_type}", Function()
                 )
 
-                function.lines.append(f"function {function_path}")
+                try:
+                    index = function.lines.index("#__skys_horizon:insertion_point__")
+                    function.lines.insert(index, f"function {function_path}")
+                except ValueError:
+                    function.lines.append(f"function {function_path}")

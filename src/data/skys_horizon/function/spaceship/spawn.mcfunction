@@ -2,13 +2,16 @@ function skys_horizon:spaceship/remove
 $summon armor_stand ~ ~ ~ {\
     Silent: true,\
     Invulnerable: true,\
-    Small: true,\
     Invisible: true,\
     Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.base"],\
     attributes: [\
         {\
             id: "minecraft:gravity",\
             base: 0.004d\
+        },\
+        {\
+            id: "minecraft:scale",\
+            base: 0.0d\
         }\
     ],\
     Passengers: [\
@@ -20,7 +23,7 @@ $summon armor_stand ~ ~ ~ {\
             transformation: {\
                 left_rotation: [0f, 0f, 0f, 1f],\
                 right_rotation: [0f, 0f, 0f, 10f],\
-                translation: [0f, 1f, 0f],\
+                translation: [0f, 1.876f, 0f],\
                 scale: [1f, 1f, 1f]\
             },\
             item: {\
@@ -35,6 +38,16 @@ $summon armor_stand ~ ~ ~ {\
                 }\
             },\
             Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.model"]\
+        },\
+        {\
+            id: "minecraft:interaction",\
+            width: 2f,\
+            height: 2.5f,\
+            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.interaction", "skys_horizon.interactable"],\
+            data: {\
+                interaction_duration: 20,\
+                on_success: "function skys_horizon:spaceship/enter"\
+            }\
         }\
     ]\
 }

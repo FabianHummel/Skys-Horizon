@@ -1,2 +1,3 @@
 tag @s add skys_horizon.interactable.active
-execute store result storage skys_horizon crosshair.duration int 1 run scoreboard players get @s skys_horizon.interactable.duration
+tag @p add skys_horizon.crosshair.task
+execute if data entity @s data.interaction_duration run return run function skys_horizon:interactable/main_interactable_task
