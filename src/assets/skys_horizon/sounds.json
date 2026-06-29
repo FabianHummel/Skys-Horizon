@@ -1,4 +1,12 @@
 {
+    "silent": {
+        "sounds": [
+            {
+                "name": "skys_horizon:silent",
+                "stream": false
+            }
+        ]
+    },
     "music.space": {
         "sounds": [
             {

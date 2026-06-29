@@ -1759,7 +1759,8 @@
   },
   "minecraft:adventure/kill_all_mobs": {
     "criteria": {
-      "minecraft:zombie": "2026-02-21 15:32:18 +0100"
+      "minecraft:zombie": "2026-02-21 15:32:18 +0100",
+      "minecraft:slime": "2026-06-28 14:14:07 +0200"
     },
     "done": false
   },
@@ -3568,6 +3569,49 @@
       "has_red_sandstone": "2026-06-12 23:29:29 +0200"
     },
     "done": true
+  },
+  "minecraft:recipes/misc/melon_seeds": {
+    "criteria": {
+      "has_melon": "2026-06-22 16:50:15 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/glistering_melon_slice": {
+    "criteria": {
+      "has_melon": "2026-06-22 16:50:15 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/melon": {
+    "criteria": {
+      "has_melon": "2026-06-22 16:50:15 +0200"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-06-25 20:28:16 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/sticky_piston": {
+    "criteria": {
+      "has_slime_ball": "2026-06-28 14:11:51 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/slime_block": {
+    "criteria": {
+      "has_slime_ball": "2026-06-28 14:11:51 +0200"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:badlands": "2026-06-28 21:01:56 +0200",
+      "minecraft:plains": "2026-06-28 17:15:59 +0200"
+    },
+    "done": false
   },
   "DataVersion": 4786
 }

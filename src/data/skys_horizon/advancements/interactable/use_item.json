@@ -1,0 +1,10 @@
+{
+    "criteria": {
+        "right_click": {
+            "trigger": "minecraft:using_item"
+        }
+    },
+    "rewards": {
+        "function": "skys_horizon:interactable/using_item"
+    }
+}

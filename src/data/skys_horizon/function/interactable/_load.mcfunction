@@ -1,3 +1,4 @@
 scoreboard objectives add skys_horizon.interactable dummy
-
-scoreboard players set $range skys_horizon.interactable 4
+scoreboard objectives add skys_horizon.interactable.progress dummy
+scoreboard objectives add skys_horizon.interactable.progress_direction dummy
+scoreboard objectives add skys_horizon.interactable.selected_item_slot dummy

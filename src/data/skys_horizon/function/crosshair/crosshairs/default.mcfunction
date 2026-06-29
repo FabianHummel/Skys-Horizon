@@ -1,5 +1,8 @@
-function skys_horizon:crosshair/show {\
-    type: "\uE000",\
-    duration: 0,\
-    color: "#000000",\
+title @s times 0 2t 0
+
+title @s title {\
+    "text": "\uE000",\
+    "font": "skys_horizon:crosshair",\
+    "shadow_color": 0,\
+    "color": "#000000"\
 }

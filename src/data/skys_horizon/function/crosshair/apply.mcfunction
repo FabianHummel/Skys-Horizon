@@ -7,8 +7,8 @@ execute store result score #tmp1 skys_horizon.temp run time query gametime
 scoreboard players operation #tmp1 skys_horizon.temp -= #time skys_horizon.crosshair
 execute store result score #time skys_horizon.crosshair run time query gametime
 scoreboard players operation #tmp1 skys_horizon.temp *= #1.000 skys_horizon.const
-scoreboard players operation #tmp1 skys_horizon.temp /= $duration skys_horizon.crosshair
-execute if score $duration skys_horizon.crosshair matches 0 run scoreboard players set #tmp1 skys_horizon.temp 1000
+scoreboard players operation #tmp1 skys_horizon.temp /= @s skys_horizon.crosshair.duration
+execute if score @s skys_horizon.crosshair.duration matches 0 run scoreboard players set #tmp1 skys_horizon.temp 1000
 
 # Calculate new offset: min(100% - progress - old offset, 0%)
 scoreboard players set #in skys_horizon.temp 1000
