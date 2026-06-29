@@ -12,7 +12,7 @@ in vec3 Pos;
 in vec2 texCoord;
 in vec2 atlasSize;
 in vec4 overlayColor;
-in vec4 lightColor;
+in vec4 lightMapColor;
 in vec4 vertexColor;
 in vec4 baseColor;
 in float sphericalVertexDistance;
@@ -51,6 +51,9 @@ void main() {
         return;
     }
 
-    color *= vertexColor * lightColor * ColorModulator;
+    color *= vertexColor * ColorModulator;
+    color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
+    color *= lightMapColor;
+
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }

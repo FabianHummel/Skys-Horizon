@@ -1,9 +1,9 @@
 {
 	"meta": {
 		"format": "animated-java:format/blueprint",
-		"format_version": "1.10.0-beta.7",
+		"format_version": "1.10.1",
 		"uuid": "fbcf494b-51de-da1f-4c5c-d93dc3c9111f",
-		"save_location": "/Users/fabian/Documents/Projects/Sky's Horizon/assets/scene/airlock_door.ajblueprint",
+		"save_location": "C:\\Users\\zzzdr\\Documents\\Skys-Horizon\\assets\\scene\\airlock_door.ajblueprint",
 		"last_used_blueprint_id": "skys_horizon:scene/airlock_door"
 	},
 	"resolution": {
@@ -13,8 +13,9 @@
 	"blueprint_settings": {
 		"blueprint_id": "skys_horizon:scene/airlock_door",
 		"render_box": [48, 48],
-		"resource_pack": "/Users/fabian/Documents/Projects/Sky's Horizon/include/animated_java-resourcepack",
-		"data_pack": "/Users/fabian/Documents/Projects/Sky's Horizon/include/animated_java-datapack",
+		"target_minecraft_version": "26.2",
+		"resource_pack": "C:\\Users\\zzzdr\\Documents\\Skys-Horizon\\include\\animated_java-resourcepack",
+		"data_pack": "C:\\Users\\zzzdr\\Documents\\Skys-Horizon\\include\\animated_java-datapack",
 		"interpolation_duration": 3,
 		"teleportation_duration": 0,
 		"auto_update_rig_orientation": false
@@ -468,7 +469,7 @@
 			"override": false,
 			"length": 1,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"saved": true,
 			"path": "/Users/fabian/Downloads/model.animation.json",
 			"scope": 0,
@@ -641,7 +642,8 @@
 							"time": 1,
 							"color": -1,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						}
 					]
 				},

@@ -2,10 +2,11 @@
   "condition": "minecraft:entity_properties",
   "entity": "this",
   "predicate": {
-    "type_specific": {
-      "type": "player",
+    "minecraft:type_specific/player": {
       "looking_at": {
-        "nbt": "{Tags:['find_looking.in_filter']}"
+        "minecraft:entity_tags": {
+          "any_of": ["find_looking.in_filter"]
+        }
       }
     }
   }

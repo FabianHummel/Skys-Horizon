@@ -1872,12 +1872,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/jungle_hanging_sign": {
-    "criteria": {
-      "has_stripped_logs": "2026-02-22 17:18:53 +0100"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/jungle_shelf": {
     "criteria": {
       "has_stripped_jungle_log": "2026-02-22 17:18:53 +0100"
@@ -2019,12 +2013,6 @@
   "minecraft:recipes/decorations/pale_oak_shelf": {
     "criteria": {
       "has_stripped_pale_oak_log": "2026-02-22 19:14:15 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/pale_oak_hanging_sign": {
-    "criteria": {
-      "has_stripped_logs": "2026-02-22 19:14:15 +0100"
     },
     "done": true
   },
@@ -2739,12 +2727,6 @@
   "minecraft:recipes/misc/wind_charge": {
     "criteria": {
       "has_breeze_rod": "2026-06-02 10:25:49 +0200"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/chiseled_tuff": {
-    "criteria": {
-      "has_tuff_slab": "2026-06-02 14:49:17 +0200"
     },
     "done": true
   },
@@ -3613,5 +3595,5 @@
     },
     "done": false
   },
-  "DataVersion": 4786
+  "DataVersion": 4903
 }

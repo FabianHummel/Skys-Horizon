@@ -2,9 +2,10 @@
   "condition": "minecraft:entity_properties",
   "entity": "this",
   "predicate": {
-    "vehicle": {
-      "type": "minecraft:item_display",
-      "nbt": "{Tags:['skys_horizon.spaceship']}"
+    "minecraft:vehicle": {
+      "minecraft:entity_tags": {
+        "any_of": ["skys_horizon.spaceship"]
+      }
     }
   }
 }

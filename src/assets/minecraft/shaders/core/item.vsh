@@ -21,7 +21,7 @@ out vec3 Pos;
 out vec2 texCoord;
 out vec2 atlasSize;
 out vec4 overlayColor;
-out vec4 lightColor;
+out vec4 lightMapColor;
 out vec4 vertexColor;
 out vec4 baseColor;
 out float sphericalVertexDistance;
@@ -45,9 +45,9 @@ void main() {
     Pos = Position;
     texCoord = UV0;
     atlasSize = textureSize(Sampler0, 0);
-    overlayColor = vec4(1);
-    lightColor = sample_lightmap(Sampler2, UV2);
-    vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, overlayColor);
+    overlayColor = texelFetch(Sampler1, UV1, 0);
+    lightMapColor = sample_lightmap(Sampler2, UV2);
+    vertexColor = minecraft_mix_light(Light0_Direction, Light1_Direction, Normal, Color);
     baseColor = Color;
 
     // objmc
