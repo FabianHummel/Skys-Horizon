@@ -61,7 +61,7 @@ const int _DOT = 4;
 const int _PAR_O = 10530;
 const int _PAR_C = 8778;
 const int _SPACE = 0;
-const int __ = 0;
+const int _ = 0;
 const int _SEMICOLON = 1044;
 
 void drawChar(inout float state, vec2 uv, int bitmap) {
@@ -88,7 +88,7 @@ void drawInt(inout float state, inout vec2 uv, int n) {
         uv.x -= 4.;
         n = -n;
     }
-    float numLength = floor(LOG10 * log(n) + 1. + 1e-7);
+    float numLength = floor(LOG10 * log(float(n)) + 1. + 1e-7);
     uv.x -= 4. * numLength;
     vec2 cursor = uv;
     while (n > 0) {
@@ -180,19 +180,19 @@ void drawGlobals(inout float state, vec2 uv) {
 
     cursor = uv;
     cursor.y += 6.;
-    int[] str2 = int[](_C, _a, _m, _e, _r, _a, _O, _f, _f, _s, _e, _t, __, __, _SPACE, _EQUALS, _SPACE);
+    int[] str2 = int[](_C, _a, _m, _e, _r, _a, _O, _f, _f, _s, _e, _t, _, _, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str2);
     drawVec3(state, cursor, CameraOffset);
 
     cursor = uv;
     cursor.y += 12.;
-    int[] str3 = int[](_S, _c, _r, _e, _e, _n, _S, _i, _z, _e, __, __, __, __, _SPACE, _EQUALS, _SPACE);
+    int[] str3 = int[](_S, _c, _r, _e, _e, _n, _S, _i, _z, _e, _, _, _, _, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str3);
     drawVec2(state, cursor, ScreenSize);
 
     cursor = uv;
     cursor.y += 18.;
-    int[] str5 = int[](_G, _a, _m, _e, _T, _i, _m, _e, __, __, __, __, __, __, _SPACE, _EQUALS, _SPACE);
+    int[] str5 = int[](_G, _a, _m, _e, _T, _i, _m, _e, _, _, _, _, _, _, _SPACE, _EQUALS, _SPACE);
     drawString(state, cursor, str5);
     drawFloat(state, cursor, GameTime);
 }
