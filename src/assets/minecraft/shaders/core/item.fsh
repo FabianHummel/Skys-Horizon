@@ -31,6 +31,7 @@ out vec4 fragColor;
 
 // Sky's Horizon
 #moj_import <skys_horizon:main.glsl>
+#moj_import <skys_horizon:screen.glsl>
 
 #undef FSH
 
@@ -54,6 +55,9 @@ void main() {
     color *= vertexColor * ColorModulator;
     color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
     color *= lightMapColor;
+
+    // Sky's Horizon
+    color = applyPosterization(color);
 
     fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
 }

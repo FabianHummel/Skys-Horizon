@@ -24,9 +24,10 @@ out vec4 vertexColor;
 out vec4 lightMapColor;
 out vec4 overlayColor;
 
+out vec2 texCoord;
+
 // Sky's Horizon
 out vec3 Pos;
-out vec2 texCoord;
 out vec2 atlasSize;
 out vec4 baseColor;
 

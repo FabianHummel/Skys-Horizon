@@ -1,5 +1,3 @@
-function skys_horizon:space/shared/reset_rotation
-
 # Update steering velocity based on player input
 execute if predicate skys_horizon:spaceship/steering/steering_left run scoreboard players operation @s skys_horizon.spaceship.steering -= #steering_acceleration skys_horizon.spaceship.const
 execute if predicate skys_horizon:spaceship/steering/steering_right run scoreboard players operation @s skys_horizon.spaceship.steering += #steering_acceleration skys_horizon.spaceship.const

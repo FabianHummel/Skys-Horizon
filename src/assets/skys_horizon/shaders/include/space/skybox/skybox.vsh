@@ -18,7 +18,7 @@ void main()
         }
 
         vec2 cornerPos = SCREEN_CORNERS[gl_VertexID % 4];
-        gl_Position = vec4(cornerPos, 1.0, 1.0);
+        gl_Position = vec4(cornerPos, 1.0, 2.0);
 
         vec4 rotation = decodeRotationPrecise();
         rotation = vec4(-rotation.xyz, rotation.w);
