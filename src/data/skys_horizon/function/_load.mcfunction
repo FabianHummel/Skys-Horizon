@@ -6,6 +6,7 @@ scoreboard players set #-1 skys_horizon.const -1
 scoreboard players set #0 skys_horizon.const 0
 scoreboard players set #1 skys_horizon.const 1
 scoreboard players set #2 skys_horizon.const 2
+scoreboard players set #10 skys_horizon.const 10
 scoreboard players set #100 skys_horizon.const 100
 scoreboard players set #360 skys_horizon.const 360
 scoreboard players set #1.000 skys_horizon.const 1000

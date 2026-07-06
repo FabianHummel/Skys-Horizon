@@ -1,4 +1,4 @@
-title @s times 0 2t 0
+title @s times 0 999999d 0
 
 title @s title {\
     "text": "\uE000",\
