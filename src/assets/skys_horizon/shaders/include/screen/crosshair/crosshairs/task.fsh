@@ -9,7 +9,7 @@ void main()
     const float FILLED_ALPHA = 0.9;
     const float PI = 3.1415926535897932;
 
-    float radius = min(vertexColor.a + float(iBaseColor.r) / 255.0, 1.0);
+    float radius = crosshair_get_progress();
     float outerRadius = mix(FROM_RADIUS, OUTER_RADIUS, radius);
     float innerRadius = outerRadius - WIDTH;
 
@@ -18,13 +18,9 @@ void main()
 
     float outer = 1.0 - smoothstep(outerRadius - edge, outerRadius + edge, d);
     float inner = 1.0 - smoothstep(innerRadius - edge, innerRadius + edge, d);
-
-    float angle = atan(texCoord0.x, texCoord0.y);
-    float t = mod(angle + 2.0 * PI, 2.0 * PI) / (2.0 * PI);
-    float progress = float(iBaseColor.g << 8 | iBaseColor.b) / 65535.0;
-    float arc = step(t, progress * radius);
-    float alpha = mix(EMPTY_ALPHA * mix(1.0, TRANSPARENCY, radius), FILLED_ALPHA, arc);
-
     float donut = outer - inner;
+
+    float alpha = EMPTY_ALPHA * mix(1.0, TRANSPARENCY, radius);
+
     fragColor = vec4(1.0, 1.0, 1.0, donut * alpha);
 }

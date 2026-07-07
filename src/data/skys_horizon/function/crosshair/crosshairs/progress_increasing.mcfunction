@@ -1,0 +1,3 @@
+# TODO: Set dynamic title times based on duration, add shader, etc...
+
+$say progress increasing! $(out)

@@ -1,4 +1,5 @@
 scoreboard objectives add skys_horizon.interactable dummy
 scoreboard objectives add skys_horizon.interactable.progress dummy
 scoreboard objectives add skys_horizon.interactable.progress_direction dummy
+scoreboard objectives add skys_horizon.interactable.prev_progress_direction dummy
 scoreboard objectives add skys_horizon.interactable.selected_item_slot dummy
