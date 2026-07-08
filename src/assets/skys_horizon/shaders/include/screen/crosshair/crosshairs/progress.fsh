@@ -10,7 +10,7 @@ void main()
     float donut = outer - inner;
 
     float angle = atan(texCoord0.x, texCoord0.y);
-    float t = mod(angle + PI, 2.0 * PI) / (2.0 * PI);
+    float t = mod(angle, 2.0 * PI) / (2.0 * PI);
     float progress = crosshair_get_progress();
     float arc = step(t, progress);
     float alpha = mix(EMPTY_ALPHA * TRANSPARENCY, FILLED_ALPHA, arc);
