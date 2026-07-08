@@ -2,13 +2,6 @@
 void main()
 #endif
 {
-    const float FROM_RADIUS = 0.15;
-    const float OUTER_RADIUS = 0.8;
-    const float WIDTH = 0.2;
-    const float EMPTY_ALPHA = 0.7;
-    const float FILLED_ALPHA = 0.9;
-    const float PI = 3.1415926535897932;
-
     float radius = crosshair_get_progress();
     float outerRadius = mix(FROM_RADIUS, OUTER_RADIUS, radius);
     float innerRadius = outerRadius - WIDTH;

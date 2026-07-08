@@ -4,4 +4,5 @@ scoreboard players operation #in skys_horizon.temp /= $duration skys_horizon.cro
 scoreboard players operation #in skys_horizon.temp += #1.000 skys_horizon.const
 function skys_horizon:utility/int_to_color
 
+execute store result storage skys_horizon temp.duration int 1 run scoreboard players get $duration skys_horizon.crosshair
 $function skys_horizon:crosshair/crosshairs/$(type) with storage skys_horizon temp

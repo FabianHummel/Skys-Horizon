@@ -2,6 +2,8 @@ scoreboard players operation @s skys_horizon.crosshair.task += @s skys_horizon.c
 scoreboard players operation @s skys_horizon.crosshair.task > #-1 skys_horizon.const
 scoreboard players set @s[scores={skys_horizon.crosshair.task=5..}] skys_horizon.crosshair.task 5
 
+tag @s[tag=skys_horizon.crosshair.can_progress] add skys_horizon.crosshair.prev_can_progress
+tag @s[tag=!skys_horizon.crosshair.can_progress] remove skys_horizon.crosshair.prev_can_progress
 tag @s remove skys_horizon.crosshair.can_progress
 tag @s[scores={skys_horizon.crosshair.task=5..}] add skys_horizon.crosshair.can_progress
 

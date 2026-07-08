@@ -9,8 +9,8 @@ give @s minecraft:barrier[\
         "skys_horizon:items/card_reader": true,\
         "skys_horizon:interactable": {\
             increase: 1,\
-            cancel: -1,\
-            duration: 10,\
+            cancel: -5,\
+            duration: 60,\
             command: "function skys_horizon:scene/card_reader/on_read"\
         }\
     },\
