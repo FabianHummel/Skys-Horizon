@@ -3595,5 +3595,11 @@
     },
     "done": false
   },
+  "minecraft:recipes/building_blocks/birch_planks": {
+    "criteria": {
+      "has_logs": "2026-07-08 19:28:13 +0200"
+    },
+    "done": true
+  },
   "DataVersion": 4903
 }
