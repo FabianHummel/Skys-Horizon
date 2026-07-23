@@ -1,7 +1,6 @@
 import logging
 import subprocess
 import tempfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import ClassVar
 
@@ -12,6 +11,8 @@ from beet import (
     TextFile,
     Texture,
 )
+
+from plugins.beet_utils import beet_run_threaded
 
 
 class AsepriteAsset(TextFile):
@@ -31,45 +32,41 @@ def beet_default(ctx: Context):
 
     config = ctx.meta.get("aseprite") or {}
     binary_path = config.get("binary_path") or "aseprite"
-    max_workers = config.get("workers") or 8
 
-    futures = {}
+    results = beet_run_threaded(
+        config, aseprite_assets, convert_asset, ctx, binary_path
+    )
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        for path, asset in aseprite_assets.items():
-            logger.info(f' → Converting "{path}"')
-            future = executor.submit(
-                invoke_aseprite,
-                binary_path,
-                asset.source_path,
-            )
-            futures[future] = path
-
-        for future in as_completed(futures):
-            path = futures[future]
-            ctx.assets.textures[path] = future.result()
+    for path, asset in results.items():
+        ctx.assets.textures[path] = asset
 
     ctx.assets[AsepriteAsset].clear()
 
 
-def invoke_aseprite(
+def convert_asset(
+    path: str,
+    asset: AsepriteAsset,
+    ctx: Context,
     bin: str,
-    texture_path: str,
 ) -> Texture:
+    logger.info(f' → Converting "{path}"')
+
     output_texture_tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
     output_texture_path = Path(output_texture_tmp.name)
     output_texture_tmp.close()
 
     try:
         subprocess.run(
-            args=[bin, "-b", texture_path, "--save-as", str(output_texture_path)],
+            args=[bin, "-b", asset.source_path, "--save-as", str(output_texture_path)],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.PIPE,
             text=True,
         )
 
-        return Texture(Texture.from_path(output_texture_path, 0, -1))
+        bytes = Texture.from_path(output_texture_path, 0, -1)
+
+        return Texture(bytes)
 
     except subprocess.CalledProcessError as e:
         raise ErrorMessage(e.stderr.strip())

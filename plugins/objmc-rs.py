@@ -1,7 +1,6 @@
 import logging
 import subprocess
 import tempfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import ClassVar
 
@@ -13,6 +12,8 @@ from beet import (
     TextFile,
     Texture,
 )
+
+from plugins.beet_utils import beet_run_threaded
 
 
 class ObjAsset(TextFile):
@@ -30,62 +31,38 @@ def beet_default(ctx: Context):
 
     obj_assets: dict[str, ObjAsset] = ctx.assets[ObjAsset]
 
-    meta = ctx.meta.get("objmc") or {}
-    bin = meta.get("binary") or "objmc-rs"
-    models = meta.get("models") or {}
-    max_workers = meta.get("workers") or 8
+    config = ctx.meta.get("objmc") or {}
+    bin = config.get("binary") or "objmc-rs"
+    models = config.get("models") or {}
 
-    futures = {}
+    results = beet_run_threaded(config, models, convert_asset, bin, obj_assets, ctx)
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        for path, marker in models.items():
-            try:
-                source_paths = [obj_assets[path].source_path]
-            except KeyError:
-                source_paths = [
-                    item.source_path
-                    for key, item in obj_assets.items()
-                    if key.startswith(path)
-                ]
-
-            tex_ns = path.replace(":", ":item/")
-            tex = ctx.assets.textures.get(tex_ns)
-            if tex is None:
-                raise ErrorMessage(
-                    f"Could not find matching texture ('{tex_ns}') for model '{path}'"
-                )
-
-            if marker is None:
-                raise ErrorMessage(f"No marker value defined for model '{path}'")
-
-            logger.info(f' → Generating "{path}"')
-            future = executor.submit(
-                invoke_objmc,
-                bin,
-                source_paths,
-                tex.source_path,
-                marker,
-                tex_ns,
-            )
-            futures[future] = (path, tex_ns)
-
-        for future in as_completed(futures):
-            path, tex_ns = futures[future]
-            model, texture = future.result()
-
-            ctx.assets.models[path] = model
-            ctx.assets.textures[tex_ns] = texture
+    for path, (model, texture, tex_ns) in results.items():
+        ctx.assets.models[path] = model
+        ctx.assets.textures[tex_ns] = texture
 
     ctx.assets[ObjAsset].clear()
 
 
-def invoke_objmc(
-    bin: str,
-    obj_paths: list[str],
-    texture_path: str,
-    marker_value: int,
-    texture_namespace: str,
-) -> tuple[Model, Texture]:
+def convert_asset(
+    path: str, marker: int, bin: str, obj_assets: dict[str, ObjAsset], ctx: Context
+) -> tuple[Model, Texture, str]:
+    logger.info(f' → Generating "{path}"')
+
+    try:
+        source_paths = [obj_assets[path].source_path]
+    except KeyError:
+        source_paths = [
+            item.source_path for key, item in obj_assets.items() if key.startswith(path)
+        ]
+
+    tex_ns = path.replace(":", ":item/")
+    tex = ctx.assets.textures.get(tex_ns)
+    if tex is None:
+        raise ErrorMessage(
+            f"Could not find matching texture ('{tex_ns}') for model '{path}'"
+        )
+
     output_model_tmp = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
     output_model_path = Path(output_model_tmp.name)
     output_model_tmp.close()
@@ -98,17 +75,17 @@ def invoke_objmc(
         subprocess.run(
             args=[
                 bin,
-                *[x for item in obj_paths for x in ("--objs", item)],
+                *[x for item in source_paths for x in ("--objs", item)],
                 "--texture",
-                texture_path,
+                tex.source_path,
                 "--marker",
-                str(marker_value),
+                str(marker),
                 "--output-model",
                 str(output_model_path),
                 "--output-texture",
                 str(output_texture_path),
                 "--texture-namespace",
-                texture_namespace,
+                tex_ns,
             ],
             check=True,
             stdout=subprocess.DEVNULL,
@@ -119,6 +96,7 @@ def invoke_objmc(
         return (
             Model(Model.from_path(output_model_path, 0, -1)),
             Texture(Texture.from_path(output_texture_path, 0, -1)),
+            tex_ns,
         )
 
     except subprocess.CalledProcessError as e:

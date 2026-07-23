@@ -1,6 +1,31 @@
 {
+    "attributes": {
+        "minecraft:audio/background_music": {
+            "default": {
+                "sound": {
+                    "sound_id": "skys_horizon:music.space"
+                },
+                "min_delay": 24000,
+                "max_delay": 12000
+            }
+        },
+        "minecraft:audio/ambient_sounds": {
+            "loop": {
+                "sound_id": "skys_horizon:ambient.space.loop"
+            },
+            "additions": [
+                {
+                    "sound": {
+                        "sound_id": "skys_horizon:ambient.space.additions"
+                    },
+                    "tick_chance": 0.0111
+                }
+            ]
+        }
+    },
     "has_skylight": false,
     "has_ceiling": false,
+    "has_ender_dragon_fight": false,
     "coordinate_scale": 1,
     "ambient_light": 0,
     "has_fixed_time": true,
@@ -10,6 +35,5 @@
     "min_y": 0,
     "height": 16,
     "monster_spawn_light_level": 0,
-    "monster_spawn_block_light_limit": 0,
-    "has_ender_dragon_fight": false
+    "monster_spawn_block_light_limit": 0
 }

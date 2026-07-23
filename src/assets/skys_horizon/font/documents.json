@@ -1,0 +1,13 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "skys_horizon:font/documents/arc/mission.png",
+            "ascent": 0,
+            "height": 8,
+            "chars": [
+                "\uE000"
+            ]
+        }
+    ]
+}

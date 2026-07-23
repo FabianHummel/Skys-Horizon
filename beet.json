@@ -25,6 +25,7 @@
         "plugins.marker_color",
         "plugins.dialog",
         "plugins.aseprite",
+        "plugins.doc_convert",
         "bookshelf.module.raycast"
     ],
     "pipeline": [
@@ -42,6 +43,9 @@
                 "skys_horizon:space/planet/sorax4b": 249,
                 "skys_horizon:entity/phoenix": 238
             }
+        },
+        "doc_convert": {
+            "tool": "msword"
         },
         "log_level": {
             "level": "INFO"
