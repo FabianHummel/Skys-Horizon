@@ -1,7 +1,6 @@
 {
 	"pack": {
 		"min_format": 88,
-		"max_format": 88,
-		"description": "Animated Java Resource Pack for 26.1.2"
+		"max_format": 88
 	}
 }
