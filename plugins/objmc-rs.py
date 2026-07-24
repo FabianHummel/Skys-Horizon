@@ -1,7 +1,6 @@
 import logging
 import subprocess
-import tempfile
-from pathlib import Path
+from hashlib import sha256
 from typing import ClassVar
 
 from beet import (
@@ -12,8 +11,6 @@ from beet import (
     TextFile,
     Texture,
 )
-
-from plugins.beet_utils import beet_run_threaded
 
 
 class ObjAsset(TextFile):
@@ -33,11 +30,10 @@ def beet_default(ctx: Context):
 
     config = ctx.meta.get("objmc") or {}
     bin = config.get("binary") or "objmc-rs"
-    models = config.get("models") or {}
+    models: dict[str, int] = config.get("models") or {}
 
-    results = beet_run_threaded(config, models, convert_asset, bin, obj_assets, ctx)
-
-    for path, (model, texture, tex_ns) in results.items():
+    for path, marker in models.items():
+        (model, texture, tex_ns) = convert_asset(path, marker, bin, obj_assets, ctx)
         ctx.assets.models[path] = model
         ctx.assets.textures[tex_ns] = texture
 
@@ -47,8 +43,6 @@ def beet_default(ctx: Context):
 def convert_asset(
     path: str, marker: int, bin: str, obj_assets: dict[str, ObjAsset], ctx: Context
 ) -> tuple[Model, Texture, str]:
-    logger.info(f' → Generating "{path}"')
-
     try:
         source_paths = [obj_assets[path].source_path]
     except KeyError:
@@ -63,13 +57,24 @@ def convert_asset(
             f"Could not find matching texture ('{tex_ns}') for model '{path}'"
         )
 
-    output_model_tmp = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
-    output_model_path = Path(output_model_tmp.name)
-    output_model_tmp.close()
+    cache = ctx.cache.get(__name__)
 
-    output_texture_tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-    output_texture_path = Path(output_texture_tmp.name)
-    output_texture_tmp.close()
+    cached_asset_dir = cache.directory / sha256(path.encode("utf-8")).hexdigest()
+    cached_model_dir = cached_asset_dir.with_suffix(".json")
+    cached_texture_dir = cached_asset_dir.with_suffix(".png")
+
+    if (
+        not cache.has_changed(*source_paths, tex.source_path)
+        and cached_model_dir.exists()
+        and cached_texture_dir.exists()
+    ):
+        return (
+            Model(source_path=cached_model_dir),
+            Texture(source_path=cached_texture_dir),
+            tex_ns,
+        )
+
+    logger.info(f' → Generating "{path}"')
 
     try:
         subprocess.run(
@@ -81,9 +86,9 @@ def convert_asset(
                 "--marker",
                 str(marker),
                 "--output-model",
-                str(output_model_path),
+                str(cached_model_dir),
                 "--output-texture",
-                str(output_texture_path),
+                str(cached_texture_dir),
                 "--texture-namespace",
                 tex_ns,
             ],
@@ -94,14 +99,10 @@ def convert_asset(
         )
 
         return (
-            Model(Model.from_path(output_model_path, 0, -1)),
-            Texture(Texture.from_path(output_texture_path, 0, -1)),
+            Model(source_path=cached_model_dir),
+            Texture(source_path=cached_texture_dir),
             tex_ns,
         )
 
     except subprocess.CalledProcessError as e:
         raise ErrorMessage(e.stderr.strip())
-
-    finally:
-        output_model_path.unlink(missing_ok=True)
-        output_texture_path.unlink(missing_ok=True)

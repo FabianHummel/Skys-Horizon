@@ -1,7 +1,6 @@
 import logging
 import subprocess
-import tempfile
-from pathlib import Path
+from hashlib import sha256
 from typing import ClassVar
 
 from beet import (
@@ -11,8 +10,6 @@ from beet import (
     TextFile,
     Texture,
 )
-
-from plugins.beet_utils import beet_run_threaded
 
 
 class AsepriteAsset(TextFile):
@@ -33,12 +30,8 @@ def beet_default(ctx: Context):
     config = ctx.meta.get("aseprite") or {}
     binary_path = config.get("binary_path") or "aseprite"
 
-    results = beet_run_threaded(
-        config, aseprite_assets, convert_asset, ctx, binary_path
-    )
-
-    for path, asset in results.items():
-        ctx.assets.textures[path] = asset
+    for path, asset in aseprite_assets.items():
+        ctx.assets.textures[path] = convert_asset(path, asset, ctx, binary_path)
 
     ctx.assets[AsepriteAsset].clear()
 
@@ -49,27 +42,28 @@ def convert_asset(
     ctx: Context,
     bin: str,
 ) -> Texture:
-    logger.info(f' → Converting "{path}"')
+    cache = ctx.cache.get(__name__)
 
-    output_texture_tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
-    output_texture_path = Path(output_texture_tmp.name)
-    output_texture_tmp.close()
+    cached_asset_path = cache.directory / sha256(path.encode("utf-8")).hexdigest()
+    cached_asset_path = cached_asset_path.with_suffix(".png")
+
+    if not cache.has_changed(asset.source_path) and cached_asset_path.exists():
+        return Texture(source_path=cached_asset_path)
+
+    logger.info(f' → Converting "{path}"')
 
     try:
         subprocess.run(
-            args=[bin, "-b", asset.source_path, "--save-as", str(output_texture_path)],
+            args=[bin, "-b", asset.source_path, "--save-as", str(cached_asset_path)],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.PIPE,
             text=True,
         )
 
-        bytes = Texture.from_path(output_texture_path, 0, -1)
+        bytes = Texture.from_path(cached_asset_path, 0, -1)
 
         return Texture(bytes)
 
     except subprocess.CalledProcessError as e:
         raise ErrorMessage(e.stderr.strip())
-
-    finally:
-        output_texture_path.unlink(missing_ok=True)

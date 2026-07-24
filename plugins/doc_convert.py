@@ -3,7 +3,7 @@ import os
 import subprocess
 import sys
 import tempfile
-from io import BytesIO
+from hashlib import sha256
 from typing import ClassVar
 
 from beet import (
@@ -13,8 +13,6 @@ from beet import (
     NamespaceFileScope,
     Texture,
 )
-
-from plugins.beet_utils import beet_run_threaded
 
 
 class DocxDocument(BinaryFile):
@@ -33,11 +31,11 @@ def beet_default(ctx: Context):
 
     yield
 
-    documents: dict[str, DocxDocument] = ctx.assets[DocxDocument]
+    document_assets: dict[str, DocxDocument] = ctx.assets[DocxDocument]
 
-    results = beet_run_threaded(config, documents, process_single_document, tool)
+    for path, asset in document_assets.items():
+        images = process_single_document(path, asset, ctx, tool)
 
-    for path, images in results.items():
         if len(images) == 1:
             ctx.assets.textures[f"{path}"] = Texture(images[0])
         else:
@@ -78,7 +76,10 @@ def _convert_docx_to_pdf_msword_macos(input_path: str, pdf_path: str):
 
     # execute the AppleScript via the macOS command line
     process = subprocess.run(
-        ["osascript", "-e", applescript], capture_output=True, text=True
+        ["osascript", "-e", applescript],
+        capture_output=True,
+        text=True,
+        check=True,
     )
 
     if process.returncode != 0:
@@ -112,10 +113,22 @@ def convert_docx_to_pdf(tool: str, input_path: str, pdf_path: str, tmpdir: str):
         raise ErrorMessage(f"Invalid tool configured: '{tool}'")
 
 
-def process_single_document(path: str, asset: DocxDocument, tool: str) -> list[bytes]:
-    logger.info(f' → Converting "{path}"')
+def process_single_document(
+    path: str, asset: DocxDocument, ctx: Context, tool: str
+) -> list[bytes]:
+    cache = ctx.cache.get(__name__)
+
+    cached_asset_filename = sha256(path.encode("utf-8")).hexdigest()
 
     png_outputs = []
+
+    if not cache.has_changed(asset.source_path):
+        return [
+            file_path.read_bytes()
+            for file_path in cache.directory.glob(cached_asset_filename + "*.png")
+        ]
+
+    logger.info(f' → Converting "{path}"')
 
     # Path to the officially shared group-sandbox-folder from Microsoft Office on the Mac
     mac_office_sandbox = os.path.expanduser(
@@ -144,9 +157,12 @@ def process_single_document(path: str, asset: DocxDocument, tool: str) -> list[b
 
         images = convert_from_path(pdf_path, dpi=300)
 
-        for image in images:
-            img_byte_arr = BytesIO()
-            image.save(img_byte_arr, format="PNG")
-            png_outputs.append(img_byte_arr.getvalue())
+        for index, image in enumerate(images):
+            output_path = cache.directory / f"{cached_asset_filename}-{index}.png"
+
+            with open(output_path, "wb") as img:
+                image.save(img, format="PNG")
+
+            png_outputs.append(output_path.read_bytes())
 
     return png_outputs
