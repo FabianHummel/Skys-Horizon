@@ -7,13 +7,13 @@ function skys_horizon:scene/intro/display_solid_color {\
     fadeOut: "0"\
 }
 
-function callback_scheduler:schedule {\
+function cb:schedule {\
     ticks: 250,\
     selector: "@s",\
     command: "function skys_horizon:scene/intro/display_logo"\
 }
 
-function callback_scheduler:schedule {\
+function cb:schedule {\
     ticks: 6000,\
     selector: "@s",\
     command: "function skys_horizon:scene/intro/play_crash_scene"\

@@ -1,5 +1,5 @@
 data modify entity @n[type=minecraft:item_display,tag=skys_horizon.scene.card_reader.lamp] item.id set value "minecraft:redstone_block"
-function callback_scheduler:schedule {\
+function cb:schedule {\
     ticks: 10,\
     selector: "@s",\
     command: 'data modify entity @n[type=minecraft:item_display,tag=skys_horizon.scene.card_reader.lamp] item.id set value \\"minecraft:light_blue_stained_glass\\"'\
