@@ -1,3 +1,19 @@
 [submodule "src/assets/objmc"]
 	path = src/assets/objmc
 	url = https://github.com/FabianHummel/objmc-rs
+
+[submodule "include/callback_scheduler"]
+	path = include/callback_scheduler
+	url = https://github.com/CloudWolfYT/CW-Callback-Scheduler
+
+[submodule "include/find_looking"]
+	path = include/find_looking
+	url = https://github.com/HalbFettKaese/FindLooking
+
+[submodule "include/generate_uuid"]
+	path = include/generate_uuid
+	url = https://github.com/gibbsly/gu
+
+[submodule "include/gibbsly_math"]
+	path = include/gibbsly_math
+	url = https://github.com/gibbsly/gm

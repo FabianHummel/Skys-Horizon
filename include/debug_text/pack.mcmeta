@@ -1,0 +1,7 @@
+{
+	"pack": {
+		"min_format": 88,
+		"max_format": 88,
+        "description": "Displays global shader uniforms. Made by HalbFettKaese (https://discord.com/channels/154777837382008833/1288520413252423764/1429911160655708273)"
+	}
+}
