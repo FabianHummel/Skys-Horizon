@@ -1,0 +1,10 @@
+{
+    "mc-dp-icons.enableLoadTickAutoChange": false,
+    "mc-dp-icons.functionNamesForLoad": [
+        "_load",
+        "_reset"
+    ],
+    "mc-dp-icons.functionNamesForTick": [
+        "_tick"
+    ]
+}
