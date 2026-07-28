@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/inner_stairs",
+    "textures": {
+        "bottom": "skys_horizon:block/floor_tiles/floor_tile_1",
+        "side": "skys_horizon:block/floor_tiles/floor_tile_1",
+        "top": "skys_horizon:block/floor_tiles/floor_tile_1"
+    }
+}

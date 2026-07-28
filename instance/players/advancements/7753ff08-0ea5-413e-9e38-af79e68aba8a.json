@@ -3601,5 +3601,23 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/chiseled_tuff": {
+    "criteria": {
+      "has_slab": "2026-07-28 20:38:04 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_tuff_bricks": {
+    "criteria": {
+      "has_slab": "2026-07-28 20:38:21 +0200"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_deepslate": {
+    "criteria": {
+      "has_slab": "2026-07-28 20:38:23 +0200"
+    },
+    "done": true
+  },
   "DataVersion": 4903
 }

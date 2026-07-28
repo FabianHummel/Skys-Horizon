@@ -34,6 +34,9 @@ def beet_default(ctx: Context):
     document_assets: dict[str, DocxDocument] = ctx.assets[DocxDocument]
 
     for path, asset in document_assets.items():
+        if path[path.rindex("/") + 1 :].startswith("~$"):
+            continue
+
         images = process_single_document(path, asset, ctx, tool)
 
         if len(images) == 1:
@@ -66,11 +69,14 @@ def _convert_docx_to_pdf_msword_macos(input_path: str, pdf_path: str):
 
     # AppleScript that opens Microsoft Word in the background, converts the document and closes
     applescript = f'''
+    set wasRunning to application "Microsoft Word" is running
     tell application "Microsoft Word"
         set openDoc to open file name "{abs_input}"
         save as openDoc file name "{abs_output}" file format format PDF
         close openDoc saving no
-        quit
+        if not wasRunning then
+            quit
+        end if
     end tell
     '''
 
