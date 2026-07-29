@@ -4,7 +4,7 @@
     "has_precipitation": false,
     "temperature_modifier": "none",
     "effects": {
-        "water_color": 0
+        "water_color": "#2F507A"
     },
     "spawners": {},
     "spawn_costs": {},
