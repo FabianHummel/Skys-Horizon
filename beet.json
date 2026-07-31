@@ -8,11 +8,11 @@
         "name": "Sky's Horizon",
         "load": [
             "include/animated_java-datapack",
-            "include/callback_scheduler/Callback Scheduler",
             "include/find_looking",
             "include/generate_uuid",
             "include/gibbsly_math",
-            "src"
+            "src",
+            "include/callback_scheduler/Callback Scheduler"
         ]
     },
     "resource_pack": {

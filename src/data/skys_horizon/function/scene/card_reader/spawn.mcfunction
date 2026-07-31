@@ -14,7 +14,8 @@ $summon minecraft:interaction ~ ~ ~ {\
             AttachFace: false,\
             Tags: ["skys_horizon.interactable", "skys_horizon.scene.card_reader"],\
             data: {\
-                on_success: "$(on_success)"\
+                on_success: "$(on_success)",\
+                key: "$(key)"\
             },\
             active_effects:\
             [\

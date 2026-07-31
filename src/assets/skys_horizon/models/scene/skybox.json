@@ -16,6 +16,7 @@
 				"east": {"uv": [0.00777, 0, 0.00777, 0], "texture": "#0", "tintindex": 0},
 				"west": {"uv": [0.00777, 0, 0.00777, 0], "texture": "#0", "tintindex": 0},
 				"south": {"uv": [0.00777, 0, 0.00777, 0], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [0.00777, 0, 0.00777, 0], "texture": "#0", "tintindex": 0},
 				"down": {"uv": [0.00777, 0, 0.00777, 0], "texture": "#0", "tintindex": 0}
 			}
 		}

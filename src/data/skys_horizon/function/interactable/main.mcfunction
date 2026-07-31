@@ -2,7 +2,7 @@
 attribute @s[gamemode=!adventure] minecraft:block_interaction_range base reset
 attribute @s[gamemode=adventure] minecraft:block_interaction_range base set 0
 
-execute if predicate skys_horizon:interactable/is_holding_interactable_item run function skys_horizon:interactable/holding_interactable_item
+execute if predicate skys_horizon:interactable/holding_interactable run function skys_horizon:interactable/holding_interactable_item
 
 tag @e[distance=..4, tag=skys_horizon.interactable] add find_looking.candidate
 function find_looking:find

@@ -1,7 +1,7 @@
 {
     "model": {
         "type": "minecraft:model",
-        "model": "skys_horizon:scene/plaza/skybox",
+        "model": "skys_horizon:scene/skybox",
         "tints": [
             {
                 "type": "minecraft:dye",
