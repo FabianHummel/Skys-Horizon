@@ -1,0 +1,10 @@
+{
+    "providers": [
+        {
+            "type": "ttf",
+            "file": "skys_horizon:spectral_regular.ttf",
+            "oversample": 5,
+            "size": 7
+        }
+    ]
+}

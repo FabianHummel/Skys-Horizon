@@ -11,14 +11,14 @@
             "include/find_looking",
             "include/generate_uuid",
             "include/gibbsly_math",
-            "src",
-            "include/callback_scheduler/Callback Scheduler"
+            "src"
         ]
     },
     "resource_pack": {
         "name": "Sky's Horizon",
         "load": [
             "include/animated_java-resourcepack",
+            "include/nameless's_low-poly-guns",
             "include/debug_text",
             "include/objmc-rs",
             "src"
@@ -31,7 +31,8 @@
         "plugins.dialog",
         "plugins.aseprite",
         "plugins.doc_convert",
-        "bookshelf.module.raycast"
+        "bookshelf.module.raycast",
+        "include.callback_scheduler"
     ],
     "pipeline": [
         "beet.contrib.log_level",

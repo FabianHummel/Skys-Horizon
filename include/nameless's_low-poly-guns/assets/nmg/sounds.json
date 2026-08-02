@@ -1,0 +1,10 @@
+{
+    "assault_rifle.fire": {
+        "sounds": [
+            {
+                "name": "nmg:aks74u_fire",
+                "stream": false
+            }
+        ]
+    }
+}
