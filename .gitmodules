@@ -13,3 +13,6 @@
 [submodule "include/objmc-rs"]
 	path = include/objmc-rs
 	url = https://github.com/FabianHummel/objmc-rs
+[submodule "include/callback_scheduler"]
+	path = include/callback_scheduler
+	url = https://github.com/FabianHummel/Callback-Scheduler
