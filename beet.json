@@ -31,6 +31,7 @@
         "plugins.dialog",
         "plugins.aseprite",
         "plugins.doc_convert",
+        "plugins.inline_function_declaration",
         "bookshelf.module.raycast",
         "include.callback_scheduler"
     ],
@@ -38,11 +39,9 @@
         "beet.contrib.log_level",
         "beet.contrib.livereload",
         "plugins.generate_auto_called_nested_functions",
-        "plugins.inline_function_declaration",
-        "plugins.icon"
+        "plugins.inline_function_declaration"
     ],
     "meta": {
-        "icon": "assets/logo/icon.png",
         "objmc": {
             "binary": "include/objmc-rs/target/release/objmc-rs",
             "models": {
