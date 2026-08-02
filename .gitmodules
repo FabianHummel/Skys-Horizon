@@ -1,7 +1,3 @@
-[submodule "include/callback_scheduler"]
-	path = include/callback_scheduler
-	url = https://github.com/CloudWolfYT/CW-Callback-Scheduler
-
 [submodule "include/find_looking"]
 	path = include/find_looking
 	url = https://github.com/HalbFettKaese/FindLooking
