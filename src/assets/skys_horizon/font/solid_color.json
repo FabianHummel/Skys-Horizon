@@ -4,6 +4,7 @@
             "type": "bitmap",
             "file": "skys_horizon:font/solid_color.png",
             "ascent": 0,
+            "height": 1,
             "chars": [
                 "\uE000"
             ]

@@ -10,7 +10,7 @@ function skys_horizon:scene/screen/display_solid_color {\
 function cb:schedule {\
     ticks: 250,\
     selector: "@s",\
-    command: "function skys_horizon:scene/mission/escape/zzz/display_logo"\
+    command: "function skys_horizon:scene/mission/escape_the_afi/zzz/display_logo"\
 }
 
 function cb:schedule {\
