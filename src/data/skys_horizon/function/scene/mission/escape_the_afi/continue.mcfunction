@@ -1,1 +1,1 @@
-function skys_horizon:scene/mission/crash/start
+function skys_horizon:scene/mission/crash_on_sorax4b/start

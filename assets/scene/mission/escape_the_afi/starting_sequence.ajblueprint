@@ -1,0 +1,213 @@
+{
+	"meta": {
+		"format": "animated-java:format/blueprint",
+		"format_version": "1.10.2",
+		"uuid": "784875e8-d946-f65e-b5e0-a8c930f63aab",
+		"save_location": "/Users/fabian/Documents/Projects/Sky's Horizon/assets/scene/mission/escape_the_afi/starting_sequence.ajblueprint",
+		"last_used_blueprint_id": "skys_horizon:scene/mission/escape_the_afi/starting_sequence"
+	},
+	"resolution": {
+		"width": 16,
+		"height": 16
+	},
+	"blueprint_settings": {
+		"blueprint_id": "skys_horizon:scene/mission/escape_the_afi/starting_sequence",
+		"render_box": [48, 48],
+		"target_minecraft_version": "26.2",
+		"resource_pack": "../../../../include/animated_java-resourcepack",
+		"data_pack": "../../../../include/animated_java-datapack",
+		"auto_update_rig_orientation": false
+	},
+	"elements": [
+		{
+			"name": "camera",
+			"position": [-63, 73, -56],
+			"rotation": [167.5, -72.5, 180],
+			"fov": 90,
+			"aspect_ratio": [16, 9],
+			"linked_preview": "split_screen_1",
+			"camera_linked": false,
+			"visibility": true,
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"type": "camera",
+			"uuid": "9ca28c4d-15c7-cef8-bf71-be364a36ada5"
+		},
+		{
+			"name": "block_display",
+			"position": [-8, 0, -8],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 9,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:stone",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "812416e5-fb0e-9600-6b46-1db937693c92",
+			"type": "animated_java:vanilla_block_display"
+		}
+	],
+	"groups": [],
+	"outliner": ["9ca28c4d-15c7-cef8-bf71-be364a36ada5", "812416e5-fb0e-9600-6b46-1db937693c92"],
+	"textures": [],
+	"variants": {
+		"default": {
+			"name": "default",
+			"display_name": "Default",
+			"uuid": "a8870ae1-ff02-8d2b-c88c-168fd99d163a",
+			"texture_map": {},
+			"excluded_nodes": [],
+			"is_default": true
+		},
+		"list": []
+	},
+	"animations": [
+		{
+			"uuid": "cde60971-44d3-75f6-7e40-4be9967da0c2",
+			"name": "sequence",
+			"loop": "hold",
+			"override": false,
+			"length": 10.95,
+			"snapping": 20,
+			"selected": true,
+			"saved": true,
+			"path": "",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "0",
+			"excluded_nodes": [
+				{
+					"icon": "deployed_code",
+					"name": "block_display",
+					"value": "812416e5-fb0e-9600-6b46-1db937693c92"
+				}
+			],
+			"animators": {
+				"9ca28c4d-15c7-cef8-bf71-be364a36ada5": {
+					"name": "camera",
+					"type": "camera",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "14",
+									"y": "-29",
+									"z": "11"
+								}
+							],
+							"uuid": "170b071f-21fd-f927-693a-a32b8f06b1ab",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "109",
+									"y": "-29",
+									"z": "69"
+								}
+							],
+							"uuid": "ea25ff7d-8d7f-0516-ce5d-921fed886f1d",
+							"time": 9.65,
+							"color": -1,
+							"interpolation": "linear",
+							"easing": "easeInOutExpo"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "49.6751903834",
+									"y": "-18.6108985327",
+									"z": "13.5130697522"
+								}
+							],
+							"uuid": "f4287434-e58c-70fe-b503-c4275df406a2",
+							"time": 3.05,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "99.86",
+									"y": "-22.75",
+									"z": "34.44"
+								}
+							],
+							"uuid": "7edad92e-bb01-6880-34ca-a7c803f87aa0",
+							"time": 7,
+							"color": -1,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -1.49975],
+							"bezier_left_value": [0, 0, -10.78125],
+							"bezier_right_time": [0.1, 0.1, 1.49975],
+							"bezier_right_value": [0, 0, 10.78125],
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "c94928ca-dceb-fcae-443c-9eafd2b1696f",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "180",
+									"z": "0"
+								}
+							],
+							"uuid": "7a35c5d9-d8c4-9d97-3a2b-405d459e750a",
+							"time": 10,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						}
+					]
+				},
+				"812416e5-fb0e-9600-6b46-1db937693c92": {
+					"name": "block_display",
+					"type": "animated_java:vanilla_block_display",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		}
+	]
+}

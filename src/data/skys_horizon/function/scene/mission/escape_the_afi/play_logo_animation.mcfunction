@@ -16,5 +16,5 @@ function cb:schedule {\
 function cb:schedule {\
     ticks: 6000,\
     selector: "@s",\
-    command: "function skys_horizon:scene/mission/crash/start"\
+    command: "function skys_horizon:scene/mission/crash_on_sorax4b/start"\
 }

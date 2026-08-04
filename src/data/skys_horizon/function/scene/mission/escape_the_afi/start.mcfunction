@@ -14,7 +14,7 @@ function cb:schedule {\
     ticks: 140,\
     selector: "@s",\
     command: "function skys_horizon:scene/mission/show_mission_title_with_bg {\
-        title: 'Chapter I',\
+        title: 'Chapter III',\
         subtitle: '- Escaping the AFI -'\
     }"\
 }
