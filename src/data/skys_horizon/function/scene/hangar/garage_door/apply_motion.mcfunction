@@ -1,1 +1,3 @@
 $execute as @e[type=minecraft:falling_block,tag=skys_horizon.scene.hangar.garage_door] run data modify entity @s Motion[1] set from storage skys_horizon scene.hangar.garage_door.motion_keyframes[$(frame)]
+
+execute as @e[type=minecraft:falling_block,tag=skys_horizon.scene.hangar.garage_door.bottom_row] at @s run fill ~ ~ ~-1 ~ ~1 ~-1 minecraft:air replace minecraft:stone

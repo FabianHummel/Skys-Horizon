@@ -24,5 +24,13 @@
                 "stream": true
             }
         ]
+    },
+    "hangar.garage_door": {
+        "sounds": [
+            {
+                "name": "skys_horizon:hangar/garage_door",
+                "stream": true
+            }
+        ]
     }
 }
