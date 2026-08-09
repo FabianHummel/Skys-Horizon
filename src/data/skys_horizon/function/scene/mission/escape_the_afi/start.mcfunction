@@ -24,3 +24,9 @@ function cb:schedule {\
     selector: "@s",\
     command: "execute at 3ee6de8e-da44-418f-8b4e-ec86d6fdb3ab run setblock ~ ~ ~ minecraft:air"\
 }
+
+function cb:schedule {\
+    ticks: 200,\
+    selector: "@s",\
+    command: "execute at b93763b7-2e97-422b-8bfc-0daa882a2df2 rotated 180 0 run function skys_horizon:scene/mission/escape_the_afi/starting_sequence/summon {args:{}}"\
+}

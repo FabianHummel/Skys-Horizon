@@ -31,13 +31,13 @@
         "plugins.dialog",
         "plugins.aseprite",
         "plugins.doc_convert",
-        "plugins.inline_function_declaration",
         "bookshelf.module.raycast",
         "include.callback_scheduler"
     ],
     "pipeline": [
         "beet.contrib.log_level",
         "beet.contrib.livereload",
+        "plugins.inline_function_declaration",
         "plugins.generate_auto_called_nested_functions",
         "plugins.inline_function_declaration"
     ],
