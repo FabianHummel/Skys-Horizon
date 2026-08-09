@@ -9,6 +9,6 @@ execute if entity @p[gamemode=!adventure] run function {
 execute if entity @p[gamemode=creative] run function {
     gamerule minecraft:send_command_feedback true
 }
-execute if entity @p[gamemode!=creative] run function {
+execute if entity @p[gamemode=!creative] run function {
     gamerule minecraft:send_command_feedback false
 }

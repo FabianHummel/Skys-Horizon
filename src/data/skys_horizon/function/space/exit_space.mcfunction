@@ -1,4 +1,4 @@
 # Todo: teleport spaceship instead (and to correct location)
-execute in minecraft:overworld run tp @s 98 13 30 120 20
+execute in minecraft:overworld run tp @s 99 12 30 120 20
 effect clear @s minecraft:invisibility
 attribute @s minecraft:movement_speed base reset

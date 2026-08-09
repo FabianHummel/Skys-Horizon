@@ -1,0 +1,5 @@
+execute if block ~ ~ ~ minecraft:pale_oak_door[open=true] run playsound minecraft:block.wooden_door.close block @a ~ ~ ~
+execute if block ~ ~ ~ minecraft:pale_oak_door[facing=north] run setblock ~ ~ ~ minecraft:pale_oak_door[open=false,facing=north]
+execute if block ~ ~ ~ minecraft:pale_oak_door[facing=east] run setblock ~ ~ ~ minecraft:pale_oak_door[open=false,facing=east]
+execute if block ~ ~ ~ minecraft:pale_oak_door[facing=south] run setblock ~ ~ ~ minecraft:pale_oak_door[open=false,facing=south]
+execute if block ~ ~ ~ minecraft:pale_oak_door[facing=west] run setblock ~ ~ ~ minecraft:pale_oak_door[open=false,facing=west]

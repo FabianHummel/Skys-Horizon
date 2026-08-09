@@ -1,5 +1,6 @@
-function skys_horizon:space/skybox/remove
-summon item_display 0 0 0 {\
+function skys_horizon:scene/skybox/remove
+
+summon minecraft:item_display 0 0 0 {\
     item_display: "head",\
     view_range: -1f,\
     item: {\
@@ -10,5 +11,5 @@ summon item_display 0 0 0 {\
             "minecraft:dyed_color": 0\
         }\
     },\
-    Tags: ["skys_horizon.space.skybox"]\
+    Tags: ["skys_horizon.scene.skybox"]\
 }
