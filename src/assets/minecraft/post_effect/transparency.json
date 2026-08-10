@@ -119,8 +119,8 @@
             "output": "final"
         },
         {
-            "_comment": "Sky's Horizon post processing shader",
-            "fragment_shader": "skys_horizon:post/shader",
+            "_comment": "Sky's Horizon",
+            "fragment_shader": "skys_horizon:post/sobel",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
@@ -128,13 +128,71 @@
                     "target": "final"
                 },
                 {
-                    "sampler_name": "MainDepth",
-                    "target": "minecraft:main",
-                    "use_depth_buffer": true
+                    "sampler_name": "Data",
+                    "target": "data"
                 },
                 {
                     "sampler_name": "Particles",
                     "target": "minecraft:particles"
+                }
+            ],
+            "uniforms": {
+                "SobelConfig": [
+                    {
+                        "name": "DarkColor",
+                        "type": "vec3",
+                        "value": [
+                            0.0784313725490196,
+                            0.0666666666666667,
+                            0.0745098039215686
+                        ]
+                    },
+                    {
+                        "name": "LightColor",
+                        "type": "vec3",
+                        "value": [
+                            0.4588235294117647,
+                            0.4352941176470588,
+                            0.4235294117647059
+                        ]
+                    }
+                ]
+            },
+            "output": "swap"
+        },
+        {
+            "_comment": "Sky's Horizon",
+            "fragment_shader": "skys_horizon:post/downscale",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "swap"
+                },
+                {
+                    "sampler_name": "Data",
+                    "target": "data"
+                }
+            ],
+            "uniforms": {
+                "DownscaleConfig": [
+                    {
+                        "name": "TargetWidth",
+                        "type": "int",
+                        "value": 1080
+                    }
+                ]
+            },
+            "output": "final"
+        },
+        {
+            "_comment": "Sky's Horizon",
+            "fragment_shader": "skys_horizon:post/phosphor",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "final"
                 },
                 {
                     "sampler_name": "Prev",
