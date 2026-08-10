@@ -20,6 +20,7 @@
             "include/animated_java-resourcepack",
             "include/nameless's_low-poly-guns",
             "include/debug_text",
+            "include/shader_selector",
             "include/objmc-rs",
             "src"
         ]
