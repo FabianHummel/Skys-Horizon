@@ -21,8 +21,8 @@ vec2 getDownscaledResolution(vec2 uv, float intensity)
 {
     if (intensity <= 0) return uv;
     float aspect = ScreenSize.y / ScreenSize.x;
-    vec2 targetResolution = vec2(TargetWidth, TargetWidth * aspect);
-    return mix(uv, floor(uv * targetResolution) / targetResolution, intensity);
+    vec2 newResolution = mix(ScreenSize, vec2(TargetWidth, TargetWidth * aspect), intensity);
+    return floor(uv * newResolution) / newResolution;
 }
 
 void main()
