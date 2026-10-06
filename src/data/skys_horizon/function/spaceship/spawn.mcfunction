@@ -16,6 +16,19 @@ $summon armor_stand ~ ~ ~ {\
     ],\
     Passengers: [\
         {\
+            id: "minecraft:armor_stand",\
+            Silent: true,\
+            Invulnerable: true,\
+            Invisible: true,\
+            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.mount"],\
+            attributes: [\
+                {\
+                    id: "minecraft:scale",\
+                    base: 0.6d\
+                }\
+            ]\
+        },\
+        {\
             id: "minecraft:item_display",\
             item_display: "head",\
             interpolation_duration: 10,\
@@ -23,7 +36,7 @@ $summon armor_stand ~ ~ ~ {\
             transformation: {\
                 left_rotation: [0f, 0f, 0f, 1f],\
                 right_rotation: [0f, 0f, 0f, 10f],\
-                translation: [0f, 1.876f, 0f],\
+                translation: [0f, 2.6f, 0.8f],\
                 scale: [1f, 1f, 1f]\
             },\
             item: {\
@@ -40,14 +53,30 @@ $summon armor_stand ~ ~ ~ {\
             Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.model"]\
         },\
         {\
-            id: "minecraft:interaction",\
-            width: 2f,\
-            height: 2.5f,\
-            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.interaction", "skys_horizon.interactable"],\
+            id: "minecraft:shulker",\
+            NoAI: true,\
+            Silent: true,\
+            Invulnerable: true,\
+            Tags: ["skys_horizon.spaceship", "skys_horizon.spaceship.hitbox", "skys_horizon.spaceship.hitbox.center", "skys_horizon.spaceship.interaction", "skys_horizon.interactable"],\
+            DeathLootTable: "minecraft:empty",\
             data: {\
                 interaction_duration: 20,\
                 on_success: "function skys_horizon:spaceship/enter"\
-            }\
+            },\
+            active_effects: [\
+                {\
+                    "id": "minecraft:invisibility",\
+                    "duration": -1,\
+                    "amplifier": 1,\
+                    "show_particles": false\
+                }\
+            ],\
+            attributes: [\
+                {\
+                    id: "minecraft:scale",\
+                    base: 2.5d\
+                }\
+            ]\
         }\
     ]\
 }

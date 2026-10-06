@@ -36,8 +36,8 @@
 			"uuid": "9ca28c4d-15c7-cef8-bf71-be364a36ada5"
 		},
 		{
-			"name": "room.glb",
-			"path": "/Users/fabian/Downloads/Untitled.glb",
+			"name": "workers_room.glb",
+			"path": "/Users/fabian/Documents/Projects/Sky's Horizon/assets/scene/workers_room.glb",
 			"project": "",
 			"origin": [0, -8, 0],
 			"rotation": [0, 0, 0],
@@ -73,7 +73,7 @@
 			"override": false,
 			"length": 10,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"saved": true,
 			"path": "",
 			"scope": 0,

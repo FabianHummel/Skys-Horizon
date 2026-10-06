@@ -1,0 +1,375 @@
+{
+	"meta": {
+		"format": "animated-java:format/blueprint",
+		"format_version": "1.10.2",
+		"uuid": "d61d2237-8cb8-ce2d-4913-006dce659bbf",
+		"save_location": "/Users/fabian/Documents/Projects/Sky's Horizon/assets/spaceship.ajblueprint",
+		"last_used_blueprint_id": "skys_horizon:spaceship"
+	},
+	"resolution": {
+		"width": 16,
+		"height": 16
+	},
+	"blueprint_settings": {
+		"blueprint_id": "skys_horizon:spaceship",
+		"render_box": [48, 48],
+		"target_minecraft_version": "26.2",
+		"resource_pack": "/Users/fabian/Documents/Projects/Sky's Horizon/include/animated_java-resourcepack",
+		"data_pack": "/Users/fabian/Documents/Projects/Sky's Horizon/include/animated_java-datapack",
+		"use_entity_stacking": false
+	},
+	"elements": [
+		{
+			"name": "block_display",
+			"position": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 8,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:polished_cinnabar",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "e5fa25be-992a-4819-5cd1-5f7c3b979a84",
+			"type": "animated_java:vanilla_block_display"
+		},
+		{
+			"name": "block_display1",
+			"position": [0, 0, 16],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 8,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:polished_cinnabar",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "d3b5a9d5-95a5-14c9-024d-67ae514f3b02",
+			"type": "animated_java:vanilla_block_display"
+		},
+		{
+			"name": "block_display2",
+			"position": [0, 0, 32],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 8,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:polished_cinnabar",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "18d490a3-ae25-5604-fbdf-bdc5e5028bd2",
+			"type": "animated_java:vanilla_block_display"
+		},
+		{
+			"name": "block_display3",
+			"position": [0, 0, 48],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 8,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:polished_cinnabar",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "f8822941-fc5e-c3e8-136a-36f8a2714885",
+			"type": "animated_java:vanilla_block_display"
+		},
+		{
+			"name": "block_display4",
+			"position": [0, 0, 64],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 8,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:polished_cinnabar",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "2cfbfe68-d3cc-768f-c8d6-894029d0ab5e",
+			"type": "animated_java:vanilla_block_display"
+		},
+		{
+			"name": "block_display5",
+			"position": [0, 0, 80],
+			"rotation": [0, 0, 0],
+			"pivotOffset": [0, 0, 0],
+			"scale": [1, 1, 1],
+			"color": 8,
+			"visibility": true,
+			"locked": false,
+			"export": true,
+			"block": "minecraft:polished_cinnabar",
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"scope": 0,
+			"uuid": "595bbd5d-2603-909e-4a25-fec3c6b41521",
+			"type": "animated_java:vanilla_block_display"
+		}
+	],
+	"groups": [
+		{
+			"name": "bone",
+			"uuid": "1180253b-b643-0a5c-e91d-b45115793532",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"itemModelProperties": {
+				"tints": []
+			},
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "bone1",
+			"uuid": "9e3ef4e8-c36c-1e8a-3c3c-06b823c466a4",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"itemModelProperties": {
+				"tints": []
+			},
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "bone2",
+			"uuid": "8a07fe24-09b5-7352-2164-48e4ab2c4c93",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"itemModelProperties": {
+				"tints": []
+			},
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "bone3",
+			"uuid": "2105b82c-1035-45bc-35e4-6b0da56810db",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"itemModelProperties": {
+				"tints": []
+			},
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "bone4",
+			"uuid": "99a3782e-a44b-f350-50db-61dae5cf7f01",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"itemModelProperties": {
+				"tints": []
+			},
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "bone5",
+			"uuid": "d3c4e132-ef3b-4be8-ee53-a5292d438a6d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"onSummonFunction": "",
+			"configs": {
+				"default": {},
+				"variants": {}
+			},
+			"itemModelProperties": {
+				"tints": []
+			},
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": true
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "1180253b-b643-0a5c-e91d-b45115793532",
+			"isOpen": true,
+			"children": ["e5fa25be-992a-4819-5cd1-5f7c3b979a84"]
+		},
+		{
+			"uuid": "9e3ef4e8-c36c-1e8a-3c3c-06b823c466a4",
+			"isOpen": true,
+			"children": ["d3b5a9d5-95a5-14c9-024d-67ae514f3b02"]
+		},
+		{
+			"uuid": "8a07fe24-09b5-7352-2164-48e4ab2c4c93",
+			"isOpen": true,
+			"children": ["18d490a3-ae25-5604-fbdf-bdc5e5028bd2"]
+		},
+		{
+			"uuid": "2105b82c-1035-45bc-35e4-6b0da56810db",
+			"isOpen": true,
+			"children": ["f8822941-fc5e-c3e8-136a-36f8a2714885"]
+		},
+		{
+			"uuid": "99a3782e-a44b-f350-50db-61dae5cf7f01",
+			"isOpen": true,
+			"children": ["2cfbfe68-d3cc-768f-c8d6-894029d0ab5e"]
+		},
+		{
+			"uuid": "d3c4e132-ef3b-4be8-ee53-a5292d438a6d",
+			"isOpen": true,
+			"children": ["595bbd5d-2603-909e-4a25-fec3c6b41521"]
+		}
+	],
+	"textures": [],
+	"variants": {
+		"default": {
+			"name": "default",
+			"display_name": "Default",
+			"uuid": "5ba94ac9-69c2-5009-3afe-7a1c19ce57d2",
+			"texture_map": {},
+			"excluded_nodes": [],
+			"is_default": true
+		},
+		"list": []
+	}
+}

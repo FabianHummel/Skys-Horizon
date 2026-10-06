@@ -7,7 +7,7 @@
                 "when": "basic",
                 "model": {
                     "type": "minecraft:model",
-                    "model": "skys_horizon:spaceship/basic",
+                    "model": "skys_horizon:spaceship",
                     "tints": [
                         {
                             "type": "minecraft:dye",

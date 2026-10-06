@@ -6,5 +6,6 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "beet>=0.116.0",
+    "bolt>=0.50.1",
     "mcbookshelf>=4.1.0",
 ]
