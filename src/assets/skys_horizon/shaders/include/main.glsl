@@ -27,21 +27,21 @@ const vec2[] SCREEN_CORNERS = vec2[](
 #endif
 
 #ifdef SKYS_HORIZON_SPACE_SHADER
-#moj_import <skys_horizon:space/space.glsl>
+#include <skys_horizon:space/space.glsl>
 #endif
 
 #ifdef SKYS_HORIZON_SCREEN_SHADER
-#moj_import <skys_horizon:screen/screen.glsl>
+#include <skys_horizon:screen/screen.glsl>
 #endif
 
 #ifdef SKYS_HORIZON_ENTITY_SHADER
-#moj_import <skys_horizon:entity/entity.glsl>
+#include <skys_horizon:entity/entity.glsl>
 #endif
 
 #ifdef SKYS_HORIZON_SCENE_SHADER
-#moj_import <skys_horizon:scene/scene.glsl>
+#include <skys_horizon:scene/scene.glsl>
 #endif
 
 #ifdef SKYS_HORIZON_PARTICLE_SHADER
-#moj_import <skys_horizon:post/mask.glsl>
+#include <skys_horizon:post/mask.glsl>
 #endif

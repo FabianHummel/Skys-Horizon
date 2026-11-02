@@ -12,12 +12,12 @@ void main()
         isSkyboxMarker = 1;
 
         // hide all other sides of the cube, as we only need 4 verts to display a screenquad
-        if (gl_VertexID >= 4) {
+        if (gl_VertexIndex >= 4) {
             gl_Position = vec4(0.0);
             return;
         }
 
-        vec2 cornerPos = SCREEN_CORNERS[gl_VertexID % 4];
+        vec2 cornerPos = SCREEN_CORNERS[gl_VertexIndex % 4];
         gl_Position = vec4(cornerPos, 1.0, 2.0);
 
         vec4 rotation = decodeRotationPrecise();

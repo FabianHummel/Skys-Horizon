@@ -1,1 +1,1 @@
-#moj_import <skys_horizon:entity/phoenix/phoenix.glsl>
+#include <skys_horizon:entity/phoenix/phoenix.glsl>

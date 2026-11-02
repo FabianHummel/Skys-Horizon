@@ -1,42 +1,45 @@
-#version 150
+#version 330
+#extension GL_ARB_separate_shader_objects : require
 
-#moj_import <minecraft:fog.glsl>
-#moj_import <minecraft:dynamictransforms.glsl>
-#moj_import <minecraft:projection.glsl>
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:fog.glsl>
+#include <minecraft:dynamictransforms.glsl>
+#include <minecraft:projection.glsl>
+#include <minecraft:sample_lightmap.glsl>
+#include <minecraft:globals.glsl>
 
-in vec3 Position;
-in vec2 UV0;
-in vec4 Color;
-in ivec2 UV2;
+layout(location = 0) in vec3 Position;
+layout(location = 1) in vec2 UV0;
+layout(location = 2) in vec4 Color;
+layout(location = 3) in ivec2 UV2;
 
 uniform sampler2D Sampler0;
 uniform sampler2D Sampler2;
 
-out vec3 Pos;
-out float sphericalVertexDistance;
-out float cylindricalVertexDistance;
-out vec2 texCoord0;
-out vec4 vertexColor;
-out vec4 baseColor;
+layout(location = 0) out float sphericalVertexDistance;
+layout(location = 1) out float cylindricalVertexDistance;
+layout(location = 2) out vec2 texCoord0;
+layout(location = 3) out vec4 vertexColor;
+
+layout(location = 4) out vec3 Pos;
+layout(location = 5) out vec4 baseColor;
 
 // ShaderSelector
-#moj_import <shader_selector:marker_settings.glsl>
-#moj_import <shader_selector:utils.glsl>
+#include <shader_selector:marker_settings.glsl>
+#include <shader_selector:utils.glsl>
 
-flat out int isMarker;
-flat out ivec4 iColor;
+layout(location = 6) flat out int isMarker;
+layout(location = 7) flat out ivec4 iColor;
 
 // Debug Text
-flat out int isDebugMarker;
-out vec2 corner;
+layout(location = 8) flat out int isDebugMarker;
+layout(location = 9) out vec2 corner;
 
 #define SKYS_HORIZON_PARTICLE_SHADER
 
 #define VSH
 
 // Sky's Horizon
-#moj_import <skys_horizon:main.glsl>
+#include <skys_horizon:main.glsl>
 
 #undef VSH
 
@@ -45,18 +48,18 @@ void main() {
     baseColor = Color;
 
     // ShaderSelector
-    #moj_import <shader_selector:main.vsh>
+    #include <shader_selector:main.vsh.glsl>
 
     // Sky's Horizon
-    #moj_import <skys_horizon:main.vsh>
+    #include <skys_horizon:main.vsh.glsl>
 
     gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
 
     // Debug Text
-    #moj_import <debug_text:main.vsh>
+    #include <debug_text:main.vsh.glsl>
 
     sphericalVertexDistance = fog_spherical_distance(Pos);
     cylindricalVertexDistance = fog_cylindrical_distance(Pos);
     texCoord0 = UV0;
-    vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
+    vertexColor = Color * sample_lightmap(Sampler2, UV2);
 }

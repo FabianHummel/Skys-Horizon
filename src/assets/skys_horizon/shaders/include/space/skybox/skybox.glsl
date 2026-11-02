@@ -1,12 +1,12 @@
 #ifdef VSH
 
-flat out int isSkyboxMarker;
+layout(location = 18) flat out int isSkyboxMarker;
 
 #endif
 
 #ifdef FSH
 
-flat in int isSkyboxMarker;
+layout(location = 18) flat in int isSkyboxMarker;
 
 #endif
 

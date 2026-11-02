@@ -1,14 +1,15 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
-#moj_import <shader_selector:marker_settings.glsl>
-#moj_import <shader_selector:utils.glsl>
+#include <shader_selector:marker_settings.glsl>
+#include <shader_selector:utils.glsl>
 
 uniform sampler2D ParticlesSampler;
 uniform sampler2D DataSampler;
 
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:globals.glsl>
 
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 
 float deltaTime;
 

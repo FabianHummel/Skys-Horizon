@@ -1,8 +1,8 @@
 #ifdef VSH
 
-flat out int planetId;
-flat out int isPlanetAtmosphere;
-out vec3 planetAtmosphereColor;
+layout(location = 13) flat out int planetId;
+layout(location = 14) flat out int isPlanetAtmosphere;
+layout(location = 15) out vec3 planetAtmosphereColor;
 
 const vec3 SUN_ATMOSPHERE_COLOR = vec3(252, 221, 126);
 
@@ -29,9 +29,9 @@ bool isPlanetAtmosphereMesh() {
 
 #ifdef FSH
 
-flat in int planetId;
-flat in int isPlanetAtmosphere;
-in vec3 planetAtmosphereColor;
+layout(location = 13) flat in int planetId;
+layout(location = 14) flat in int isPlanetAtmosphere;
+layout(location = 15) in vec3 planetAtmosphereColor;
 
 float calculatePlanetAtmosphereBrightness(float angle) {
     return pow(angle, 5) * 180.0;

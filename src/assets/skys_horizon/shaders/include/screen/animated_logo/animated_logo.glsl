@@ -1,12 +1,12 @@
 #ifdef VSH
 
-flat out int isAnimatedLogoMarker;
+layout(location = 5) flat out int isAnimatedLogoMarker;
 
 #endif
 
 #ifdef FSH
 
-flat in int isAnimatedLogoMarker;
+layout(location = 5) flat in int isAnimatedLogoMarker;
 
 #endif
 

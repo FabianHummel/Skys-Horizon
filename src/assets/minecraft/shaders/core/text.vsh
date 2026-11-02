@@ -1,39 +1,42 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
 #if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
-#moj_import <minecraft:fog.glsl>
-#moj_import <minecraft:sample_lightmap.glsl>
+#include <minecraft:fog.glsl>
+#include <minecraft:sample_lightmap.glsl>
 #endif
 
-#moj_import <minecraft:dynamictransforms.glsl>
-#moj_import <minecraft:projection.glsl>
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:dynamictransforms.glsl>
+#include <minecraft:projection.glsl>
+#include <minecraft:globals.glsl>
 
-in vec3 Position;
-in vec4 Color;
-in vec2 UV0;
+layout(location = 0) in vec3 Position;
+layout(location = 1) in vec4 Color;
+layout(location = 2) in vec2 UV0;
 #if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
-in ivec2 UV2;
+layout(location = 3) in ivec2 UV2;
 #endif
 
 uniform sampler2D Sampler0;
 
 #if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
 uniform sampler2D Sampler2;
-out float sphericalVertexDistance;
-out float cylindricalVertexDistance;
+layout(location = 0) out float sphericalVertexDistance;
+layout(location = 1) out float cylindricalVertexDistance;
 #endif
 
-out vec4 vertexColor;
-out vec2 texCoord0;
-out vec4 baseColor;
+layout(location = 2) out vec4 vertexColor;
+layout(location = 3) out vec2 texCoord0;
+
+// Sky's Horizon (locations 5-7 are used by its screen modules)
+layout(location = 4) out vec4 baseColor;
 
 #define SKYS_HORIZON_SCREEN_SHADER
 
 #define VSH
 
 // Sky's Horizon
-#moj_import <skys_horizon:main.glsl>
+#include <skys_horizon:main.glsl>
 
 #undef VSH
 
@@ -50,7 +53,7 @@ void main() {
 
     // Sky's Horizon
     vec3 Pos = Position;
-    #moj_import <skys_horizon:main.vsh>
+    #include <skys_horizon:main.vsh.glsl>
 
     gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
 }

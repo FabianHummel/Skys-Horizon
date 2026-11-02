@@ -15,15 +15,15 @@ void main()
 
     switch (crosshairId) {
         case 0:
-        #moj_import <skys_horizon:screen/crosshair/crosshairs/default.fsh>
+        #include <skys_horizon:screen/crosshair/crosshairs/default.fsh.glsl>
         return;
 
         case 1:
-        #moj_import <skys_horizon:screen/crosshair/crosshairs/task.fsh>
+        #include <skys_horizon:screen/crosshair/crosshairs/task.fsh.glsl>
         return;
 
         case 2:
-        #moj_import <skys_horizon:screen/crosshair/crosshairs/progress.fsh>
+        #include <skys_horizon:screen/crosshair/crosshairs/progress.fsh.glsl>
         return;
     }
 }

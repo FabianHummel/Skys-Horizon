@@ -1,1 +1,1 @@
-#moj_import <skys_horizon:scene/hangar/hangar.glsl>
+#include <skys_horizon:scene/hangar/hangar.glsl>

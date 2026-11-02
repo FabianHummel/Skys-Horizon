@@ -1,6 +1,6 @@
 #ifdef VSH
 
-flat out int isSpaceship;
+layout(location = 19) flat out int isSpaceship;
 
 const mat3 SPACESHIP_MAT = mat3(
         -1.0, 0.0, 0.0,
@@ -11,6 +11,6 @@ const mat3 SPACESHIP_MAT = mat3(
 
 #ifdef FSH
 
-flat in int isSpaceship;
+layout(location = 19) flat in int isSpaceship;
 
 #endif

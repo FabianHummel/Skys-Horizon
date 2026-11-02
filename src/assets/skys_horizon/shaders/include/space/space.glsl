@@ -1,8 +1,8 @@
 #ifdef VSH
 
-out float Yaw;
-out float Pitch;
-out vec3 SunDirection;
+layout(location = 10) out float Yaw;
+layout(location = 11) out float Pitch;
+layout(location = 12) out vec3 SunDirection;
 
 const vec3 SUN_POSITION = vec3(0.0, 0.0, 0.0);
 
@@ -69,9 +69,9 @@ vec3 rotate(vec3 v, vec4 q) {
 
 #ifdef FSH
 
-in float Yaw;
-in float Pitch;
-in vec3 SunDirection;
+layout(location = 10) in float Yaw;
+layout(location = 11) in float Pitch;
+layout(location = 12) in vec3 SunDirection;
 
 const vec4 SUN_COLOR = vec4(1.0, 1.0, 1.0, 1.0);
 const float SUN_PLANET_INTENSITY = 2.0;
@@ -80,7 +80,7 @@ const float SPACE_AMBIENT_LIGHT = 0.1;
 
 #endif
 
-#moj_import <skys_horizon:space/planet/planet.glsl>
-#moj_import <skys_horizon:space/warp/warp.glsl>
-#moj_import <skys_horizon:space/skybox/skybox.glsl>
-#moj_import <skys_horizon:space/spaceship/spaceship.glsl>
+#include <skys_horizon:space/planet/planet.glsl>
+#include <skys_horizon:space/warp/warp.glsl>
+#include <skys_horizon:space/skybox/skybox.glsl>
+#include <skys_horizon:space/spaceship/spaceship.glsl>

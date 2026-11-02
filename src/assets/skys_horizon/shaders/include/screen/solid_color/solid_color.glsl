@@ -1,11 +1,11 @@
 #ifdef VSH
 
-flat out int isSolidColorMarker;
+layout(location = 6) flat out int isSolidColorMarker;
 
 #endif
 
 #ifdef FSH
 
-flat in int isSolidColorMarker;
+layout(location = 6) flat in int isSolidColorMarker;
 
 #endif

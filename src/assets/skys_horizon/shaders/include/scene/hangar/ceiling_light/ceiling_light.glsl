@@ -1,6 +1,6 @@
 #ifdef VSH
 
-flat out int isHangarCeilingLight;
+layout(location = 21) flat out int isHangarCeilingLight;
 
 const vec3[] hangarCeilingLightCone = vec3[](
         vec3(1.0, 1.0, 1.0),
@@ -17,6 +17,6 @@ const vec3[] hangarCeilingLightCone = vec3[](
 
 #ifdef FSH
 
-flat in int isHangarCeilingLight;
+layout(location = 21) flat in int isHangarCeilingLight;
 
 #endif
