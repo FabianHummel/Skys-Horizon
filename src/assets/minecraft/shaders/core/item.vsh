@@ -36,14 +36,10 @@ layout(location = 5) out vec2 texCoord;
 layout(location = 6) out vec2 texCoordGlint;
 #endif
 
-// Sky's Horizon (locations 10-21 are used by its modules, objmc must start at 22)
+// Sky's Horizon (kept for objmc, which may reference these names)
 layout(location = 7) out vec3 Pos;
 layout(location = 8) out vec2 atlasSize;
 layout(location = 9) out vec4 baseColor;
-
-#define SKYS_HORIZON_SPACE_SHADER
-#define SKYS_HORIZON_ENTITY_SHADER
-#define SKYS_HORIZON_SCENE_SHADER
 
 #define VSH
 
@@ -51,7 +47,7 @@ layout(location = 9) out vec4 baseColor;
 #include <objmc:main.glsl>
 
 // Sky's Horizon
-#include <skys_horizon:main.glsl>
+#include <skys_horizon:hooks/item.glsl>
 
 #undef VSH
 
@@ -80,9 +76,11 @@ void main() {
     #include <objmc:main.vsh.glsl>
 
     // Sky's Horizon
-    #include <skys_horizon:main.vsh.glsl>
+    ItemVertex sh = sh_item_vertex(Pos, vertexNormal, isObjmcModel == 1, ivec4(objmcMarker), posOffset);
+    Pos = sh.pos;
+    vertexNormal = sh.normal;
 
-    gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
+    gl_Position = sh.hasClipPos ? sh.clipPos : ProjMat * sh.modelView * vec4(Pos, 1.0);
 
     #ifndef OIT_ALPHA_ONLY
     sphericalVertexDistance = fog_spherical_distance(Pos);

@@ -22,17 +22,13 @@ layout(location = 4) in vec4 baseColor;
 
 #ifndef OIT_ALPHA_ONLY
 layout(location = 0) out vec4 fragColor;
-#else
-// Alpha-only OIT passes have no color output; custom effects that write it simply skip transmittance
-vec4 fragColor;
 #endif
-
-#define SKYS_HORIZON_SCREEN_SHADER
 
 #define FSH
 
 // Sky's Horizon
-#include <skys_horizon:main.glsl>
+#include <skys_horizon:hooks/text.glsl>
+#include <skys_horizon:hooks/output.glsl>
 
 #undef FSH
 
@@ -65,7 +61,11 @@ void main() {
     vec4 color = texColor * vertexColor * ColorModulator;
 
     // Sky's Horizon
-    #include <skys_horizon:main.fsh.glsl>
+    vec4 shColor;
+    if (sh_text_fragment(vertexColor, baseColor, texCoord0, shColor)) {
+        sh_emit(shColor);
+        return;
+    }
 
     if (color.a < 0.1) {
         discard;

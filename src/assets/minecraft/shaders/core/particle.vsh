@@ -20,38 +20,34 @@ layout(location = 1) out float cylindricalVertexDistance;
 layout(location = 2) out vec2 texCoord0;
 layout(location = 3) out vec4 vertexColor;
 
-layout(location = 4) out vec3 Pos;
-layout(location = 5) out vec4 baseColor;
-
 // ShaderSelector
 #include <shader_selector:marker_settings.glsl>
 #include <shader_selector:utils.glsl>
 
-layout(location = 6) flat out int isMarker;
-layout(location = 7) flat out ivec4 iColor;
+layout(location = 4) flat out int isMarker;
+layout(location = 5) flat out ivec4 iColor;
 
 // Debug Text
-layout(location = 8) flat out int isDebugMarker;
-layout(location = 9) out vec2 corner;
-
-#define SKYS_HORIZON_PARTICLE_SHADER
+layout(location = 6) flat out int isDebugMarker;
+layout(location = 7) out vec2 corner;
 
 #define VSH
 
 // Sky's Horizon
-#include <skys_horizon:main.glsl>
+#include <skys_horizon:hooks/particle.glsl>
 
 #undef VSH
 
 void main() {
-    Pos = Position;
-    baseColor = Color;
+    vec3 Pos = Position;
 
     // ShaderSelector
     #include <shader_selector:main.vsh.glsl>
 
     // Sky's Horizon
-    #include <skys_horizon:main.vsh.glsl>
+    if (sh_particle_vertex(iColor, Pos)) {
+        isMarker = 1;
+    }
 
     gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
 

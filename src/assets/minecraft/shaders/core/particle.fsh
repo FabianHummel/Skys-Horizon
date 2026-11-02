@@ -14,32 +14,20 @@ layout(location = 1) in float cylindricalVertexDistance;
 layout(location = 2) in vec2 texCoord0;
 layout(location = 3) in vec4 vertexColor;
 
-layout(location = 4) in vec3 Pos;
-layout(location = 5) in vec4 baseColor;
-
 #ifndef OIT_ALPHA_ONLY
 layout(location = 0) out vec4 fragColor;
 #else
-// Alpha-only OIT passes have no color output; custom effects that write it simply skip transmittance
+// The ShaderSelector/Debug Text snippets write fragColor, alpha-only OIT passes have no color output
 vec4 fragColor;
 #endif
 
 // ShaderSelector
-layout(location = 6) flat in int isMarker;
-layout(location = 7) flat in ivec4 iColor;
+layout(location = 4) flat in int isMarker;
+layout(location = 5) flat in ivec4 iColor;
 
 // Debug Text
-layout(location = 8) flat in int isDebugMarker;
-layout(location = 9) in vec2 corner;
-
-#define SKYS_HORIZON_PARTICLE_SHADER
-
-#define FSH
-
-// Sky's Horizon
-#include <skys_horizon:main.glsl>
-
-#undef FSH
+layout(location = 6) flat in int isDebugMarker;
+layout(location = 7) in vec2 corner;
 
 vec4 calculateFinalColor(vec4 color) {
     #ifdef OIT_ACCUMULATE
@@ -57,9 +45,6 @@ void main() {
 
     // ShaderSelector
     #include <shader_selector:main.fsh.glsl>
-
-    // Sky's Horizon
-    #include <skys_horizon:main.fsh.glsl>
 
     // Vanilla code
     vec4 color = texture(Sampler0, texCoord0) * vertexColor * ColorModulator;

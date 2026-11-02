@@ -6,7 +6,7 @@
 #include <minecraft:oit.glsl>
 
 // Sky's Horizon
-#include <skys_horizon:screen.glsl>
+#include <skys_horizon:hooks/world.glsl>
 
 uniform sampler2D Sampler0;
 
@@ -21,7 +21,7 @@ layout(location = 0) out vec4 fragColor;
 
 vec4 calculateFinalColor(vec4 color) {
     // Sky's Horizon
-    color = applyPosterization(color);
+    color = sh_world_shade(color);
 
     #ifdef OIT_ACCUMULATE
     color = sampleColorForAccumulation(color);

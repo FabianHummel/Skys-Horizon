@@ -35,14 +35,7 @@ layout(location = 9) in vec4 baseColor;
 
 #ifndef OIT_ALPHA_ONLY
 layout(location = 0) out vec4 fragColor;
-#else
-// Alpha-only OIT passes have no color output; custom effects that write it simply skip transmittance
-vec4 fragColor;
 #endif
-
-#define SKYS_HORIZON_SPACE_SHADER
-#define SKYS_HORIZON_ENTITY_SHADER
-#define SKYS_HORIZON_SCENE_SHADER
 
 #define FSH
 
@@ -50,8 +43,9 @@ vec4 fragColor;
 #include <objmc:main.glsl>
 
 // Sky's Horizon
-#include <skys_horizon:main.glsl>
-#include <skys_horizon:screen.glsl>
+#include <skys_horizon:hooks/item.glsl>
+#include <skys_horizon:hooks/world.glsl>
+#include <skys_horizon:hooks/output.glsl>
 
 #undef FSH
 
@@ -66,7 +60,7 @@ vec4 calculateFinalColor(vec4 color) {
     #endif
 
     // Sky's Horizon
-    color = applyPosterization(color);
+    color = sh_world_shade(color);
 
     #ifdef OIT_ACCUMULATE
     color = sampleColorForAccumulation(color);
@@ -83,18 +77,17 @@ void main() {
     vec4 color = texture(Sampler0, texCoord);
 
     // Sky's Horizon
-    #include <skys_horizon:main.fsh.glsl>
+    vec4 shColor;
+    if (sh_item_fragment(color, Pos, vertexNormal, texCoord, atlasSize, shColor)) {
+        sh_emit(shColor);
+        return;
+    }
 
     #ifdef ALPHA_CUTOUT
     if (color.a < ALPHA_CUTOUT) {
         discard;
     }
     #endif
-
-    // Sky's Horizon
-    if (isSpaceObject == true) {
-        return;
-    }
 
     color *= vertexColor * ColorModulator;
 

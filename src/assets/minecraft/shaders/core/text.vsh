@@ -28,15 +28,13 @@ layout(location = 1) out float cylindricalVertexDistance;
 layout(location = 2) out vec4 vertexColor;
 layout(location = 3) out vec2 texCoord0;
 
-// Sky's Horizon (locations 5-7 are used by its screen modules)
+// Sky's Horizon
 layout(location = 4) out vec4 baseColor;
-
-#define SKYS_HORIZON_SCREEN_SHADER
 
 #define VSH
 
 // Sky's Horizon
-#include <skys_horizon:main.glsl>
+#include <skys_horizon:hooks/text.glsl>
 
 #undef VSH
 
@@ -48,12 +46,11 @@ void main() {
 #else
     vertexColor = Color;
 #endif
-    texCoord0 = UV0;
     baseColor = Color;
 
     // Sky's Horizon
-    vec3 Pos = Position;
-    #include <skys_horizon:main.vsh.glsl>
+    TextVertex sh = sh_text_vertex(Position, UV0);
+    texCoord0 = sh.uv;
 
-    gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
+    gl_Position = sh.hasClipPos ? sh.clipPos : ProjMat * ModelViewMat * vec4(sh.pos, 1.0);
 }
