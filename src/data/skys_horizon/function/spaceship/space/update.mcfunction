@@ -1,3 +1,6 @@
+# Update model
+execute as @n[tag=skys_horizon.spaceship.model] run function skys_horizon:space/shared/apply_rotation_rough
+
 # Update horizontal player rotation
 rotate @s[y_rotation=17..180] 17 ~
 rotate @s[y_rotation=-180..-17] -17 ~

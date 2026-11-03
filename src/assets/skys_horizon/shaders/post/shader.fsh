@@ -1,20 +1,20 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
 uniform sampler2D MainSampler;
 uniform sampler2D MainDepthSampler;
 uniform sampler2D PrevSampler;
 uniform sampler2D DataSampler;
-uniform sampler2D ParticlesSampler;
 
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:globals.glsl>
 
-#moj_import <shader_selector:marker_settings.glsl>
-#moj_import <shader_selector:utils.glsl>
-#moj_import <shader_selector:data_reader.glsl>
+#include <shader_selector:marker_settings.glsl>
+#include <shader_selector:utils.glsl>
+#include <shader_selector:data_reader.glsl>
 
-in vec2 texCoord;
+layout(location = 0) in vec2 texCoord;
 
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 
 vec2 getDownscaledResolution(vec2 uv, float aspectRatio)
 {
@@ -38,12 +38,6 @@ float getEdge(vec2 resolution, vec2 uv, vec2 point)
 
 vec4 getSobel(vec4 baseColor, vec2 uv)
 {
-    vec4 particleColor = texture(ParticlesSampler, uv);
-    ivec4 iParticleColor = ivec4(round(particleColor * 255.));
-    if (iParticleColor.rga == POST_MASK_RGA) {
-        return baseColor;
-    }
-
     const vec4 DARK_LINE_COLOR = vec4(vec3(20, 17, 19) / 255.0, 1.0);
     const vec4 LIGHT_LINE_COLOR = vec4(vec3(117, 111, 108) / 255.0, 1.0);
     vec2 resolution = textureSize(MainSampler, 0);
@@ -104,4 +98,16 @@ void main()
     color = getPhosphor(color, uv, intensity);
 
     fragColor = color;
+
+    #define DEBUG
+    #ifdef DEBUG
+    // Show data sampler on screen
+    if (texCoord.x < .25 && texCoord.y < .25) {
+        uv = texCoord * 4.0;
+        vec4 col = texture(DataSampler, uv);
+        if (uv.x > 1. / 5.)
+            col = vec4(vec3(fract(decodeColor(col))), 1.0);
+        fragColor = col;
+    }
+    #endif
 }

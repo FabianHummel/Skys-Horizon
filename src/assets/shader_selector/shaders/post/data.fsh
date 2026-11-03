@@ -1,14 +1,18 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
-#moj_import <shader_selector:marker_settings.glsl>
-#moj_import <shader_selector:utils.glsl>
+#include <shader_selector:marker_settings.glsl>
+#include <shader_selector:utils.glsl>
 
-uniform sampler2D ParticlesSampler;
+// In 26.3 there is no longer a separate minecraft:particles post target (translucency
+// is composited engine-side via OIT). The marker particles are written as opaque pixels
+// straight into minecraft:main, so we read them back from there.
+uniform sampler2D MainSampler;
 uniform sampler2D DataSampler;
 
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:globals.glsl>
 
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 
 float deltaTime;
 
@@ -16,26 +20,32 @@ void manageTime() {
     fragColor = encodeFloat(GameTime * 1200.0);
 }
 
-void readMarker(ivec2 iCoord, ivec2 pixelPos, int id, int op) {
-    ivec4 particleColor = ivec4(round(texelFetch(ParticlesSampler, pixelPos, 0)*255.));
-
-    if (particleColor.r == id) {
-        if (iCoord.x == 0) {       // rate       // target value
-            fragColor = vec4(op, particleColor.g, particleColor.b, MARKER_ALPHA) / 255.;
+void readMarker(ivec2 iCoord, ivec2 pixelPos, float green, int op, float rate) {
+    ivec4 particleColor = ivec4(round(texelFetch(MainSampler, pixelPos, 0)*255.));
+    #if SS_MARKER_TOLERANCE
+    // OIT В±1: match signature channels with |diff|<=1 instead of exact ==
+    ivec3 markerDiff = abs(particleColor.rga - ivec3(MARKER_RED, green, 255));
+    if (markerDiff.x <= 1 && markerDiff.y <= 1 && markerDiff.z <= 1) {
+    #else
+    if (particleColor.rga == ivec3(MARKER_RED, green, 255)) {
+    #endif
+        if (iCoord.x == 0) {
+            fragColor = vec4(MARKER_RED, op, particleColor.b, 255) / 255.;
             return;
         }
-        ivec4 previousData = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0)*255.));
+        ivec4 previousColor = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0)*255.));
+        int lastOp = previousColor.g;
         // write "rate" into speed (row 3) if op is not 3 or 4,
         // write "rate" into acceleration (row 2) if op is 3 or 4
         if (iCoord.x == 2 // acceleration
          || iCoord.x == 3 && !(op == 3 || op == 4) // speed
         ) {
-            float rate = float(previousData.g) / 255.;
             fragColor = encodeFloat(rate);
             return;
         }
         if (iCoord.x == 1) {
-            if (previousData.b == particleColor.b) {
+
+            if (previousColor.b == particleColor.b) {
                 return;
             }
             fragColor = encodeFloat(GameTime * 1200.0);
@@ -62,14 +72,14 @@ void acceleratedMotion(ivec2 iCoord, int op, float targetValue) {
         return;
     }
     // If breaking at full force doesn't overshoot, keep accelerating.
-    // question: is extremum of x(t)=-a/2 * (t - t0)² + v * (t - t0) larger than dx?
+    // question: is extremum of x(t)=-a/2 * (t - t0)ВІ + v * (t - t0) larger than dx?
     // -a (t - t0) + v = 0
     // t = v/a + t0
-    // extremum: -a/2 * (v/a)² + v * (v/a)
-    // = 1/2 * v²/a
+    // extremum: -a/2 * (v/a)ВІ + v * (v/a)
+    // = 1/2 * vВІ/a
     // Check becomes:
-    // 1/2 * v²/a < dx
-    // 1/2 * v²/a - dx < 0
+    // 1/2 * vВІ/a < dx
+    // 1/2 * vВІ/a - dx < 0
     float sv = v > 0.0 ? 1.0 : -1.0;
     // if v points against dx, always decelerate
     if (sv * sign(dx) == -1.0) {
@@ -87,8 +97,8 @@ void acceleratedMotion(ivec2 iCoord, int op, float targetValue) {
         return;
     }
     // iCoord.x is 4
-    // x(t) = +-a/2 * (t - t0)² + v * (t - t0) + f(t0)
-    //      = +-a/2 * deltaTime² + v *deltaTime + x0
+    // x(t) = +-a/2 * (t - t0)ВІ + v * (t - t0) + f(t0)
+    //      = +-a/2 * deltaTimeВІ + v *deltaTime + x0
     x += (a*0.5 * deltaTime + v)*deltaTime;
     if (op == 4) {
         x = fract(x);
@@ -96,7 +106,6 @@ void acceleratedMotion(ivec2 iCoord, int op, float targetValue) {
     fragColor = encodeFloat(x);
     return;
 }
-
 void constantMotion(ivec2 iCoord, int op, float targetValue) {
     // op 1 or 2
     float v = decodeColor(texelFetch(DataSampler, ivec2(3, iCoord.y), 0));
@@ -131,7 +140,7 @@ data sampler layout:
 row 0: time
 row 1..n: selector values
 within a row of selector values:
-column 0: last seen marker (green: operation, alpha: rate of change, blue: target value, red: marker)
+column 0: last seen marker (green: operation of marker, blue: value of marker)
 column 1: time when last change in marker
 column 2: interpolate acceleration
 column 3: interpolate speed
@@ -149,7 +158,7 @@ void main() {
         return;
     }
     if (iCoord.x < 4) {
-        #define ADD_MARKER(channel, id, op) if (iCoord.y == channel) readMarker(iCoord, MARKER_POS(channel), id, op);
+        #define ADD_MARKER(row, green, alpha, op, rate) if (iCoord.y == row) readMarker(iCoord, MARKER_POS(row), green, op, rate);
         LIST_MARKERS
 
         // Clamp timestamp to be at most 600 seconds (10 minutes) behind GameTime
@@ -164,11 +173,11 @@ void main() {
     }
     if (iCoord.x > 2){ // iCoord.x is 3 or 4
         ivec4 iTargetColor = ivec4(round(texelFetch(DataSampler, ivec2(0, iCoord.y), 0) * 255.));
-        if (iTargetColor.a != MARKER_ALPHA) {
+        if (iTargetColor.r != MARKER_RED) {
             fragColor = encodeFloat(0.0);
             return;
         }
-        int op = iTargetColor.r;
+        int op = iTargetColor.g;
         float targetValue;
         // When cyclic, 1 = 0, so 255/255 would become redundant.
         // Taking 1/256 instead gives accurate representation of all multiples of 1/256
@@ -182,7 +191,7 @@ void main() {
                 // set speed to 0
                 fragColor = encodeFloat(0.0);
                 return;
-            } 
+            }
             // iCoord.x is 4
             fragColor = encodeFloat(targetValue);
             return;

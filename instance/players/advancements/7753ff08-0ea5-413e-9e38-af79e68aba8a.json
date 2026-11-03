@@ -4129,5 +4129,11 @@
     },
     "done": true
   },
-  "DataVersion": 4903
+  "minecraft:recipes/decorations/blue_stained_glass_pane": {
+    "criteria": {
+      "has_glass": "2026-10-12 15:38:34 +0200"
+    },
+    "done": true
+  },
+  "DataVersion": 5023
 }

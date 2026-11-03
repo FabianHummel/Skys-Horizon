@@ -1,2 +1,2 @@
 # Applies screen shake with a given intensity instantly
-$particle minecraft:entity_effect{color:[0.007843137254902, 0.0, $(intensity), 0.984313725490196],scale:1f}
+$particle minecraft:entity_effect{color:[0.9843137255, 0.9960784314, 0.0039215686, $(intensity)],scale:1f}

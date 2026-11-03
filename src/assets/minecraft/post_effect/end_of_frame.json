@@ -1,10 +1,6 @@
 {
+    "_comment": "ShaderSelectorV4 pipeline. In 26.3 the vanilla transparency post-chain was removed (translucency is now composited engine-side via OIT), so the old post_effect/transparency.json hook is gone. Instead we define the minecraft:end_of_frame post effect, which the client always runs once per frame while this pack is loaded (before any /posteffect effects). minecraft:main already contains the fully composited scene, including the marker particles that core/particle.* wrote as opaque pixels near the top-left corner.",
     "targets": {
-        "final": {},
-        "swap": {},
-        "previous": {
-            "persistent": true
-        },
         "data": {
             "width": 5,
             "height": 3,
@@ -13,11 +9,16 @@
         "data_swap": {
             "width": 5,
             "height": 3
-        }
+        },
+        "previous": {
+            "persistent": true
+        },
+        "clean": {},
+        "swap": {}
     },
     "passes": [
         {
-            "_comment": "Used by ShaderSelectorV3",
+            "_comment": "Copy the persistent data buffer so the data pass can read the previous frame while writing the new one.",
             "fragment_shader": "shader_selector:post/internal/blit",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
@@ -29,7 +30,7 @@
             "output": "data_swap"
         },
         {
-            "_comment": "Used by ShaderSelectorV3",
+            "_comment": "Read the marker pixels out of minecraft:main and update the persistent data buffer.",
             "fragment_shader": "shader_selector:post/data",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
@@ -38,103 +39,37 @@
                     "target": "data_swap"
                 },
                 {
-                    "sampler_name": "Particles",
-                    "target": "minecraft:particles"
+                    "sampler_name": "Main",
+                    "target": "minecraft:main"
                 }
             ],
             "output": "data"
         },
         {
-            "_comment": "Used by ShaderSelectorV3",
+            "_comment": "Erase the marker pixels from the visible frame.",
             "fragment_shader": "shader_selector:post/internal/remove_particles",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
-                    "sampler_name": "Particles",
-                    "target": "minecraft:particles"
-                }
-            ],
-            "output": "swap"
-        },
-        {
-            "_comment": "Default pass",
-            "vertex_shader": "minecraft:core/screenquad",
-            "fragment_shader": "minecraft:post/transparency",
-            "inputs": [
-                {
                     "sampler_name": "Main",
                     "target": "minecraft:main"
-                },
-                {
-                    "sampler_name": "MainDepth",
-                    "target": "minecraft:main",
-                    "use_depth_buffer": true
-                },
-                {
-                    "sampler_name": "Translucent",
-                    "target": "minecraft:translucent"
-                },
-                {
-                    "sampler_name": "TranslucentDepth",
-                    "target": "minecraft:translucent",
-                    "use_depth_buffer": true
-                },
-                {
-                    "sampler_name": "ItemEntity",
-                    "target": "minecraft:item_entity"
-                },
-                {
-                    "sampler_name": "ItemEntityDepth",
-                    "target": "minecraft:item_entity",
-                    "use_depth_buffer": true
-                },
-                {
-                    "sampler_name": "Particles",
-                    "target": "swap"
-                },
-                {
-                    "sampler_name": "ParticlesDepth",
-                    "target": "minecraft:particles",
-                    "use_depth_buffer": true
-                },
-                {
-                    "sampler_name": "Clouds",
-                    "target": "minecraft:clouds"
-                },
-                {
-                    "sampler_name": "CloudsDepth",
-                    "target": "minecraft:clouds",
-                    "use_depth_buffer": true
-                },
-                {
-                    "sampler_name": "Weather",
-                    "target": "minecraft:weather"
-                },
-                {
-                    "sampler_name": "WeatherDepth",
-                    "target": "minecraft:weather",
-                    "use_depth_buffer": true
                 }
             ],
-            "output": "final"
+            "output": "clean"
         },
         {
-            "_comment": "Sky's Horizon post processing shader",
+            "_comment": "Sky's Horizon Post Processing Effects",
             "fragment_shader": "skys_horizon:post/shader",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
                     "sampler_name": "Main",
-                    "target": "final"
+                    "target": "clean"
                 },
                 {
                     "sampler_name": "MainDepth",
                     "target": "minecraft:main",
                     "use_depth_buffer": true
-                },
-                {
-                    "sampler_name": "Particles",
-                    "target": "minecraft:particles"
                 },
                 {
                     "sampler_name": "Prev",
@@ -173,7 +108,7 @@
             "output": "previous"
         },
         {
-            "_comment": "Sky's Horizon screenshake shader",
+            "_comment": "Sky's Horizon Screenshake",
             "fragment_shader": "skys_horizon:post/screenshake",
             "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
@@ -186,7 +121,7 @@
                     "target": "data"
                 }
             ],
-            "output": "final"
+            "output": "clean"
         },
         {
             "vertex_shader": "minecraft:core/screenquad",
@@ -194,7 +129,7 @@
             "inputs": [
                 {
                     "sampler_name": "In",
-                    "target": "final"
+                    "target": "clean"
                 }
             ],
             "uniforms": {
