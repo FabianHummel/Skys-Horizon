@@ -1,4 +1,5 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
 uniform sampler2D MainSampler;
 uniform sampler2D MainDepthSampler;
@@ -6,15 +7,15 @@ uniform sampler2D PrevSampler;
 uniform sampler2D DataSampler;
 uniform sampler2D ParticlesSampler;
 
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:globals.glsl>
 
-#moj_import <shader_selector:marker_settings.glsl>
-#moj_import <shader_selector:utils.glsl>
-#moj_import <shader_selector:data_reader.glsl>
+#include <shader_selector:marker_settings.glsl>
+#include <shader_selector:utils.glsl>
+#include <shader_selector:data_reader.glsl>
 
-in vec2 texCoord;
+layout(location = 0) in vec2 texCoord;
 
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 
 vec2 getDownscaledResolution(vec2 uv, float aspectRatio)
 {

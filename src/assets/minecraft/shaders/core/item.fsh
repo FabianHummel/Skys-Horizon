@@ -1,45 +1,91 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
-#moj_import <minecraft:light.glsl>
-#moj_import <minecraft:fog.glsl>
-#moj_import <minecraft:dynamictransforms.glsl>
-#moj_import <minecraft:projection.glsl>
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:light.glsl>
+#include <minecraft:fog.glsl>
+#include <minecraft:dynamictransforms.glsl>
+#include <minecraft:projection.glsl>
+#include <minecraft:globals.glsl>
+#include <minecraft:oit.glsl>
 
 uniform sampler2D Sampler0;
 
-in vec3 Pos;
-in vec2 texCoord;
-in vec2 atlasSize;
-in vec4 overlayColor;
-in vec4 lightMapColor;
-in vec4 vertexColor;
-in vec4 baseColor;
-in float sphericalVertexDistance;
-in float cylindricalVertexDistance;
+#ifdef GLINT
+uniform sampler2D GlintSampler;
+#endif
 
-out vec4 fragColor;
+#ifndef OIT_ALPHA_ONLY
+layout(location = 0) in float sphericalVertexDistance;
+layout(location = 1) in float cylindricalVertexDistance;
+#endif
+layout(location = 2) in vec4 vertexColor;
+#ifndef OIT_ALPHA_ONLY
+layout(location = 3) in vec4 lightMapColor;
+layout(location = 4) in vec4 overlayColor;
+#endif
+layout(location = 5) in vec2 texCoord;
+#ifdef GLINT
+layout(location = 6) in vec2 texCoordGlint;
+#endif
 
-#define SKYS_HORIZON_SPACE_SHADER
-#define SKYS_HORIZON_ENTITY_SHADER
-#define SKYS_HORIZON_SCENE_SHADER
+// Sky's Horizon
+layout(location = 7) in vec3 Pos;
+layout(location = 8) in vec2 atlasSize;
+layout(location = 9) in vec4 baseColor;
+
+#ifndef OIT_ALPHA_ONLY
+layout(location = 0) out vec4 fragColor;
+#endif
 
 #define FSH
 
-// objmc
-#moj_import <objmc:main.glsl>
-
 // Sky's Horizon
-#moj_import <skys_horizon:main.glsl>
-#moj_import <skys_horizon:screen.glsl>
+#include <skys_horizon:hooks/item.glsl>
+#include <skys_horizon:hooks/world.glsl>
+#include <skys_horizon:hooks/output.glsl>
 
 #undef FSH
+
+#ifndef OIT_ALPHA_ONLY
+vec4 calculateFinalColor(vec4 color) {
+    color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
+    color *= lightMapColor;
+
+    #ifdef GLINT
+    vec4 glintColor = GlintAlpha * texture(GlintSampler, texCoordGlint);
+    color.rgb += glintColor.rgb * glintColor.rgb;
+    #endif
+
+    // Sky's Horizon
+    color = sh_world_shade(color);
+
+    #ifdef OIT_ACCUMULATE
+    color = sampleColorForAccumulation(color);
+    vec4 fogColor = vec4(FogColor.rgb * color.a, FogColor.a);
+    #else
+    vec4 fogColor = FogColor;
+    #endif
+
+    return apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, fogColor);
+}
+#endif
 
 void main() {
     vec4 color = texture(Sampler0, texCoord);
 
     // Sky's Horizon
-    #moj_import <skys_horizon:main.fsh>
+    vec4 shColor;
+    if (sh_item_fragment(color, Pos, texCoord, atlasSize, shColor)) {
+        sh_emit(shColor);
+        return;
+    }
+
+    // Sky's Horizon / objmc
+    if (shIsObjmcModel == 1) {
+        color *= objmc_fragment_lighting(Pos, baseColor) * ColorModulator;
+    } else {
+        color *= vertexColor * ColorModulator;
+    }
 
     #ifdef ALPHA_CUTOUT
     if (color.a < ALPHA_CUTOUT) {
@@ -47,17 +93,13 @@ void main() {
     }
     #endif
 
-    // Sky's Horizon
-    if (isSpaceObject == true) {
-        return;
-    }
+    #ifdef GLINT
+    color.a = max(color.a, GlintAlpha);
+    #endif
 
-    color *= vertexColor * ColorModulator;
-    color.rgb = mix(overlayColor.rgb, color.rgb, overlayColor.a);
-    color *= lightMapColor;
-
-    // Sky's Horizon
-    color = applyPosterization(color);
-
-    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+    #ifdef OIT_ALPHA_ONLY
+    executeAlphaOnlyPhase(gl_FragCoord.z, color.a);
+    #else
+    fragColor = calculateFinalColor(color);
+    #endif
 }

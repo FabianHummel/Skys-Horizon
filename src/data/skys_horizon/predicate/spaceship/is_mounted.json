@@ -1,11 +1,13 @@
 {
-  "condition": "minecraft:entity_properties",
-  "entity": "this",
-  "predicate": {
-    "minecraft:vehicle": {
-      "minecraft:entity_tags": {
-        "any_of": ["skys_horizon.spaceship"]
-      }
+    "type": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+        "minecraft:vehicle": {
+            "minecraft:entity_tags": {
+                "any_of": [
+                    "skys_horizon.spaceship"
+                ]
+            }
+        }
     }
-  }
 }

@@ -1,59 +1,79 @@
 #version 330
+#extension GL_ARB_separate_shader_objects : require
 
 #if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
-#moj_import <minecraft:fog.glsl>
+#include <minecraft:fog.glsl>
 #endif
 
-#moj_import <minecraft:dynamictransforms.glsl>
-#moj_import <minecraft:globals.glsl>
+#include <minecraft:dynamictransforms.glsl>
+#include <minecraft:globals.glsl>
+#include <minecraft:oit.glsl>
 
 uniform sampler2D Sampler0;
 
 #if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
-in float sphericalVertexDistance;
-in float cylindricalVertexDistance;
+layout(location = 0) in float sphericalVertexDistance;
+layout(location = 1) in float cylindricalVertexDistance;
 #endif
 
-in vec4 vertexColor;
-in vec2 texCoord0;
-in vec4 baseColor;
+layout(location = 2) in vec4 vertexColor;
+layout(location = 3) in vec2 texCoord0;
+layout(location = 4) in vec4 baseColor;
 
-out vec4 fragColor;
-
-#define SKYS_HORIZON_SCREEN_SHADER
+#ifndef OIT_ALPHA_ONLY
+layout(location = 0) out vec4 fragColor;
+#endif
 
 #define FSH
 
 // Sky's Horizon
-#moj_import <skys_horizon:main.glsl>
+#include <skys_horizon:hooks/text.glsl>
+#include <skys_horizon:hooks/output.glsl>
 
 #undef FSH
 
-void main() {
-#ifdef IS_GRAYSCALE
-    vec4 texColor = texture(Sampler0, texCoord0).rrrr;
-#else
-    vec4 texColor = texture(Sampler0, texCoord0);
-#endif
+vec4 calculateFinalColor(vec4 color) {
+    #ifdef OIT_ACCUMULATE
+    color = sampleColorForAccumulation(color);
+    #endif
 
-#ifdef IS_SEE_THROUGH
-    vec4 color = texColor * vertexColor;
-#else
+    #if !defined(IS_SEE_THROUGH) && !defined(IS_GUI)
+
+    #ifdef OIT_ACCUMULATE
+    vec4 fogColor = vec4(FogColor.rgb * color.a, FogColor.a);
+    #else
+    vec4 fogColor = FogColor;
+    #endif
+
+    color = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, fogColor);
+    #endif
+
+    return color;
+}
+
+void main() {
+    #ifdef IS_GRAYSCALE
+    vec4 texColor = texture(Sampler0, texCoord0).rrrr;
+    #else
+    vec4 texColor = texture(Sampler0, texCoord0);
+    #endif
+
     vec4 color = texColor * vertexColor * ColorModulator;
-#endif
 
     // Sky's Horizon
-    #moj_import <skys_horizon:main.fsh>
+    vec4 shColor;
+    if (sh_text_fragment(vertexColor, baseColor, texCoord0, shColor)) {
+        sh_emit(shColor);
+        return;
+    }
 
     if (color.a < 0.1) {
         discard;
     }
 
-#ifdef IS_SEE_THROUGH
-    fragColor = color * ColorModulator;
-#elif defined(IS_GUI)
-    fragColor = color;
-#else
-    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
-#endif
+    #ifdef OIT_ALPHA_ONLY
+    executeAlphaOnlyPhase(gl_FragCoord.z, color.a);
+    #else
+    fragColor = calculateFinalColor(color);
+    #endif
 }

@@ -1,0 +1,155 @@
+{
+    "targets": {
+        "final": {},
+        "swap": {},
+        "previous": {
+            "persistent": true
+        },
+        "data": {
+            "width": 5,
+            "height": 3,
+            "persistent": true
+        },
+        "data_swap": {
+            "width": 5,
+            "height": 3
+        }
+    },
+    "passes": [
+        {
+            "_comment": "Used by ShaderSelectorV3",
+            "fragment_shader": "shader_selector:post/internal/blit",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "data"
+                }
+            ],
+            "output": "data_swap"
+        },
+        {
+            "_comment": "Used by ShaderSelectorV3",
+            "fragment_shader": "shader_selector:post/data",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Data",
+                    "target": "data_swap"
+                },
+                {
+                    "sampler_name": "Particles",
+                    "target": "minecraft:main"
+                }
+            ],
+            "output": "data"
+        },
+        {
+            "_comment": "Used by ShaderSelectorV3",
+            "fragment_shader": "shader_selector:post/internal/remove_particles",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Particles",
+                    "target": "minecraft:main"
+                }
+            ],
+            "output": "final"
+        },
+        {
+            "_comment": "Sky's Horizon post processing shader",
+            "fragment_shader": "skys_horizon:post/shader",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "final"
+                },
+                {
+                    "sampler_name": "MainDepth",
+                    "target": "minecraft:main",
+                    "use_depth_buffer": true
+                },
+                {
+                    "sampler_name": "Particles",
+                    "target": "minecraft:main"
+                },
+                {
+                    "sampler_name": "Prev",
+                    "target": "previous"
+                },
+                {
+                    "sampler_name": "Data",
+                    "target": "data"
+                }
+            ],
+            "output": "swap"
+        },
+        {
+            "vertex_shader": "minecraft:core/screenquad",
+            "fragment_shader": "minecraft:post/blit",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap"
+                }
+            ],
+            "uniforms": {
+                "BlitConfig": [
+                    {
+                        "name": "ColorModulate",
+                        "type": "vec4",
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            "output": "previous"
+        },
+        {
+            "_comment": "Sky's Horizon screenshake shader",
+            "fragment_shader": "skys_horizon:post/screenshake",
+            "vertex_shader": "minecraft:core/screenquad",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "swap"
+                },
+                {
+                    "sampler_name": "Data",
+                    "target": "data"
+                }
+            ],
+            "output": "final"
+        },
+        {
+            "vertex_shader": "minecraft:core/screenquad",
+            "fragment_shader": "minecraft:post/blit",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "final"
+                }
+            ],
+            "uniforms": {
+                "BlitConfig": [
+                    {
+                        "name": "ColorModulate",
+                        "type": "vec4",
+                        "value": [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
+            },
+            "output": "minecraft:main"
+        }
+    ]
+}
