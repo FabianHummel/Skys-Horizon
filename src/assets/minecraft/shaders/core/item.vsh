@@ -36,15 +36,12 @@ layout(location = 5) out vec2 texCoord;
 layout(location = 6) out vec2 texCoordGlint;
 #endif
 
-// Sky's Horizon (kept for objmc, which may reference these names)
+// Sky's Horizon
 layout(location = 7) out vec3 Pos;
 layout(location = 8) out vec2 atlasSize;
 layout(location = 9) out vec4 baseColor;
 
 #define VSH
-
-// objmc
-#include <objmc:main.glsl>
 
 // Sky's Horizon
 #include <skys_horizon:hooks/item.glsl>
@@ -72,13 +69,12 @@ void main() {
     #endif
     #endif
 
-    // objmc
-    #include <objmc:main.vsh.glsl>
-
     // Sky's Horizon
-    ItemVertex sh = sh_item_vertex(Pos, vertexNormal, isObjmcModel == 1, ivec4(objmcMarker), posOffset);
+    ObjmcVertexData objmc = objmc_vertex();
+    texCoord = objmc.atlasUv;
+    ItemVertex sh = sh_item_vertex(Pos, objmc);
     Pos = sh.pos;
-    vertexNormal = sh.normal;
+    shItemNormal = sh.normal;
 
     gl_Position = sh.hasClipPos ? sh.clipPos : ProjMat * sh.modelView * vec4(Pos, 1.0);
 

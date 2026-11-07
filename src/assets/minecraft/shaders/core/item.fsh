@@ -39,9 +39,6 @@ layout(location = 0) out vec4 fragColor;
 
 #define FSH
 
-// objmc
-#include <objmc:main.glsl>
-
 // Sky's Horizon
 #include <skys_horizon:hooks/item.glsl>
 #include <skys_horizon:hooks/world.glsl>
@@ -78,9 +75,16 @@ void main() {
 
     // Sky's Horizon
     vec4 shColor;
-    if (sh_item_fragment(color, Pos, vertexNormal, texCoord, atlasSize, shColor)) {
+    if (sh_item_fragment(color, Pos, texCoord, atlasSize, shColor)) {
         sh_emit(shColor);
         return;
+    }
+
+    // Sky's Horizon / objmc
+    if (shIsObjmcModel == 1) {
+        color *= objmc_fragment_lighting(Pos, baseColor) * ColorModulator;
+    } else {
+        color *= vertexColor * ColorModulator;
     }
 
     #ifdef ALPHA_CUTOUT
@@ -88,8 +92,6 @@ void main() {
         discard;
     }
     #endif
-
-    color *= vertexColor * ColorModulator;
 
     #ifdef GLINT
     color.a = max(color.a, GlintAlpha);
