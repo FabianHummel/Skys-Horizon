@@ -11,4 +11,4 @@ execute align xyz run summon falling_block ~.5 ~.05 ~.5 {\
     Time: -2147483648\
 }
 
-execute if predicate {condition:"minecraft:location_check",predicate:{position:{y:1.5}}} run tag @n[tag=skys_horizon.scene.hangar.garage_door] add skys_horizon.scene.hangar.garage_door.bottom_row
+execute if predicate {type:"minecraft:location_check",predicate:{position:{y:1.5}}} run tag @n[tag=skys_horizon.scene.hangar.garage_door] add skys_horizon.scene.hangar.garage_door.bottom_row

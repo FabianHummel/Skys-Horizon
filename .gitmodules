@@ -17,3 +17,7 @@
 [submodule "include/callback_scheduler"]
 	path = include/callback_scheduler
 	url = https://github.com/FabianHummel/Callback-Scheduler
+[submodule "include/bookshelf"]
+	path = include/bookshelf
+	url = git@github.com:mcbookshelf/bookshelf.git
+	branch = v5
