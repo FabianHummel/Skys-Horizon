@@ -26,39 +26,21 @@ layout(location = 3) out vec4 vertexColor;
 // Debug Text
 #include <debug_text:main.vsh.glsl>
 
-#define VSH
-
-// Sky's Horizon
-#include <skys_horizon:hooks/particle.glsl>
-
-#undef VSH
-
 void main() {
-    // Sky's Horizon
-    vec3 Pos = Position;
-
-    // ShaderSelector
-    if (ss_vertex(Pos)) {
-        gl_Position = vec4(Pos, 1.0);
-        sphericalVertexDistance = 0.0;
-        cylindricalVertexDistance = 0.0;
-        texCoord0 = vec2(0.0);
-        vertexColor = vec4(0.0);
+    // Debug Text
+    if (dt_vertex(gl_Position)) {
         return;
     }
 
-    // Sky's Horizon
-    if (sh_particle_vertex(iColor, Pos)) {
-        isMarker = 1;
+    // ShaderSelector
+    if (ss_vertex(gl_Position)) {
+        return;
     }
 
-    gl_Position = ProjMat * ModelViewMat * vec4(Pos, 1.0);
+    gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
-    // Debug Text
-    dt_vertex(gl_Position);
-
-    sphericalVertexDistance = fog_spherical_distance(Pos);
-    cylindricalVertexDistance = fog_cylindrical_distance(Pos);
+    sphericalVertexDistance = fog_spherical_distance(Position);
+    cylindricalVertexDistance = fog_cylindrical_distance(Position);
     texCoord0 = UV0;
     vertexColor = Color * sample_lightmap(Sampler2, UV2);
 }

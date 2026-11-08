@@ -1,5 +1,5 @@
-layout(location = 6) flat in int isDebugMarker;
-layout(location = 7) in vec2 corner;
+layout(location = 7) flat in int isDebugMarker;
+layout(location = 8) in vec2 corner;
 
 const float LOG10 = 1. / log(10.);
 
@@ -200,13 +200,16 @@ void dt_draw_globals(inout float state, vec2 uv) {
     dt_draw_float(state, cursor, GameTime);
 }
 
-bool dt_fragment(out vec4 result)
+bool dt_fragment()
 {
     if (isDebugMarker != 1)
     {
         return false;
     }
 
+    #ifdef OIT_ALPHA_ONLY
+    executeAlphaOnlyPhase(gl_FragCoord.z, 1.0);
+    #else
     float scale = 300.;
 
     vec2 resolution = gl_FragCoord.xy / corner;
@@ -218,6 +221,7 @@ bool dt_fragment(out vec4 result)
     dt_draw_globals(state, uv);
     if (state == 0.0) discard;
 
-    result = vec4(1);
+    fragColor = vec4(1.0);
+    #endif
     return true;
 }

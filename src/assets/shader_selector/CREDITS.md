@@ -1,1 +1,1 @@
-https://github.com/HalbFettKaese/ShaderSelectorV3 by HalbFettKaese
+https://github.com/JagerMeistars/ShaderSelectorV4 by JagerMeistars

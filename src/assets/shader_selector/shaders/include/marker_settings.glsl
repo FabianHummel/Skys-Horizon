@@ -1,5 +1,7 @@
-
-const ivec3 POST_MASK_RGA = ivec3(12, 34, 255);
+// Optional marker channel tolerance (OFF by default = unchanged behaviour).
+// Set to 1 to match marker signature channels with |diff|<=1 per channel.
+// Enable on 26.3 if marker channels stop working due to OIT rounding (±1).
+#define SS_MARKER_TOLERANCE 0
 
 // define distinct values, counting from 1:
 #define SCREENSHAKE_CHANNEL 1
@@ -7,12 +9,12 @@ const ivec3 POST_MASK_RGA = ivec3(12, 34, 255);
 
 /*
 signature:
- ADD_MARKER(channel, id, op)
+ ADD_MARKER(channel, green, alpha, op, rate)
 */
 // append different marker definitions
-#define LIST_MARKERS ADD_MARKER(SCREENSHAKE_CHANNEL, 1, 1) ADD_MARKER(SCREENSHAKE_CHANNEL, 2, 0) ADD_MARKER(PHOSPHOR_CHANNEL, 3, 1) ADD_MARKER(PHOSPHOR_CHANNEL, 4, 0)
+#define LIST_MARKERS ADD_MARKER(SCREENSHAKE_CHANNEL, 1, 251, 1, 1.0) ADD_MARKER(SCREENSHAKE_CHANNEL, 2, 251, 0, 0.0) ADD_MARKER(PHOSPHOR_CHANNEL, 3, 251, 1, 0.0) ADD_MARKER(PHOSPHOR_CHANNEL, 4, 251, 0, 0.0)
 
-#define MARKER_ALPHA 251
+#define MARKER_RED 254
 
 // Screen pixel that the marker ends up on if it uses channel k:
 // Mapping follows structure that is like an inverted cantor pairing (but only producing coordinates with an even sum)

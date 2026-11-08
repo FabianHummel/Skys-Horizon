@@ -5,8 +5,6 @@
 #include <minecraft:dynamictransforms.glsl>
 #include <minecraft:globals.glsl>
 #include <minecraft:oit.glsl>
-#include <debug_text:main.fsh.glsl>
-#include <shader_selector:main.fsh.glsl>
 
 uniform sampler2D Sampler0;
 
@@ -19,17 +17,10 @@ layout(location = 3) in vec4 vertexColor;
 layout(location = 0) out vec4 fragColor;
 #endif
 
+#include <debug_text:main.fsh.glsl>
+#include <shader_selector:main.fsh.glsl>
+
 vec4 calculateFinalColor(vec4 color) {
-    // Debug Text
-    if (dt_fragment(color)) {
-        return color;
-    }
-
-    // ShaderSelector
-    if (ss_fragment(color)) {
-        return color;
-    }
-
     #ifdef OIT_ACCUMULATE
     color = sampleColorForAccumulation(color);
     vec4 fogColor = vec4(FogColor.rgb * color.a, FogColor.a);
@@ -40,6 +31,16 @@ vec4 calculateFinalColor(vec4 color) {
 }
 
 void main() {
+    // Debug Text
+    if (dt_fragment()) {
+        return;
+    }
+
+    // ShaderSelector
+    if (ss_fragment()) {
+        return;
+    }
+
     vec4 color = texture(Sampler0, texCoord0) * vertexColor * ColorModulator;
     if (color.a < 0.1) {
         discard;

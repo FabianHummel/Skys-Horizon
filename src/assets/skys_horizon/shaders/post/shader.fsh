@@ -5,13 +5,14 @@ uniform sampler2D MainSampler;
 uniform sampler2D MainDepthSampler;
 uniform sampler2D PrevSampler;
 uniform sampler2D DataSampler;
-uniform sampler2D ParticlesSampler;
 
 #include <minecraft:globals.glsl>
 
 #include <shader_selector:marker_settings.glsl>
 #include <shader_selector:utils.glsl>
 #include <shader_selector:data_reader.glsl>
+
+#include <skys_horizon:lib/markers.glsl>
 
 layout(location = 0) in vec2 texCoord;
 
@@ -39,12 +40,6 @@ float getEdge(vec2 resolution, vec2 uv, vec2 point)
 
 vec4 getSobel(vec4 baseColor, vec2 uv)
 {
-    vec4 particleColor = texture(ParticlesSampler, uv);
-    ivec4 iParticleColor = ivec4(round(particleColor * 255.));
-    if (iParticleColor.rga == POST_MASK_RGA) {
-        return baseColor;
-    }
-
     const vec4 DARK_LINE_COLOR = vec4(vec3(20, 17, 19) / 255.0, 1.0);
     const vec4 LIGHT_LINE_COLOR = vec4(vec3(117, 111, 108) / 255.0, 1.0);
     vec2 resolution = textureSize(MainSampler, 0);
